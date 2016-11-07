@@ -59,9 +59,15 @@ void City::GetInfo() const
 class FramLand: public Place
 {
   private:
-
+  	UINT CalculatePopulation() const;
+  	void Develop(UINT cash);
+	bool ChangeHolder(string newHolder);
   protected:
-
+	string _Landlord;
+	int _LandDenfence;
+	double _ProductValue;
   public:
 };
+
+
 #endif
