@@ -25,30 +25,32 @@ class City : public Place
 		_CityName(cn),_CityHolder(ch),_DenfenceLevel(df)
 		{cout<<"\nBuild a city named "<<cn<<endl;}
 		void GetInfo() const;
+		int GetPopulation() const {return CalculatePopulation();}
 		virtual ~City(){cout<<"\nremove a city."<<endl;}
 };
 
-UINT City::CalculatePopulation() const
+inline UINT City::CalculatePopulation() const
 {
 	return _Area*_PopulationDensity;
 }
 
 void City::Develop(UINT cash)
 {
+	//mimic the random of development when put into money
 	srand(time(0));
 	int random=(rand()+cash)%10;
 	_PopulationDensity+=random;
 	return;
 }
 
-bool City::ChangeHolder(string newHolder)
+inline bool City::ChangeHolder(string newHolder)
 {
 	_CityHolder=newHolder;
 	cout<<"Now the city is charged by "<<newHolder<<endl;
 	return true;
 }
 
-void City::GetInfo() const
+inline void City::GetInfo() const
 {
 	cout<<"\nThis is the basic information of the city: "<<endl;
 	cout<<"\nCity Name: "<<_CityName<<"\nCity Holder: "<<_CityHolder
