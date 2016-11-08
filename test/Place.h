@@ -23,7 +23,7 @@ class Place
 		_Longitude(lon),_High(high),_PopulationDensity(pd),_ProductType(pr),_Area(area)
 		{ cout<<"this is a place."<<endl;}
 		virtual void GetInfo() const;
-		virtual ~Place(){cout<<"\nremove a place";}
+		virtual ~Place(){cout<<"remove a place"<<endl;}
 };
 
 void Place::GetInfo() const

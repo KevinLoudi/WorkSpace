@@ -4,6 +4,7 @@
 #include "Place.h"
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <cstdlib>
 #include <ctime>
 #include <list>
@@ -27,13 +28,13 @@ class City : public Place
 		City(double lat=0.0,double lon=0.0,double high=0.0,UINT pd=0,string pr="null products",UINT area=0,
 		string cn="null name",string ch="null holder",int df=0):Place(lat,lon,high,pd,pr,area),
 		_CityName(cn),_CityHolder(ch),_DenfenceLevel(df)
-		{cout<<"\nBuild a city named "<<cn<<endl;}
+		{cout<<"Build a city named "<<cn<<endl;}
 		void GetInfo() const;
 		int GetPopulation() const {return CalculatePopulation();}
 		friend bool InitCityList(City &acity,const int num);
 		friend bool SaveCityListinFile(const City &acity,const int num);
-		friend bool ReadListFiletoCity(City *cities,const int num);
-		virtual ~City(){cout<<"\nremove a city."<<endl;}
+		friend bool ReadListFiletoCity(City cities[],const int num);
+		virtual ~City(){cout<<"remove a city."<<endl;}
 };
 
 inline UINT City::CalculatePopulation() const
@@ -60,8 +61,8 @@ inline bool City::ChangeHolder(string newHolder)
 inline void City::GetInfo() const
 {
 	cout<<"\nThis is the basic information of the city: "<<endl;
-	cout<<"\nCity Name: "<<_CityName<<"\nCity Holder: "<<_CityHolder
-	    <<"\nPopulations: "<<CalculatePopulation()<<"\nMajor Products: "<<_ProductType<<endl;
+	cout<<"City Name: "<<_CityName<<"\nCity Holder: "<<_CityHolder<<endl
+	    <<"Populations: "<<CalculatePopulation()<<" Major Products: "<<_ProductType<<endl;
 	return;
 }
 
@@ -105,11 +106,11 @@ bool SaveCityListinFile(const City &acity,const int num)
 {
 	fstream out;
 	out.open(CITYLIST,ios::out|ios::app);
-	if(out.fail())
-	{
-		cerr<<"No Save file found!"<<endl;
-		return false;
-	}
+//	if(out.fail())
+//	{
+//		cerr<<"No Save file found!"<<endl;
+//		return false;
+//	}
 		
 	out<<acity._CityName<<" "<<acity._CityHolder<<" "<<acity._ProductType
 	<<" "<<acity._Latitude<<" "<<acity._Longitude<<" "<<acity._DenfenceLevel<<" "<<acity._PopulationDensity
@@ -120,33 +121,28 @@ bool SaveCityListinFile(const City &acity,const int num)
 	return true;
 }
 
-//input a array of object city
-bool ReadListFiletoCity(City *cities,const int num)
+bool ReadListFiletoCity(City cities[],const int num)
 {
-	ifstream in;
-	in.open(CITYLIST);
+	ifstream infile(CITYLIST);
+	string cityname="Handan",cityholder="Zhao",products="Steel";
+	int defencelev=8;
+	double lat=112,lon=35,high=16;
+	UINT pop_den=200, area=1900;
+	UINT i=0;
+	while((infile>>cityname>>cityholder>>products>>lat>>lon>>defencelev>>pop_den>>area)and(i<num))
+	{
+//		cout<<cityname<<" "<<cityholder<<" "<<products<<" "
+//		<<lat<<" "<<lon<<" "<<defencelev<<" "<<pop_den<<" "
+//		<<area<<endl;
+		cities[i]._CityName=cityname; cities[i]._CityHolder=cityholder; 
+		cities[i]._ProductType=products; cities[i]._Latitude=lat; 
+		cities[i]._Longitude=lon; cities[i]._High=high; cities[i]._DenfenceLevel=defencelev;
+		cities[i]._Area=area; cities[i]._PopulationDensity=pop_den;
+		cities[i].GetInfo();
+		i++;
+	}
 	
-	if(in.fail())
-	{
-		cerr<<"No Read file found!"<<endl;
-		return false;
-	}
-	for(int i=0;i<num;++i)
-	{
-		//a logical error once, read when not ineof rather than until eof
-		if(!in.eof())
-		{
-	 		in>>cities[i]._CityName>>cities[i]._CityHolder>>cities[i]._ProductType
-			>>cities[i]._Latitude>>cities[i]._Longitude>>cities[i]._DenfenceLevel>>cities[i]._PopulationDensity
-			>>cities[i]._Area;
-		}
-		else
-		{
-			//there should have more lines, return false
-			return false;
-		}
-	}
-	in.close();
+	infile.close();
 	return true;
 }
 

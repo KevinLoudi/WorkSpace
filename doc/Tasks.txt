@@ -10,3 +10,7 @@
  
  Corrected : 	City cd;
 				cd.GetInfo();
+				
+#Problem 3: 'friend' used outside of class
+Remove the friend in the .cpp file. It is only required (and allowed) within the class definition
+ in the header file.
