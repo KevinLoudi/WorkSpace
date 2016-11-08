@@ -10,10 +10,11 @@ typedef unsigned long UINT;
 class Place
 {
 	private:
+
+	protected:
 		double _Latitude;
 		double _Longitude; 
 		double _High;
-	protected:
 		UINT  _PopulationDensity;
 		string _ProductType;
 		UINT _Area;	
