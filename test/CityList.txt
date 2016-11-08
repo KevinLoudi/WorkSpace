@@ -6,3 +6,4 @@ ZiChen Qi Salt 118 31 12 1000 3500
 Yi Chu Wine 116 29 4 1500 2500
 Xinzhen Han Gold 114 31 14 1200 6500
 Suiyang Song Fish 115 30 12 1600 8900
+City Holder Products Lat Lon DefenceLevel Area Population_Density

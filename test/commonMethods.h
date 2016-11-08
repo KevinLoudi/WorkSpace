@@ -7,6 +7,29 @@
 #include <ctime>
 using namespace std;
 
+class Methods
+{
+	private:
+
+	protected:
+		
+	public:
+		Methods(){}
+		virtual ~Methods(){} 
+};
+
+class Ranking : public Methods 
+{
+    private:
+    	vector<string> city;
+    	map<string,int> population_rank;
+	protected:
+		
+	public:
+		ostream & printPopulationRank(ostream &os,int topnum);
+
+};
+
 class Models
 {
 	private:

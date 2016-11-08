@@ -15,25 +15,38 @@ typedef unsigned long UINT;
 class City : public Place
 {
 	private:
+		//propeties for a city
 		string _CityName;
-		string _CityHolder;
+		string _CityHolder; 
 		int _DenfenceLevel;
-		UINT CalculatePopulation() const;
-		void Develop(UINT cash);
-		bool ChangeHolder(string newHolder);
+		
+		//operations
+		UINT CalculatePopulation() const; //return city population
+		void Develop(UINT cash); //develop city with investment and in a random way
+		bool ChangeHolder(string newHolder); //change holder of the city
 	protected:
 
 	public:
-		//a const default constructor is needed
+		//more complex construct
 		City(double lat=0.0,double lon=0.0,double high=0.0,UINT pd=0,string pr="null products",UINT area=0,
 		string cn="null name",string ch="null holder",int df=0):Place(lat,lon,high,pd,pr,area),
 		_CityName(cn),_CityHolder(ch),_DenfenceLevel(df)
 		{cout<<"Build a city named "<<cn<<endl;}
+		
+		//redefined virtual operations
 		void GetInfo() const;
+		
+		//public interface for show population
 		int GetPopulation() const {return CalculatePopulation();}
-		friend bool InitCityList(City &acity,const int num);
-		friend bool SaveCityListinFile(const City &acity,const int num);
+		
+		//initalize a set of cities via setting files
+		friend bool InitCityList(City &acity);
+		
+		//initalize a city via cin
+		friend bool SaveCityListinFile(const City &acity);
 		friend bool ReadListFiletoCity(City cities[],const int num);
+		
+		//destruct with info
 		virtual ~City(){cout<<"remove a city."<<endl;}
 };
 
@@ -66,7 +79,7 @@ inline void City::GetInfo() const
 	return;
 }
 
-bool InitCityList(City &acity,const int num)
+bool InitCityList(City &acity)
 {
 	//City *incity = new City(num);
 	cout<<"Please input city information.\n";
@@ -78,7 +91,7 @@ bool InitCityList(City &acity,const int num)
 	string states="C";
 	while(states!="Q")
 	{
-		/*cout<<"Please input city name and holder and products...\n";
+		cout<<"Please input city name and holder and products...\n";
 		cin>>acity._CityName;
 		cin>>acity._CityHolder;
 		cin>>acity._ProductType;
@@ -89,29 +102,32 @@ bool InitCityList(City &acity,const int num)
 		cout<<"Please input city denfencelevel and pop_den and area...\n";
 		cin>>acity._DenfenceLevel;
 		cin>>acity._PopulationDensity;
-		cin>>acity._Area;*/
-		acity._CityName=cityname; acity._CityHolder=cityholder; acity._ProductType=products;
+		cin>>acity._Area;
+		
+		/*acity._CityName=cityname; acity._CityHolder=cityholder; acity._ProductType=products;
 		acity._Latitude=lat; acity._Longitude=lon; acity._High=high; acity._DenfenceLevel=defencelev;
-		acity._Area=area; acity._PopulationDensity=pop_den;
+		acity._Area=area; acity._PopulationDensity=pop_den;*/
 		
 		cout<<"Continue input (Yes=C/No=Q)..."; 
 		cin>>states;
 		//save the list in file
-		SaveCityListinFile(acity,1);
+		SaveCityListinFile(acity);
 	}
 	return true;
 }
 
-bool SaveCityListinFile(const City &acity,const int num)
+bool SaveCityListinFile(const City &acity)
 {
 	fstream out;
+	//open city source file
 	out.open(CITYLIST,ios::out|ios::app);
-//	if(out.fail())
-//	{
-//		cerr<<"No Save file found!"<<endl;
-//		return false;
-//	}
-		
+	if(out.fail())
+	{
+		cerr<<"No Save file found!"<<endl;
+		return false;
+	}
+	
+	//append city info
 	out<<acity._CityName<<" "<<acity._CityHolder<<" "<<acity._ProductType
 	<<" "<<acity._Latitude<<" "<<acity._Longitude<<" "<<acity._DenfenceLevel<<" "<<acity._PopulationDensity
 	<<" "<<acity._Area<<endl;
