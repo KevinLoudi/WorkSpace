@@ -28,7 +28,7 @@ class Place
 		}
 		
 		//pure virtual function with no implementation and reserved for dynamic binding
-		virtual ostream & GetInfo(ostream & os) const=0;
+		virtual ostream & GetInfo(ostream & os)=0;
 		
 		//destructor
 		virtual ~Place()

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <string>
 #include <cstdlib>
 #include <ctime>
 #include <list>
@@ -36,7 +37,7 @@ class City : public Place
 		 _City_num++;
 		}
 		
-		City(const City &anotherCity);
+		//City(const City &anotherCity);
 
 		//access private data field
 		string GetCityName() const{ return _CityName;}
@@ -44,7 +45,7 @@ class City : public Place
 		int GetDenfenceLevel() const {return _DenfenceLevel;}
 		
 		//redefined virtual operations
-		ostream & GetInfo(ostream & os)const;
+		ostream & GetInfo(ostream & os);
 		
 		//public interface for show population
 		int GetPopulation() const {return CalculatePopulation();}
@@ -102,7 +103,7 @@ inline bool City::ChangeHolder(string newHolder)
 	return true;
 }
 
-inline ostream & City::GetInfo(ostream & os) const
+inline ostream & City::GetInfo(ostream & os)
 {
 	os<<"\nThis is the basic information of the city: "
 	 <<"\nCity Name: "<<this->_CityName<<"\nCity Holder: "<<this->_CityHolder
@@ -170,24 +171,35 @@ bool SaveCityListinFile(const City &acity)
 
 bool ReadListFiletoCity(City cities[],const int num)
 {
-	ifstream infile(CITYLIST);
+	//be care of the default file folder
+	ifstream infile("CityList.txt");
+	if(infile.fail())
+	{
+      cout<<"Invalid input file..."<<endl;
+	  return false;
+	}
 	string cityname="Handan",cityholder="Zhao",products="Steel";
 	int defencelev=8;
 	double lat=112,lon=35,high=16;
 	UINT pop_den=200, area=1900;
 	UINT i=0;
-	while((infile>>cityname>>cityholder>>products>>lat>>lon>>defencelev>>pop_den>>area)||(i<num))
-	{
-//		cout<<cityname<<" "<<cityholder<<" "<<products<<" "
-//		<<lat<<" "<<lon<<" "<<defencelev<<" "<<pop_den<<" "
-//		<<area<<endl;
-		cities[i]._CityName=cityname; cities[i]._CityHolder=cityholder; 
-		cities[i]._ProductType=products; cities[i]._Latitude=lat; 
-		cities[i]._Longitude=lon; cities[i]._High=high; cities[i]._DenfenceLevel=defencelev;
-		cities[i]._Area=area; cities[i]._PopulationDensity=pop_den;
-		//cities[i].GetInfo();
-		i++;
-	}
+	//read file line by line,but further parse is needed
+	// for (std::string line; std::getline(infile, line); ) {
+	//    	cout<<line<<endl;
+    //    }
+
+	 while((infile>>cityname>>cityholder>>products>>lat>>lon>>defencelev>>pop_den>>area)&&(i<num))
+	 {
+	 	cout<<cityname<<" "<<cityholder<<" "<<products<<" "
+	 	<<lat<<" "<<lon<<" "<<defencelev<<" "<<pop_den<<" "
+	 	<<area<<endl;
+	 	cities[i]._CityName=cityname; cities[i]._CityHolder=cityholder; 
+	 	cities[i]._ProductType=products; cities[i]._Latitude=lat; 
+	 	cities[i]._Longitude=lon; cities[i]._High=high; cities[i]._DenfenceLevel=defencelev;
+	 	cities[i]._Area=area; cities[i]._PopulationDensity=pop_den;
+	 	//cities[i].GetInfo();
+	 	i++;
+	 }
 	
 	infile.close();
 	return true;

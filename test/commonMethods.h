@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <map>
 #include <algorithm>
 #include "basicPlaces.h"
 #include <cstdlib>
@@ -29,6 +30,9 @@ class Ranking : public Methods
     	vector<City> _city;
     	vector<string> _cityname;
     	static const UINT _max_elements=100;
+
+    	vector<City>::iterator it_city;
+    	vector<string>::iterator it_name;
 	protected:
 		bool is_rank_empty() const {return _city.size()==0;}
 		bool is_rank_full() const {return _city.size()==_max_elements;}
@@ -37,10 +41,27 @@ class Ranking : public Methods
 		bool push_city(const City &);
 		bool pop_city(string &);
 		bool peek_city(City &);
+
 		ostream & printHelper(ostream &os);
-		ostream & printRankedCity(ostream &os,vector<City>::iterator it);
+		ostream & printRankedCity(ostream &os,vector<City>::iterator it,vector<City>::iterator it_end);
+		ostream & printRankedCity(ostream &os,int & start_ix,int & stop_ix);
+
+		//key: city name value: population
+		void sort_city_by_population(bool ascend_or_descend);
+
 
 };
+
+void Ranking::sort_city_by_population(bool ascend_or_descend)
+{
+	map<string, UINT> population_rank;
+	for (it_city=_city.begin(); it_city!=_city.end(); it_city++)
+	{
+		population_rank.insert(map<string,UINT>::value_type((*it_city).GetCityName(),(*it_city).GetPopulation()));
+	}
+
+	//std::sort(population_rank.begin(),population_rank.end());
+}
 
 bool Ranking::push_city(const City & newcity)
 {
@@ -77,24 +98,47 @@ bool Ranking::is_ranked(const string cityname)
 
 ostream & Ranking::printHelper(ostream &os)
 {
-	vector<City>::iterator it=_city.begin();
-	return printRankedCity(os,it);
+	// vector<City>::iterator it=_city.begin();
+	// vector<City>::iterator it_end=_city.end();
+	// return printRankedCity(os,it,it_end);
 
+	int start_ix=0;
+	int stop_ix=_city.size();
+	return printRankedCity(os,start_ix,stop_ix);
 }
 
-ostream & Ranking::printRankedCity(ostream &os,vector<City>::iterator it)
+ostream & Ranking::printRankedCity(ostream &os,vector<City>::iterator it,vector<City>::iterator it_end)
 {
-	//recursive
+	//recursive, occur runtime error
 	//base problem
-	if (it==_city.end())
+	if (it==it_end)
 	{
-		return it->GetInfo(os);
+		return (*it).GetInfo(os);
 	}
 	//separet into subproblems
 	else
 	{
-		printRankedCity(os,++it);
+		printRankedCity(os,++it,it_end);
 	}
+}
+
+ostream & Ranking::printRankedCity(ostream &os,int & start_ix,int & stop_ix)
+{
+	for(int i=start_ix;i<stop_ix;i++)
+	{
+		_city[i].GetInfo(os);
+	}
+	return os;
+	//search for the possibilities of applying resursive
+	// if (start_ix==stop_ix)
+	// {
+	// 	cout<<(start_ix-1)<<endl;
+	// 	return _city[start_ix-1].GetInfo(os);
+	// }
+	// else
+	// {
+	// 	printRankedCity(os,++start_ix,stop_ix);
+	// }
 }
 
 //class Models
