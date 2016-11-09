@@ -26,7 +26,7 @@ class Place
 		{ cout<<"build a place."<<endl;}
 		
 		//pure virtual function with no implementation and reserved for dynamic binding
-		virtual void GetInfo() const=0;
+		virtual ostream & GetInfo(ostream & os) const=0;
 		
 		//destructor
 		virtual ~Place(){cout<<"remove a place"<<endl;}

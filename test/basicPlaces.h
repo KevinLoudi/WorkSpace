@@ -20,6 +20,9 @@ class City : public Place
 		string _CityHolder; 
 		int _DenfenceLevel;
 		
+		//current actived city objects num,default as 0
+		//static UINT _City_num;
+		
 		//operations
 		UINT CalculatePopulation() const; //return city population
 		void Develop(UINT cash); //develop city with investment and in a random way
@@ -31,23 +34,38 @@ class City : public Place
 		City(double lat=0.0,double lon=0.0,double high=0.0,UINT pd=0,string pr="null products",UINT area=0,
 		string cn="null name",string ch="null holder",int df=0):Place(lat,lon,high,pd,pr,area),
 		_CityName(cn),_CityHolder(ch),_DenfenceLevel(df)
-		{cout<<"Build a city named "<<cn<<endl;}
+		{
+		 cout<<"Build a city named "<<cn<<endl;
+		 //_City_num++;
+		}
+		
+		//access private data field
+		string GetCityName() const{ return _CityName;}
+		string GetCityHolder() const {return _CityHolder;}
+		int GetDenfenceLevel() const {return _DenfenceLevel;}
 		
 		//redefined virtual operations
-		void GetInfo() const;
+		ostream & GetInfo(ostream & os)const;
 		
 		//public interface for show population
 		int GetPopulation() const {return CalculatePopulation();}
 		
-		//initalize a set of cities via setting files
-		friend bool InitCityList(City &acity);
-		
 		//initalize a city via cin
+		friend bool InitCityList(City &acity);
 		friend bool SaveCityListinFile(const City &acity);
+		
+		//initalize a set of cities via setting files
 		friend bool ReadListFiletoCity(City cities[],const int num);
 		
+		//get current actived city object num
+		//UINT GetCityNum(){ return _City_num;}
+		
 		//destruct with info
-		virtual ~City(){cout<<"remove a city."<<endl;}
+		virtual ~City()
+		{
+			//_City_num--;
+			cout<<"remove a city."<<endl;	
+		}
 };
 
 inline UINT City::CalculatePopulation() const
@@ -71,12 +89,12 @@ inline bool City::ChangeHolder(string newHolder)
 	return true;
 }
 
-inline void City::GetInfo() const
+inline ostream & City::GetInfo(ostream & os) const
 {
-	cout<<"\nThis is the basic information of the city: "<<endl;
-	cout<<"City Name: "<<_CityName<<"\nCity Holder: "<<_CityHolder<<endl
-	    <<"Populations: "<<CalculatePopulation()<<" Major Products: "<<_ProductType<<endl;
-	return;
+	os<<"\nThis is the basic information of the city: \n"
+	 <<"City Name: "<<this->_CityName<<"\nCity Holder: "<<this->_CityHolder<<endl
+     <<"Populations: "<<this->CalculatePopulation()<<" Major Products: "<<this->_ProductType<<endl;
+	return os;
 }
 
 bool InitCityList(City &acity)
@@ -154,7 +172,7 @@ bool ReadListFiletoCity(City cities[],const int num)
 		cities[i]._ProductType=products; cities[i]._Latitude=lat; 
 		cities[i]._Longitude=lon; cities[i]._High=high; cities[i]._DenfenceLevel=defencelev;
 		cities[i]._Area=area; cities[i]._PopulationDensity=pop_den;
-		cities[i].GetInfo();
+		//cities[i].GetInfo();
 		i++;
 	}
 	
