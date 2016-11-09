@@ -1,8 +1,10 @@
 #ifndef COMMONMETHODS_H
 #define COMMONMETHODS_H
 
+#include <iostream>
 #include <vector>
-#include"basicPlaces.h"
+#include <algorithm>
+#include "basicPlaces.h"
 #include <cstdlib>
 #include <ctime>
 using namespace std;
@@ -26,7 +28,6 @@ class Ranking : public Methods
     private:
     	vector<City> _city;
     	vector<string> _cityname;
-    	//map<string,int> _population_rank;
     	static const UINT _max_elements=100;
 	protected:
 		bool is_rank_empty() const {return _city.size()==0;}
@@ -36,7 +37,8 @@ class Ranking : public Methods
 		bool push_city(const City &);
 		bool pop_city(string &);
 		bool peek_city(City &);
-		ostream & printRankedCity(ostream &os);
+		ostream & printHelper(ostream &os);
+		ostream & printRankedCity(ostream &os,vector<City>::iterator it);
 
 };
 
@@ -45,37 +47,54 @@ bool Ranking::push_city(const City & newcity)
 	if(is_rank_full()) return false;
 
 	_city.push_back(newcity);
+	_cityname.push_back(newcity.GetCityName());
 	return true;
 }
 
-//bool Ranking::pop_city(string & deletedcity)
-//{
-//	if(is_rank_empty()) return false;
-//	City tmp(_city.pop_back());
-//	deletedcity=tmp.GetCityName();
-//	return true;
-//}
-
-//bool Ranking::peek_city(City & outcity)
-//{
-//	if(is_rank_empty()) return false;
-//
-//	outcity=_city.back();
-//	return true;
-//}
-
-//bool Ranking::is_ranked(const string cityname)
-//{
-//	vector<string>::iterator found_it;
-//	vector<string>::iterator end_it=_cityname.end();
-//
-//	found_it=find(_cityname.begin(),end_it,cityname);
-//	return found_it != end_it;
-//}
-
-ostream & Ranking::printRankedCity(ostream &os)
+bool Ranking::pop_city(string & deletedcity)
 {
-	return _city[0].GetInfo(os);
+	if(is_rank_empty()) return false;
+	_city.pop_back();
+	return true;
+}
+
+bool Ranking::peek_city(City & outcity)
+{
+	if(is_rank_empty()) return false;
+
+	outcity=_city.back();
+	return true;
+}
+
+bool Ranking::is_ranked(const string cityname)
+{
+	vector<string>::iterator found_it;
+	vector<string>::iterator end_it=_cityname.end();
+
+	found_it=find(_cityname.begin(),end_it,cityname);
+	return found_it != end_it;
+}
+
+ostream & Ranking::printHelper(ostream &os)
+{
+	vector<City>::iterator it=_city.begin();
+	return printRankedCity(os,it);
+
+}
+
+ostream & Ranking::printRankedCity(ostream &os,vector<City>::iterator it)
+{
+	//recursive
+	//base problem
+	if (it==_city.end())
+	{
+		return it->GetInfo(os);
+	}
+	//separet into subproblems
+	else
+	{
+		printRankedCity(os,++it);
+	}
 }
 
 //class Models

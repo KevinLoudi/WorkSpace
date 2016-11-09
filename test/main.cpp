@@ -4,6 +4,7 @@
 #include "commonMethods.h"
 using namespace std;
 
+UINT City::_City_num=1;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 void printInfo(const Place &site);//dynamic binding
 bool InitCityList(City &acity);
@@ -19,9 +20,14 @@ int main(int argc, char** argv)
 		ReadListFiletoCity(pcities,citynum);
 		
 		Ranking cityrank;
-		cityrank.push_city(pcities[0]);
+		for(int i=0;i<citynum;++i)
+		{
+			cityrank.push_city(pcities[0]);
+		}
+		//cout<<cityrank.printHelper(cout);
 		
 		delete[] pcities;
+		system("pause");
 		return 0;
 }
 

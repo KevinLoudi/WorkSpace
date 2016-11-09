@@ -19,10 +19,7 @@ class City : public Place
 		string _CityName;
 		string _CityHolder; 
 		int _DenfenceLevel;
-		
-		//current actived city objects num,default as 0
-		//static UINT _City_num;
-		
+				
 		//operations
 		UINT CalculatePopulation() const; //return city population
 		void Develop(UINT cash); //develop city with investment and in a random way
@@ -35,10 +32,12 @@ class City : public Place
 		string cn="null name",string ch="null holder",int df=0):Place(lat,lon,high,pd,pr,area),
 		_CityName(cn),_CityHolder(ch),_DenfenceLevel(df)
 		{
-		 cout<<"Build a city named "<<cn<<endl;
-		 //_City_num++;
+		 //cout<<"Build a city named "<<cn<<endl;
+		 _City_num++;
 		}
 		
+		City(const City &anotherCity);
+
 		//access private data field
 		string GetCityName() const{ return _CityName;}
 		string GetCityHolder() const {return _CityHolder;}
@@ -57,16 +56,30 @@ class City : public Place
 		//initalize a set of cities via setting files
 		friend bool ReadListFiletoCity(City cities[],const int num);
 		
-		//get current actived city object num
-		//UINT GetCityNum(){ return _City_num;}
+		//current actived city objects num,default as 0
+		static UINT _City_num;
 		
 		//destruct with info
 		virtual ~City()
 		{
-			//_City_num--;
-			cout<<"remove a city."<<endl;	
+			_City_num--;
+			//cout<<"remove a city."<<endl;	
 		}
 };
+
+// City::City(const City &anotherCity)
+// {
+// 	// this->_CityName=anotherCity._CityName;
+// 	// this->_CityHolder=anotherCity._CityHolder;
+// 	// this->_DenfenceLevel=anotherCity._DenfenceLevel;
+// 	// this->_Latitude=anotherCity._Latitude;
+// 	// this->_Longitude=anotherCity._Longitude;
+// 	// this->_High=anotherCity._High;
+// 	// this->_PopulationDensity=anotherCity._PopulationDensity;
+// 	// this->_ProductType=anotherCity._ProductType;
+// 	// this->_Area=anotherCity._Area;
+
+// }
 
 inline UINT City::CalculatePopulation() const
 {
@@ -76,7 +89,7 @@ inline UINT City::CalculatePopulation() const
 void City::Develop(UINT cash)
 {
 	//mimic the random of development when put into money
-	srand(time(0));
+	srand((UINT)time(0));
 	int random=(rand()+cash)%10;
 	_PopulationDensity+=random;
 	return;
@@ -91,9 +104,9 @@ inline bool City::ChangeHolder(string newHolder)
 
 inline ostream & City::GetInfo(ostream & os) const
 {
-	os<<"\nThis is the basic information of the city: \n"
-	 <<"City Name: "<<this->_CityName<<"\nCity Holder: "<<this->_CityHolder<<endl
-     <<"Populations: "<<this->CalculatePopulation()<<" Major Products: "<<this->_ProductType<<endl;
+	os<<"\nThis is the basic information of the city: "
+	 <<"\nCity Name: "<<this->_CityName<<"\nCity Holder: "<<this->_CityHolder
+     <<"\nPopulations: "<<this->CalculatePopulation()<<"\nMajor Products: "<<this->_ProductType<<endl;
 	return os;
 }
 
@@ -163,7 +176,7 @@ bool ReadListFiletoCity(City cities[],const int num)
 	double lat=112,lon=35,high=16;
 	UINT pop_den=200, area=1900;
 	UINT i=0;
-	while((infile>>cityname>>cityholder>>products>>lat>>lon>>defencelev>>pop_den>>area)and(i<num))
+	while((infile>>cityname>>cityholder>>products>>lat>>lon>>defencelev>>pop_den>>area)||(i<num))
 	{
 //		cout<<cityname<<" "<<cityholder<<" "<<products<<" "
 //		<<lat<<" "<<lon<<" "<<defencelev<<" "<<pop_den<<" "

@@ -14,3 +14,9 @@
 #Problem 3: 'friend' used outside of class
 Remove the friend in the .cpp file. It is only required (and allowed) within the class definition
  in the header file.
+ 
+#Problem 4: invoke function with ostream &
+ use cout as input para
+ 
+#Problem 5: cannot modify static variables in construct and de.
+ initialize it explictly

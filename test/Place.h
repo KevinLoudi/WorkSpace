@@ -23,13 +23,18 @@ class Place
 		//customized construct with parmeters-list and default value
 		Place(double lat=0.0,double lon=0.0,double high=0.0,UINT pd=0,string pr="null products",UINT area=0):_Latitude(lat),
 		_Longitude(lon),_High(high),_PopulationDensity(pd),_ProductType(pr),_Area(area)
-		{ cout<<"build a place."<<endl;}
+		{ 
+		 //cout<<"build a place."<<endl;
+		}
 		
 		//pure virtual function with no implementation and reserved for dynamic binding
 		virtual ostream & GetInfo(ostream & os) const=0;
 		
 		//destructor
-		virtual ~Place(){cout<<"remove a place"<<endl;}
+		virtual ~Place()
+		{
+			//cout<<"remove a place"<<endl;
+		}
 };
 
 
