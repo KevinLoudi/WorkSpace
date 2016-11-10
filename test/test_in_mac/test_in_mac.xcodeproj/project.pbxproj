@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BE8D19BD1DD4349500089929 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE8D19BC1DD4349500089929 /* main.cpp */; };
+		BE8D19DB1DD43BD200089929 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE8D19DA1DD43BD200089929 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		BE8D19B71DD4349500089929 /* CopyFiles */ = {
+		BE8D19D51DD43BD200089929 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,18 +23,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BE8D19B91DD4349500089929 /* test_in_xcode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test_in_xcode; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE8D19BC1DD4349500089929 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		BE8D19C41DD434D400089929 /* basicPlaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = basicPlaces.h; path = ../../../test/basicPlaces.h; sourceTree = "<group>"; };
-		BE8D19C51DD434E800089929 /* commonMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = commonMethods.h; path = ../../../test/commonMethods.h; sourceTree = "<group>"; };
-		BE8D19C61DD434F900089929 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Place.h; path = ../../../test/Place.h; sourceTree = "<group>"; };
-		BE8D19CB1DD4357F00089929 /* Event.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		BE8D19CC1DD435A100089929 /* People.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = People.h; path = ../../../test/People.h; sourceTree = "<group>"; };
-		BE8D19CD1DD435BE00089929 /* Community.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Community.h; path = ../../../test/Community.h; sourceTree = "<group>"; };
+		BE8D19D71DD43BD200089929 /* test_in_mac */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test_in_mac; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE8D19DA1DD43BD200089929 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		BE8D19E11DD43C0100089929 /* commonMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = commonMethods.h; path = ../../commonMethods.h; sourceTree = "<group>"; };
+		BE8D19E21DD43C0100089929 /* Community.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Community.h; path = ../../Community.h; sourceTree = "<group>"; };
+		BE8D19E31DD43C0E00089929 /* basicPlaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = basicPlaces.h; path = ../../basicPlaces.h; sourceTree = "<group>"; };
+		BE8D19E41DD43C1C00089929 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Place.h; path = ../../Place.h; sourceTree = "<group>"; };
+		BE8D19E51DD4432200089929 /* CityList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CityList.txt; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BE8D19B61DD4349500089929 /* Frameworks */ = {
+		BE8D19D41DD43BD200089929 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -44,101 +43,100 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BE8D19B01DD4349500089929 = {
+		BE8D19CE1DD43BD200089929 = {
 			isa = PBXGroup;
 			children = (
-				BE8D19BB1DD4349500089929 /* test_in_xcode */,
-				BE8D19BA1DD4349500089929 /* Products */,
+				BE8D19D91DD43BD200089929 /* test_in_mac */,
+				BE8D19D81DD43BD200089929 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		BE8D19BA1DD4349500089929 /* Products */ = {
+		BE8D19D81DD43BD200089929 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BE8D19B91DD4349500089929 /* test_in_xcode */,
+				BE8D19D71DD43BD200089929 /* test_in_mac */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BE8D19BB1DD4349500089929 /* test_in_xcode */ = {
+		BE8D19D91DD43BD200089929 /* test_in_mac */ = {
 			isa = PBXGroup;
 			children = (
-				BE8D19C61DD434F900089929 /* Place.h */,
-				BE8D19BC1DD4349500089929 /* main.cpp */,
-				BE8D19C51DD434E800089929 /* commonMethods.h */,
-				BE8D19C41DD434D400089929 /* basicPlaces.h */,
-				BE8D19CB1DD4357F00089929 /* Event.h */,
-				BE8D19CC1DD435A100089929 /* People.h */,
-				BE8D19CD1DD435BE00089929 /* Community.h */,
+				BE8D19E51DD4432200089929 /* CityList.txt */,
+				BE8D19E41DD43C1C00089929 /* Place.h */,
+				BE8D19E31DD43C0E00089929 /* basicPlaces.h */,
+				BE8D19E11DD43C0100089929 /* commonMethods.h */,
+				BE8D19E21DD43C0100089929 /* Community.h */,
+				BE8D19DA1DD43BD200089929 /* main.cpp */,
 			);
-			path = test_in_xcode;
+			path = test_in_mac;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BE8D19B81DD4349500089929 /* test_in_xcode */ = {
+		BE8D19D61DD43BD200089929 /* test_in_mac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BE8D19C01DD4349500089929 /* Build configuration list for PBXNativeTarget "test_in_xcode" */;
+			buildConfigurationList = BE8D19DE1DD43BD200089929 /* Build configuration list for PBXNativeTarget "test_in_mac" */;
 			buildPhases = (
-				BE8D19B51DD4349500089929 /* Sources */,
-				BE8D19B61DD4349500089929 /* Frameworks */,
-				BE8D19B71DD4349500089929 /* CopyFiles */,
+				BE8D19D31DD43BD200089929 /* Sources */,
+				BE8D19D41DD43BD200089929 /* Frameworks */,
+				BE8D19D51DD43BD200089929 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = test_in_xcode;
-			productName = test_in_xcode;
-			productReference = BE8D19B91DD4349500089929 /* test_in_xcode */;
+			name = test_in_mac;
+			productName = test_in_mac;
+			productReference = BE8D19D71DD43BD200089929 /* test_in_mac */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		BE8D19B11DD4349500089929 /* Project object */ = {
+		BE8D19CF1DD43BD200089929 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = KevinLiu;
 				TargetAttributes = {
-					BE8D19B81DD4349500089929 = {
+					BE8D19D61DD43BD200089929 = {
 						CreatedOnToolsVersion = 8.0;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = BE8D19B41DD4349500089929 /* Build configuration list for PBXProject "test_in_xcode" */;
+			buildConfigurationList = BE8D19D21DD43BD200089929 /* Build configuration list for PBXProject "test_in_mac" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = BE8D19B01DD4349500089929;
-			productRefGroup = BE8D19BA1DD4349500089929 /* Products */;
+			mainGroup = BE8D19CE1DD43BD200089929;
+			productRefGroup = BE8D19D81DD43BD200089929 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BE8D19B81DD4349500089929 /* test_in_xcode */,
+				BE8D19D61DD43BD200089929 /* test_in_mac */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BE8D19B51DD4349500089929 /* Sources */ = {
+		BE8D19D31DD43BD200089929 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE8D19BD1DD4349500089929 /* main.cpp in Sources */,
+				BE8D19DB1DD43BD200089929 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		BE8D19BE1DD4349500089929 /* Debug */ = {
+		BE8D19DC1DD43BD200089929 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -185,7 +183,7 @@
 			};
 			name = Debug;
 		};
-		BE8D19BF1DD4349500089929 /* Release */ = {
+		BE8D19DD1DD43BD200089929 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -225,14 +223,14 @@
 			};
 			name = Release;
 		};
-		BE8D19C11DD4349500089929 /* Debug */ = {
+		BE8D19DF1DD43BD200089929 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		BE8D19C21DD4349500089929 /* Release */ = {
+		BE8D19E01DD43BD200089929 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -242,24 +240,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BE8D19B41DD4349500089929 /* Build configuration list for PBXProject "test_in_xcode" */ = {
+		BE8D19D21DD43BD200089929 /* Build configuration list for PBXProject "test_in_mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BE8D19BE1DD4349500089929 /* Debug */,
-				BE8D19BF1DD4349500089929 /* Release */,
+				BE8D19DC1DD43BD200089929 /* Debug */,
+				BE8D19DD1DD43BD200089929 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BE8D19C01DD4349500089929 /* Build configuration list for PBXNativeTarget "test_in_xcode" */ = {
+		BE8D19DE1DD43BD200089929 /* Build configuration list for PBXNativeTarget "test_in_mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BE8D19C11DD4349500089929 /* Debug */,
-				BE8D19C21DD4349500089929 /* Release */,
+				BE8D19DF1DD43BD200089929 /* Debug */,
+				BE8D19E01DD43BD200089929 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = BE8D19B11DD4349500089929 /* Project object */;
+	rootObject = BE8D19CF1DD43BD200089929 /* Project object */;
 }

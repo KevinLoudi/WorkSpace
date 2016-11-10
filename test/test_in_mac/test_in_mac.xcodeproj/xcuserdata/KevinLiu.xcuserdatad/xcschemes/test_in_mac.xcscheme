@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BE8D19B81DD4349500089929"
-               BuildableName = "test_in_xcode"
-               BlueprintName = "test_in_xcode"
-               ReferencedContainer = "container:test_in_xcode.xcodeproj">
+               BlueprintIdentifier = "BE8D19D61DD43BD200089929"
+               BuildableName = "test_in_mac"
+               BlueprintName = "test_in_mac"
+               ReferencedContainer = "container:test_in_mac.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BE8D19B81DD4349500089929"
-            BuildableName = "test_in_xcode"
-            BlueprintName = "test_in_xcode"
-            ReferencedContainer = "container:test_in_xcode.xcodeproj">
+            BlueprintIdentifier = "BE8D19D61DD43BD200089929"
+            BuildableName = "test_in_mac"
+            BlueprintName = "test_in_mac"
+            ReferencedContainer = "container:test_in_mac.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BE8D19B81DD4349500089929"
-            BuildableName = "test_in_xcode"
-            BlueprintName = "test_in_xcode"
-            ReferencedContainer = "container:test_in_xcode.xcodeproj">
+            BlueprintIdentifier = "BE8D19D61DD43BD200089929"
+            BuildableName = "test_in_mac"
+            BlueprintName = "test_in_mac"
+            ReferencedContainer = "container:test_in_mac.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BE8D19B81DD4349500089929"
-            BuildableName = "test_in_xcode"
-            BlueprintName = "test_in_xcode"
-            ReferencedContainer = "container:test_in_xcode.xcodeproj">
+            BlueprintIdentifier = "BE8D19D61DD43BD200089929"
+            BuildableName = "test_in_mac"
+            BlueprintName = "test_in_mac"
+            ReferencedContainer = "container:test_in_mac.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

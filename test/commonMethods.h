@@ -10,6 +10,8 @@
 #include <ctime>
 using namespace std;
 typedef unsigned long UINT;
+typedef pair<string, UINT> Pair;
+typedef multimap<string,UINT> Map;
 
 class Methods
 {
@@ -33,6 +35,8 @@ class Ranking : public Methods
 
     	vector<City>::iterator it_city;
     	vector<string>::iterator it_name;
+    	Map _city_popluation_rank;
+
 	protected:
 		bool is_rank_empty() const {return _city.size()==0;}
 		bool is_rank_full() const {return _city.size()==_max_elements;}
@@ -44,23 +48,76 @@ class Ranking : public Methods
 
 		ostream & printHelper(ostream &os);
 		ostream & printRankedCity(ostream &os,vector<City>::iterator it,vector<City>::iterator it_end);
-		ostream & printRankedCity(ostream &os,int & start_ix,int & stop_ix);
+		ostream & printRankedCity(ostream &os,UINT & start_ix,UINT & stop_ix);
+		//print method for xcode
+		void printRankedCity_x(UINT & start_ix,UINT & stop_ix);
 
 		//key: city name value: population
 		void sort_city_by_population(bool ascend_or_descend);
 
+		//construct a describe for the rank
+		void print_a_cityinfo(const string &cityname);
+
 
 };
 
+//we can implement SQL-like enquiry through map container
+void Ranking::print_a_cityinfo(const string &cityname="Xianyang")
+{
+    //the rank map has not yet been built
+	if (_city_popluation_rank.empty()&&_city.empty())
+	{
+        exit(EXIT_FAILURE);
+	}
+	Map::iterator it;
+    pair<Map::iterator, Map::iterator> range = _city_popluation_rank.equal_range(cityname);
+    //cout<<"Population of "<<cityname<<" is ";
+    for(it=range.first;it!=range.second;++it)
+    {
+        cout<<(*it).second<<endl;
+    }
+
+    string output(cityname);
+    
+    //find the city's object in vector _city
+    //we can replace it with find
+    UINT total_city_num=0;
+    UINT total_population=0;
+    UINT this_population=0;
+    string holder="";
+    int defence=0;
+    
+    //range-base for loop
+    for(auto i: _city)
+    {
+        total_population+=i.GetPopulation();
+    	if (i.GetCityName()==cityname)
+    	{
+    		holder=i.GetCityHolder();
+            defence=i.GetDenfenceLevel();
+            this_population=i.GetPopulation();
+    		break;
+    	}
+    }
+    
+    //get city num from the public static member
+    total_city_num=City::_City_num;
+
+    output = output + " is holded by " + holder ;
+    output += ", and this city have a denfence level of "+ to_string((int)total_city_num)+"\n";
+    output += "now, " + to_string((int)this_population)+" of inhabitants live here when the whole map have a population of " + to_string((int)total_population)+" in "+ to_string((int)total_city_num)+" cities.\n";
+
+    
+    cout<<output<<endl;
+}
+
 void Ranking::sort_city_by_population(bool ascend_or_descend)
 {
-	map<string, UINT> population_rank;
-	for (it_city=_city.begin(); it_city!=_city.end(); it_city++)
+	it_city=_city.begin();
+	for (; it_city!=_city.end(); it_city++)
 	{
-		population_rank.insert(map<string,UINT>::value_type((*it_city).GetCityName(),(*it_city).GetPopulation()));
-	}
-
-	//std::sort(population_rank.begin(),population_rank.end());
+		_city_popluation_rank.insert(Pair(it_city->GetCityName(),it_city->GetPopulation()));
+	} 
 }
 
 bool Ranking::push_city(const City & newcity)
@@ -102,8 +159,8 @@ ostream & Ranking::printHelper(ostream &os)
 	// vector<City>::iterator it_end=_city.end();
 	// return printRankedCity(os,it,it_end);
 
-	int start_ix=0;
-	int stop_ix=_city.size();
+	UINT start_ix=0;
+	UINT stop_ix=_city.size();
 	return printRankedCity(os,start_ix,stop_ix);
 }
 
@@ -120,25 +177,24 @@ ostream & Ranking::printRankedCity(ostream &os,vector<City>::iterator it,vector<
 	{
 		printRankedCity(os,++it,it_end);
 	}
+	return os;
 }
 
-ostream & Ranking::printRankedCity(ostream &os,int & start_ix,int & stop_ix)
+ostream & Ranking::printRankedCity(ostream &os,UINT & start_ix,UINT & stop_ix)
 {
-	for(int i=start_ix;i<stop_ix;i++)
+	for(UINT i=start_ix;i<stop_ix;i++)
 	{
 		_city[i].GetInfo(os);
 	}
 	return os;
-	//search for the possibilities of applying resursive
-	// if (start_ix==stop_ix)
-	// {
-	// 	cout<<(start_ix-1)<<endl;
-	// 	return _city[start_ix-1].GetInfo(os);
-	// }
-	// else
-	// {
-	// 	printRankedCity(os,++start_ix,stop_ix);
-	// }
+}
+
+void Ranking::printRankedCity_x(UINT & start_ix,UINT & stop_ix)
+{
+	for(UINT i=start_ix;i<stop_ix;i++)
+	{
+        cout<<_city[i].GetCityName()<<" "<<_city[i].GetPopulation()<<endl;
+	}
 }
 
 //class Models

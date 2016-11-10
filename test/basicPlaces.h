@@ -9,7 +9,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <list>
-#define CITYLIST "CityList.txt"
+#define CITYLIST "/Users/kevinliu/Documents/Code/War_on_Map/test/test_in_mac/CityList.txt"
 using namespace std;
 typedef unsigned long UINT;
 
@@ -46,9 +46,16 @@ class City : public Place
 		
 		//redefined virtual operations
 		ostream & GetInfo(ostream & os);
+
+		//override "==" operations to make object with the same name
+		//equal
+		bool operator==(const City &anotherCity)
+		{
+			return this->GetCityName()==anotherCity.GetCityName();
+		}
 		
 		//public interface for show population
-		int GetPopulation() const {return CalculatePopulation();}
+		UINT GetPopulation() const {return CalculatePopulation();}
 		
 		//initalize a city via cin
 		friend bool InitCityList(City &acity);
@@ -68,19 +75,6 @@ class City : public Place
 		}
 };
 
-// City::City(const City &anotherCity)
-// {
-// 	// this->_CityName=anotherCity._CityName;
-// 	// this->_CityHolder=anotherCity._CityHolder;
-// 	// this->_DenfenceLevel=anotherCity._DenfenceLevel;
-// 	// this->_Latitude=anotherCity._Latitude;
-// 	// this->_Longitude=anotherCity._Longitude;
-// 	// this->_High=anotherCity._High;
-// 	// this->_PopulationDensity=anotherCity._PopulationDensity;
-// 	// this->_ProductType=anotherCity._ProductType;
-// 	// this->_Area=anotherCity._Area;
-
-// }
 
 inline UINT City::CalculatePopulation() const
 {
@@ -116,10 +110,10 @@ bool InitCityList(City &acity)
 	//City *incity = new City(num);
 	cout<<"Please input city information.\n";
 	list<City> cities;
-	string cityname="Handan",cityholder="Zhao",products="Steel";
+	/*string cityname="Handan",cityholder="Zhao",products="Steel";
 	int defencelev=8;
 	double lat=112,lon=35,high=16;
-	UINT pop_den=200, area=1900;
+	UINT pop_den=200, area=1900;*/
 	string states="C";
 	while(states!="Q")
 	{
@@ -172,7 +166,7 @@ bool SaveCityListinFile(const City &acity)
 bool ReadListFiletoCity(City cities[],const int num)
 {
 	//be care of the default file folder
-	ifstream infile("CityList.txt");
+	ifstream infile(CITYLIST);
 	if(infile.fail())
 	{
       cout<<"Invalid input file..."<<endl;
