@@ -41,6 +41,8 @@ class Place
 		virtual bool updateInfo(PlaceInfo &  P);
 		//access number of actived place
 		virtual UINT getObjectNum() const {return _itemNum;}
+		
+		
 		//deconstructor
 		virtual ~Place()
 		{
@@ -100,7 +102,7 @@ class City : public Place
 		UINT getPopulation() const;
 		bool alterHolder(const string &);
 		void investMoney(const UINT cash);
-
+		friend class FileIO;
 		~City()
 		{
 			delete _cityInfo;
