@@ -1,6 +1,6 @@
 [Project]
-FileName=test.dev
-Name=test
+FileName=test_in_dev_v2.0.dev
+Name=test_in_dev_v2.0
 Type=1
 Ver=2
 ObjFiles=
@@ -27,9 +27,9 @@ CommandLine=
 Folders=
 IncludeVersionInfo=0
 SupportXPThemes=0
-CompilerSet=1
-CompilerSettings=1000000000000000001000000
-UnitCount=4
+CompilerSet=0
+CompilerSettings=0000000000000000000000000
+UnitCount=3
 
 [VersionInfo]
 Major=1
@@ -50,18 +50,8 @@ ProductVersion=
 AutoIncBuildNr=0
 SyncProduct=1
 
-[Unit3]
-FileName=Place.h
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit1]
-FileName=commonMethods.h
+FileName=main.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -71,7 +61,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
-FileName=basicPlaces.h
+FileName=basicPlace.h
 CompileCpp=1
 Folder=
 Compile=1
@@ -80,8 +70,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit4]
-FileName=main.cpp
+[Unit3]
+FileName=basicModel.h
 CompileCpp=1
 Folder=
 Compile=1
