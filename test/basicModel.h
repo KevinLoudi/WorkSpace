@@ -11,9 +11,11 @@
 
 #include <algorithm>
 #include <iostream>
+#define CITYLIST "CityList.txt"
 using namespace std;
 
 typedef unsigned long UINT;
+
 
 
 //reserve is-a relationship for potential usage
@@ -45,10 +47,45 @@ class FileIO: public Method
   	//I/O operations for an array of city objects
   	bool readBinaryFile(string* filename,City* c, UINT len);
   	bool saveBinaryFile(City* c,UINT len) const;
+    bool readTextFile(City* c,UINT);
   	//bool saveBinaryFile(City* c,UINT len) const;
 
   	~FileIO(){_IO_Num--;}
 };
+
+bool FileIO::readTextFile(City* cities,UINT len)
+{
+  //be care of the default file folder
+  ifstream infile(CITYLIST);
+  if(infile.fail())
+  {
+      cout<<"Invalid input file..."<<endl;
+    return false;
+  }
+
+  string cityname="Handan",cityholder="Zhao",products="Steel";
+  int defencelev=8;
+  double lat=112,lon=35,high=16;
+  UINT pop_den=200, area=1900;
+  UINT i=0;
+
+  while((infile>>cityname>>cityholder>>products>>lat>>lon>>defencelev>>pop_den>>area)&&(i<len))
+   {
+    cout<<cityname<<" "<<cityholder<<" "<<products<<" "
+    <<lat<<" "<<lon<<" "<<defencelev<<" "<<pop_den<<" "
+    <<area<<endl;
+    cities[i]._cityInfo->_CityName=cityname; cities[i]._cityInfo->_CityHolder=cityholder; 
+    cities[i]._cityInfo->_ProductType=products; cities[i]._cityInfo->_Latitude=lat; 
+    cities[i]._cityInfo->_Longitude=lon; cities[i]._cityInfo->_High=high; 
+    cities[i]._cityInfo->_DenfenceLevel=defencelev;
+    cities[i]._cityInfo->_Area=area; cities[i]._cityInfo->_PopulationDensity=pop_den;
+    //cities[i].GetInfo();
+    i++;
+   }
+  
+  infile.close();
+  return true;
+}
 
 inline void FileIO::resetFilename(const string & newname)
 {
@@ -115,18 +152,18 @@ bool FileIO::readBinaryFile(string* filename,City* c,UINT len)
 }
 
 
-////rank cities by different keys (population, denfence level)
-//template<typename C,typename P>
-//class Rank: public Method
-//{
-//	private:
-//		vector<C> _city;
-//
-//
-//	protected:
-//		
-//	public:
-//};
+//rank cities by different keys (population, denfence level)
+template<typename C,typename P>
+class Rank: public Method
+{
+	private:
+		vector<C> _city;
+
+
+	protected:
+		
+	public:
+};
 
 
 #endif

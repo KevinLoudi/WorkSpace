@@ -5,5 +5,9 @@ ZiChen Qi Salt 118 31 12 1000 3500
 Yi Chu Wine 116 29 4 1500 2500
 Xinzhen Han Gold 114 31 14 1200 6500
 Suiyang Song Fish 115 30 12 1600 8900
-Handan Zhao Steel 112 35 8 200 1900
+Wuan Zhao Steel 112 35 8 400 1800
+Juchen Qi Salt 118 31 12 1200 3300
+Yangzhong Han Gold 114 31 14 1200 3200
+Anyi Wei Silk 114 33 18 1300 3900
+Dingtao Qi Salt 118 31 12 3000 3500
 City Holder Products Lat Lon DefenceLevel Area Population_Density

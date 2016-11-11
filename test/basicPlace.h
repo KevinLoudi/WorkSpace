@@ -105,8 +105,8 @@ class City : public Place
 		friend class FileIO;
 		~City()
 		{
-			delete _cityInfo;
 			_cityNum--;
+			delete _cityInfo;
 		}
 };
 

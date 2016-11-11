@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "basicPlace.h"
 #include "basicModel.h"
 using namespace std;
@@ -23,11 +24,21 @@ int main(int argc, char** argv) {
 //	fio.saveBinaryFile(cs,1);
 //	cout<<cs->getInfo(cout)<<endl;
 	
-	City* cs2=new City();
+//	City* cs2=new City();
+//	FileIO fio("text.txt");
+//	fio.readTextFile(cs2,1);
+//	cout<<cs2->getInfo(cout)<<endl;
+	
+	const UINT citynum=10;
+	City* cities = new City[citynum];
 	FileIO fio("text.txt");
-	string* fn=new string{"handan"};
-	fio.readBinaryFile(fn,cs2,1);
+	fio.readTextFile(cities,citynum);
+	
+	vector<City> cities_v;
+	cities_v.assign(&cities[0],&cities[citynum-1]);
+	
+	for(auto &x:cities_v)
+	  cout<<x.getInfo(cout)<<endl;
 
-	system("pause");
 	return 0;
 }
