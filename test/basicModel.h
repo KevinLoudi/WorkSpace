@@ -3,6 +3,7 @@
 
 #include <list>
 #include <vector>
+#include <set>
 #include <map>
 
 #include <fstream>
@@ -16,9 +17,7 @@ using namespace std;
 
 typedef unsigned long UINT;
 
-
-
-//reserve is-a relationship for potential usage
+//reserved is-a relationship for potential usage
 class Method
 {
   private:
@@ -46,7 +45,9 @@ class FileIO: public Method
 
   	//I/O operations for an array of city objects
   	bool readBinaryFile(string* filename,City* c, UINT len);
+  	//save city object in binary file
   	bool saveBinaryFile(City* c,UINT len) const;
+  	//read text file
     bool readTextFile(City* c,UINT);
   	//bool saveBinaryFile(City* c,UINT len) const;
 
@@ -158,51 +159,79 @@ class Rank: public Method
 	private:
     map<string,UINT> _rank;
     vector<City> _cities;
-    vector<string> _citynames;
-    vector<vector<double>> _locations;
+    set<string> _citynames;
+    
+    template<typename Container>
+    void printContents(const Container & stlcontainer);
 	protected:
 		
 	public:
     Rank(vector<City> & incity):_cities(incity)
     {
-      vector<City>::iterator it = incity.begin();
-      vector<City>::iterator it_end = incity.end();
-
-      for (;it != it_end;it++)
-      {
-         _citynames.push_back((*it)._cityInfo->_CityName);
-         _rank.insert(make_pair((*it)._cityInfo->_CityName,(*it)._cityInfo->_PopulationDensity)); 
-      } 
+     //initialize city rank and name dir
+     vector<City>::iterator it = incity.begin();
+     vector<City>::iterator it_end = incity.end();
+	
+     for (;it != it_end;it++)
+     {
+        _citynames.insert((*it)._cityInfo->_CityName);
+        _rank.insert(make_pair((*it)._cityInfo->_CityName,(*it)._cityInfo->_PopulationDensity)); 
+     } 
     }
 
-    bool cmp = [](pair<string,UINT> const & a, pair<string,UINT> const & b);
-    ofstream & outputRank(ofstream & os) const;
-
+    //bool cmp = [](pair<string,UINT> const & a, pair<string,UINT> const & b);
+    bool addCityname(const string & cityname);
+	void printCityname();
+	//look up a city with name
+	bool isexist(const string & cityname) const;
     ~Rank(){}
 };
 
-ofstream & Rank::outputRank(ofstream & os) const
+bool Rank::addCityname(const string & cityname)
 {
-    //check if iterate through all elements are successful
-    map<string,UINT>::iterator it=_rank.begin();
-
-    //sort by value
-    sort(_rank.begin(),_rank.end(),cmp);
-
-    //sort by key
-
-    //print out
-    while(it!=_rank.end())
-    {
-      cout<<it->first" : "<<it->second<<endl;
-      it++;
-    }
+	_citynames.insert(cityname);
 }
 
-bool Rank::cmp = [](pair<string,UINT> const & a, pair<string,UINT> const & b)
+bool Rank::isexist(const string & cityname) const
 {
-   return a.second!=b.second?a.second<b.second:a.first<b.first;
+  set<string>::iterator ie=_citynames.find(cityname);
+  //check if found
+  if(ie!=_citynames.end())
+  {
+    cout<<"Element "<<*ie<<" found."<<endl;
+  }
+  else
+  {
+  	//if the element has not been found, ie will point to one-past-the-end
+  	//thus access *ie will cause memory valiate, run-time error
+    cout<<"Element "<<cityname<<" not found."<<endl;
+  }
 }
+
+void Rank::printCityname()
+{
+	//output citynames by order
+	printContents(_citynames);
+}
+
+template<typename Container>
+void Rank::printContents(const Container & stlcontainer)
+{
+  //need to add "typename" before iterator 
+  typename Container::const_iterator ie=stlcontainer.begin();
+  while(ie!=stlcontainer.end())
+  {
+    cout<<*ie<<endl;
+    ++ie;
+  }
+  cout<<endl;
+}
+
+
+// bool Rank::cmp = [](pair<string,UINT> const & a, pair<string,UINT> const & b)
+// {
+//    return a.second!=b.second?a.second<b.second:a.first<b.first;
+// }
 
 
 #endif

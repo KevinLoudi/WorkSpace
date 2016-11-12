@@ -37,8 +37,13 @@ int main(int argc, char** argv) {
 	vector<City> cities_v;
 	cities_v.assign(&cities[0],&cities[citynum-1]);
 	
-	for(auto &x:cities_v)
-	  cout<<x.getInfo(cout)<<endl;
+	//for(auto &x:cities_v)
+	  //cout<<x.getInfo(cout)<<endl;
 
+	cout<<"output the rank"<<endl;
+	Rank r(cities_v);
+	r.isexist("Handan");
+	r.isexist("New York");
+	r.printCityname();
 	return 0;
 }
