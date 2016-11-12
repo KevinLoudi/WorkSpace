@@ -153,17 +153,56 @@ bool FileIO::readBinaryFile(string* filename,City* c,UINT len)
 
 
 //rank cities by different keys (population, denfence level)
-template<typename C,typename P>
 class Rank: public Method
 {
 	private:
-		vector<C> _city;
-
-
+    map<string,UINT> _rank;
+    vector<City> _cities;
+    vector<string> _citynames;
+    vector<vector<double>> _locations;
 	protected:
 		
 	public:
+    Rank(vector<City> & incity):_cities(incity)
+    {
+      vector<City>::iterator it = incity.begin();
+      vector<City>::iterator it_end = incity.end();
+
+      for (;it != it_end;it++)
+      {
+         _citynames.push_back((*it)._cityInfo->_CityName);
+         _rank.insert(make_pair((*it)._cityInfo->_CityName,(*it)._cityInfo->_PopulationDensity)); 
+      } 
+    }
+
+    bool cmp = [](pair<string,UINT> const & a, pair<string,UINT> const & b);
+    ofstream & outputRank(ofstream & os) const;
+
+    ~Rank(){}
 };
+
+ofstream & Rank::outputRank(ofstream & os) const
+{
+    //check if iterate through all elements are successful
+    map<string,UINT>::iterator it=_rank.begin();
+
+    //sort by value
+    sort(_rank.begin(),_rank.end(),cmp);
+
+    //sort by key
+
+    //print out
+    while(it!=_rank.end())
+    {
+      cout<<it->first" : "<<it->second<<endl;
+      it++;
+    }
+}
+
+bool Rank::cmp = [](pair<string,UINT> const & a, pair<string,UINT> const & b)
+{
+   return a.second!=b.second?a.second<b.second:a.first<b.first;
+}
 
 
 #endif

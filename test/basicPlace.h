@@ -103,6 +103,7 @@ class City : public Place
 		bool alterHolder(const string &);
 		void investMoney(const UINT cash);
 		friend class FileIO;
+		friend class Rank;
 		~City()
 		{
 			_cityNum--;
