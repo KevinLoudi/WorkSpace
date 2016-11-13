@@ -44,9 +44,10 @@ int main(int argc, char** argv) {
 	Rank r(cities_v);
 	r.addCityname("Gusu");
 	r.isexist("Gusu");
-	r.removeCityname("Gusu");
-	r.isexist("Gusu");
+	//r.removeCityname("Gusu");
+	//r.isexist("Gusu");
 	r.printCityname();
 	r.printRank();
+	r.rankbyValue();
 	return 0;
 }
