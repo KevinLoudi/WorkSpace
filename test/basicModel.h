@@ -17,7 +17,7 @@ using namespace std;
 
 typedef unsigned long UINT;
 
-//reserved is-a relationship for potential usage
+//reserved is-a relationship for potential usage;
 class Method
 {
   private:
@@ -154,15 +154,28 @@ bool FileIO::readBinaryFile(string* filename,City* c,UINT len)
 
 
 //rank cities by different keys (population, denfence level)
+struct comperhensive_comparer
+{
+	bool operator()(const UINT& c1, const UINT& c2) const
+  {
+	return((c1+200)<c2);
+  };
+};
 class Rank: public Method
 {
 	private:
     map<string,UINT> _rank;
+    map<string,UINT,comperhensive_comparer> _com_rank;
     vector<City> _cities;
-    set<string> _citynames;
+    set<string> _citynames; //city name is unqiue
     
+    //print contents of sequence container
     template<typename Container>
     void printContents(const Container & stlcontainer);
+
+    //print contents of associative container
+    template<typename assConatiner>
+    void printAssContainer(const assConatiner & asscontainer);
 	protected:
 		
 	public:
@@ -175,37 +188,100 @@ class Rank: public Method
      for (;it != it_end;it++)
      {
         _citynames.insert((*it)._cityInfo->_CityName);
-        _rank.insert(make_pair((*it)._cityInfo->_CityName,(*it)._cityInfo->_PopulationDensity)); 
+
+        //_rank.insert(make_pair((*it)._cityInfo->_CityName,(*it)._cityInfo->_PopulationDensity)); 
+        _rank.insert(pair<string,UINT>((*it)._cityInfo->_CityName,(*it)._cityInfo->_PopulationDensity));
+        //_rank[(*it)._cityInfo->_CityName]=(*it)._cityInfo->_PopulationDensity);
      } 
     }
 
-    //bool cmp = [](pair<string,UINT> const & a, pair<string,UINT> const & b);
+    //add city to rank
     bool addCityname(const string & cityname);
+	//remove city from rank
+    bool removeCityname(const string & cityname);
+    //print cityname and rank by order
 	void printCityname();
+    void printRank();
 	//look up a city with name
 	bool isexist(const string & cityname) const;
+	//customerize functor for ranking
+	UINT compliactRank(); 
     ~Rank(){}
 };
 
+UINT Rank::compliactRank()
+{
+	if (_com_rank.size()==0)
+  {
+    //the target map is empty, so make it initalized
+    _com_rank.insert(_rank.begin(),_rank.end());
+  }
+
+//  cout<<"Now print out all members of the comperhensive rank by order: \n";
+//  map<string,UINT,comperhensive_comparer>::const_iterator it=_com_rank.begin;
+//  for(;it!=_com_rank.end();it++)
+//  {
+//    cout<<it->first<<" : "<<it->second<<endl;
+//  }
+
+  return _com_rank.size();
+}
+
 bool Rank::addCityname(const string & cityname)
 {
-	_citynames.insert(cityname);
+	if(isexist(cityname))
+  {
+    cerr<<"the input city is already in the set"<<endl;
+    return false;
+  }
+
+  UINT pop_num=0;
+  cout<<"Please input the population density of the above city "<<cityname<<endl;
+  cin>>pop_num;
+  _citynames.insert(cityname);
+  _rank[cityname]=pop_num;
+  return true;
+}
+
+bool Rank::removeCityname(const string & cityname)
+{
+  if(!isexist(cityname))
+  {
+    cerr<<"the input city is not found"<<endl;
+    return false;
+  }
+
+  _citynames.erase(cityname);
+  _rank.erase(cityname);
+  return true;
 }
 
 bool Rank::isexist(const string & cityname) const
 {
-  set<string>::iterator ie=_citynames.find(cityname);
+  //find in the name set
+  set<string>::const_iterator ie=_citynames.find(cityname);
+  
+  //find in _rand map
+  map<string,UINT>::const_iterator ir=_rank.find(cityname);
+  
   //check if found
-  if(ie!=_citynames.end())
+  if(ie!=_citynames.end()&&ir!=_rank.end())
   {
-    cout<<"Element "<<*ie<<" found."<<endl;
+    //cout<<"Element "<<*ie<<" found."<<endl;
+    return true;
   }
   else
   {
   	//if the element has not been found, ie will point to one-past-the-end
   	//thus access *ie will cause memory valiate, run-time error
-    cout<<"Element "<<cityname<<" not found."<<endl;
+    //cout<<"Element "<<cityname<<" not found."<<endl;
+    return false;
   }
+}
+
+void Rank::printRank()
+{
+  printAssContainer(_rank);
 }
 
 void Rank::printCityname()
@@ -227,11 +303,16 @@ void Rank::printContents(const Container & stlcontainer)
   cout<<endl;
 }
 
+template<typename assConatiner>
+void Rank::printAssContainer(const assConatiner & asscontainer)
+{
+  typename assConatiner::const_iterator ie=asscontainer.begin();
+  for(;ie!=asscontainer.end();ie++)
+  {
+    cout<<ie->first<<" : "<<ie->second<<endl;
+  }
+}
 
-// bool Rank::cmp = [](pair<string,UINT> const & a, pair<string,UINT> const & b)
-// {
-//    return a.second!=b.second?a.second<b.second:a.first<b.first;
-// }
 
 
 #endif

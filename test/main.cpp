@@ -11,13 +11,13 @@ UINT FileIO::_IO_Num=0;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv) {
-	PlaceInfo pi(0.0, 0.0, 0.0, 0, "null products",0);
-	CityInfo ci(0.0, 0.0, 0.0, 0, "null products",0,"null cityname","null holder",0);
-	Place p(&pi);
-	City c(&ci);
+//	PlaceInfo pi(0.0, 0.0, 0.0, 0, "null products",0);
+//	CityInfo ci(0.0, 0.0, 0.0, 0, "null products",0,"null cityname","null holder",0);
+//	Place p(&pi);
+//	City c(&ci);
 	//dynamic binding
-	cout<<p.getInfo(cout)<<endl;
-	cout<<c.getInfo(cout)<<endl;
+	//cout<<p.getInfo(cout)<<endl;
+	//cout<<c.getInfo(cout)<<endl;
 	
 //	City* cs=new City();
 //	FileIO fio("text.txt");
@@ -42,8 +42,11 @@ int main(int argc, char** argv) {
 
 	cout<<"output the rank"<<endl;
 	Rank r(cities_v);
-	r.isexist("Handan");
-	r.isexist("New York");
+	r.addCityname("Gusu");
+	r.isexist("Gusu");
+	r.removeCityname("Gusu");
+	r.isexist("Gusu");
 	r.printCityname();
+	r.printRank();
 	return 0;
 }
