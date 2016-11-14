@@ -203,5 +203,47 @@ void Rank::printAssContainer(const assConatiner & asscontainer)
   }
 }
 
+vector<string> Rank::findLargerItems(const UINT & stand) const
+{
+  vector<string> v_find_result;
+  vector<string> v_city_names;
+  vector<UINT> v_city_pop;
+	//find cities in _rank that have a population density larger than the "stand"
 
+  //load map to build map two vector
+  //because the function has been defined as const, so the iterator to the class member
+  //has to be named constant, attention!
+  MAP_STRING_UINT::const_iterator ie= _rank.begin();
+  for(ie;ie!=_rank.end();ie++)
+  {
+  	//*ie.first is error ??? why
+    v_city_names.push_back(ie->first);
+    v_city_pop.push_back(ie->second);
+  }
+  
+  vector<UINT>::iterator it_find;
+  vector<UINT>::iterator it_start=v_city_pop.begin();
+  const vector<UINT>::iterator it_end=v_city_pop.end();
+  int dis=0; //distance from the found element to the begin point
+  
+  //I intend to find out all satisfied elements
+  while(it_start!=it_end)
+  {
+  	it_find=find_if(it_start,it_end,isLarger<UINT>(stand));
+  	if(it_find!=v_city_pop.end())
+  	{
+  	  dis=distance(v_city_pop.begin(),it_find);
+  	  cout<<"a larger than "<<stand<<" element is found at the "<<dis
+     <<" element named "<<v_city_names[dis]<<endl;
+      v_find_result.push_back(v_city_names[dis]);
+      it_start+=dis; //make adjustment for the next finding loop
+	}
+	else
+	{
+		break; //finding finished
+	}
+  }
+  	
+	return v_find_result;
+}
 

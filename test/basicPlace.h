@@ -51,19 +51,6 @@ class Place
 		}
 };
 
-
-
-inline PlaceInfo* Place::getInfo() const
-{
-	return _placeInfo;
-}
-
-inline bool Place::updateInfo(PlaceInfo & P)
-{
-	*(this->_placeInfo)=P;
-	return true;
-}
-
 class CityInfo: public PlaceInfo
 {
   public:

@@ -1,5 +1,16 @@
 #include "basicPlace.h"
 
+inline PlaceInfo* Place::getInfo() const
+{
+	return _placeInfo;
+}
+
+inline bool Place::updateInfo(PlaceInfo & P)
+{
+	*(this->_placeInfo)=P;
+	return true;
+}
+
 ostream & Place::getInfo(ostream & os) const
 {
 	os<<"This is a place with an area of "<<_placeInfo->_Area<<endl;

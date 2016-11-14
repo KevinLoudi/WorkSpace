@@ -56,14 +56,31 @@ class FileIO: public Method
 };
 
 
-
+//varous functor
 //applied to cout all elements with for_each
 template<typename eleType>
 struct displayElement
 {
-  void operator()(const eleType & element) const
+  int m_count; //hold the count
+  displayElement() {m_count=0;}//constructor
+  void operator()(const eleType & element)
   {
+    ++m_count; //record the elements being output
     cout<<element<<' ';
+  }
+};
+
+//for map or set
+template<typename assContainer>
+struct displayAssElement
+{
+  int m_count; //hold the count
+  displayElement() {m_count=0;}//constructor
+  //no longer a const function for it modify a data field inside
+  void operator()(const assContainer & element)
+  {
+    ++m_count; //record the elements being output
+    cout<<element.first<<" : "<<element.second<<endl;
   }
 };
 
@@ -98,6 +115,20 @@ struct compareValue
 	bool operator()(const PAIR_STRING_UINT& P1, const PAIR_STRING_UINT& P2)
   {
     return P1.second<P2.second;
+  }
+};
+
+//logical "larger than" with two-parmeters-functor
+template <typename numType>
+struct isLarger
+{
+  numType _Thershold;
+  //initial a user-defined thershold
+  isLarger(const numType& thershold=0):_Thershold(thershold){}
+
+  bool operator()(const numType& element) const
+  {
+    return element>_Thershold;
   }
 };
  
@@ -138,7 +169,9 @@ class Rank: public Method
      } 
 
      //display elements using std::for_each
-     for_each(_citynames.begin(),_citynames.end(),displayElement<string>());
+     displayElement<string> mResult;
+     mResult=for_each(_citynames.begin(),_citynames.end(),displayElement<string>());
+     cout<<"\n Totally "<<mResult.m_count<<" have been print."<<endl;
      cout<<"\n********************************Initialized****************\n";
     }
 
@@ -153,6 +186,8 @@ class Rank: public Method
 	bool isexist(const string & cityname);
 	//customerize functor for ranking
 	void rankbyValue();
+	
+	vector<string> findLargerItems(const UINT & stand) const;
     ~Rank(){}
 };
 
