@@ -42,12 +42,17 @@ int main(int argc, char** argv) {
 
 	cout<<"output the rank"<<endl;
 	Rank r(cities_v);
-	r.addCityname("Gusu");
-	r.isexist("Gusu");
+	//r.addCityname("Gusu");
+	//r.isexist("Gusu");
 	//r.removeCityname("Gusu");
 	//r.isexist("Gusu");
 	r.printCityname();
 	r.printRank();
 	r.rankbyValue();
+	//find and print elements' popluation density larger than 300
+	vector<string> find_city;
+	vector<UINT> calc_population;
+	r.findLargerItems(300,find_city);
+	r.transformtoPopluation(citynum-1,calc_population);
 	return 0;
 }

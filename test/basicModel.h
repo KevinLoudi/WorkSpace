@@ -1,3 +1,6 @@
+/*
+ Mostly for STL
+*/
 #ifndef BASIC_MODEL_H
 #define BASIC_MODEL_H
 
@@ -131,6 +134,17 @@ struct isLarger
     return element>_Thershold;
   }
 };
+
+//multiply two containers' items, used in operation- "transform"
+template <typename eleType>
+class Multiplyer
+{
+  public:
+    eleType operator()(const eleType& elem1, const eleType& elem2)
+    {
+      return elem1*elem2;
+    }
+};
  
 class Rank: public Method
 {
@@ -186,8 +200,10 @@ class Rank: public Method
 	bool isexist(const string & cityname);
 	//customerize functor for ranking
 	void rankbyValue();
-	
-	vector<string> findLargerItems(const UINT & stand) const;
+	//find element larger than stand
+	void findLargerItems(const UINT & stand, vector<string>& v_find_result) const;
+    //multiply and return are*population
+    void transformtoPopluation(const UINT & citynum,vector<UINT>& pop) const;
     ~Rank(){}
 };
 

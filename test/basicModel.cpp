@@ -203,9 +203,8 @@ void Rank::printAssContainer(const assConatiner & asscontainer)
   }
 }
 
-vector<string> Rank::findLargerItems(const UINT & stand) const
+void Rank::findLargerItems(const UINT & stand, vector<string>& v_find_result) const
 {
-  vector<string> v_find_result;
   vector<string> v_city_names;
   vector<UINT> v_city_pop;
 	//find cities in _rank that have a population density larger than the "stand"
@@ -229,6 +228,7 @@ vector<string> Rank::findLargerItems(const UINT & stand) const
   //I intend to find out all satisfied elements
   while(it_start!=it_end)
   {
+  	//begin and end iterator in find_if should be identical
   	it_find=find_if(it_start,it_end,isLarger<UINT>(stand));
   	if(it_find!=v_city_pop.end())
   	{
@@ -236,14 +236,46 @@ vector<string> Rank::findLargerItems(const UINT & stand) const
   	  cout<<"a larger than "<<stand<<" element is found at the "<<dis
      <<" element named "<<v_city_names[dis]<<endl;
       v_find_result.push_back(v_city_names[dis]);
-      it_start+=dis; //make adjustment for the next finding loop
+      it_start+=(dis+1); //make adjustment for the next finding loop
 	}
 	else
 	{
 		break; //finding finished
 	}
   }
-  	
-	return v_find_result;
+ return;
 }
 
+void Rank::transformtoPopluation(const UINT & citynum,vector<UINT>& pop) const
+{
+  //create 3 vector to hold result
+  vector<UINT> area;
+  vector<UINT> pop_den;
+
+  //iterator for look through cities
+  VECTOR_CITY::const_iterator ic=_cities.begin();
+
+  //transfer information from object vector to int vector
+  int ix=0;
+  while((ix<citynum)&&(ic!=_cities.end()))
+  {
+    area.push_back(ic->_cityInfo->_Area);
+    pop_den.push_back(ic->_cityInfo->_PopulationDensity);
+    ix++; ic++;
+  }
+
+  //make space for result vecot
+  pop.resize(ix+1);
+  //calculate, the 2-parmeters form of "transform"
+  transform(area.begin(),area.begin()+ix,pop_den.begin(),pop.begin(),Multiplyer<UINT>());
+
+  //print out result
+  ix=0;
+  while((ix<citynum)&&(ix<pop.size()))
+  {
+    cout<<"city "<<_cities[ix]._cityInfo->_CityName<<" have a popluation of "<<pop[ix]<<endl;
+    ix++;
+  }
+
+  return;
+}

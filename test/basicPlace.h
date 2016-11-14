@@ -1,3 +1,6 @@
+/*
+ For class declaration, inhert and dynamic binding
+*/
 #ifndef BASIC_PLACE_H
 #define BASIC_PLACE_H
 #include <string>
