@@ -11,6 +11,7 @@
 #include <iostream>
 using namespace std;
 
+
 typedef unsigned short int USINT;
 enum GENDER {MALE=0,FMALE=1};
 enum ERR_CODE {SUCCESS,FAIL};
@@ -25,6 +26,10 @@ class King;
 class Kingdom;
 class Warrior;
 class Army;
+
+//C++ does not allow temporaries to be bound to non-const references.
+//so define a defalut vector as defalut value is optimal
+static vector<Army> DEFAULT_VECTOR_ARMY;
 
 class Person
 {
@@ -63,7 +68,7 @@ class Community
 		virtual ERR_CODE addMembers(vector<Person> & rPeople);
 		//return organization name
 		virtual string getName() const;
-		~Community();
+		virtual ~Community();
 	protected:
 };
 
@@ -78,9 +83,9 @@ class Noble: public Person
 		//print out class information
 		ostream & printInfo() const;
 		//return class information
-		Person* getInfo() const;
+		Noble* getInfo() const;
 		//update class information
-		ERR_CODE update(const Person & rPerson);
+		ERR_CODE update(const Noble & rNoble);
 		//change influence
 		ERR_CODE updateInfluence(const USINT & influence_margin);
 	    //return organization name
@@ -91,12 +96,23 @@ class Noble: public Person
 class NobleFamily: public Community
 {
     private:
-    	string _last_name;
+    	const string _last_name;
     	//each family member have the same last name
 		vector<Noble> _famliy_members;
 		string _family_lead_s_first_name;
 	public:
-		
+		NobleFamily();
+		//overload
+		ostream & printInfo() const;
+		//redefine
+		NobleFamily* getInfo() const;
+		//add a family member
+		ERR_CODE addMembers(vector<Noble> & rNoble);
+		//change family leader
+		ERR_CODE updateLeader(const string & rnewLeaderName);
+	    //return organization name
+		string getName() const;
+		~NobleFamily();
 	protected:
 		
 };
@@ -105,14 +121,28 @@ class King: public Noble
 {
 	private:
 		NobleFamily _king_s_family;
+		Noble _heir;
 		vector<NobleFamily> _king_s_controlled_families;
 		USINT _king_s_prestige;
 
-		USINT _administration_ability;
-		USINT _diplomacy_ability;
-		USINT _military_ability;
+		const USINT _administration_ability;
+		const USINT _diplomacy_ability;
+		const USINT _military_ability;
     public:
-		
+    	King();
+    	//print out class information
+		ostream & printInfo() const;
+		//return class information
+		King* getInfo() const;
+		//add controlled families
+		ERR_CODE addMembers(vector<NobleFamily> & rFamilynewCotrolled);
+		//update class information
+		ERR_CODE update(const King & rKing);
+		//change heir of the king
+		ERR_CODE changeheir(const Noble & rnewheir);
+		//modify prestige of the king
+		ERR_CODE modifyPrestige(const USINT margins);
+    	~King();
 	protected:
 };
 class Kingdom: public NobleFamily
@@ -123,7 +153,22 @@ class Kingdom: public NobleFamily
 		vector<Warrior> _generals;
 		vector<Army> _army_groups;
     public:
-		
+    	Kingdom();
+    	//print out class information
+		ostream & printInfo() const;
+		//return class information
+		Kingdom* getInfo() const;
+		//add new members of the community or army group
+		//C++ does not allow temporaries to be bound to non-const references.
+		ERR_CODE addMembers(vector<Warrior> & rWarrior, 
+			vector<Army> & rnewArmies=DEFAULT_VECTOR_ARMY);
+		//change king, meanwhile change ruler family or not
+		//while a const reference is allowed
+		ERR_CODE seizPowerbyotherFamily(const Noble & rnewking, 
+			const NobleFamily & rnewFamily=NobleFamily());
+		//return organization name
+		string getName() const;
+		~Kingdom();
 	protected:
 };
 
@@ -132,13 +177,21 @@ class Warrior: public Noble
 	private:
 		//a warrior is a nobel work as a lan general
 		//five import poperties for a general
-		USINT _shock_ability;
-		USINT _fire_ability;
-		USINT _maneuver_ability;
-		USINT _siege_ability;
-		USINT _intelligence;
+		const USINT _shock_ability;
+		const USINT _fire_ability;
+		const USINT _maneuver_ability;
+		const USINT _siege_ability;
+		const USINT _intelligence;
 	public:
-		
+		Warrior();
+		//print out class information
+		ostream & printInfo() const;
+		//return class information
+		Warrior* getInfo() const;
+		//update class information
+		//ERR_CODE update(const Warrior & rWarrior);
+		string getName() const;
+		~Warrior();
 	protected:
 };
 class Army: public Community
@@ -151,7 +204,18 @@ class Army: public Community
 		vector<Person> _soldiers;
 		USINT _morale; //power of the army
 	public:
-		
+		Army();
+		//print out class information
+		ostream & printInfo() const;
+		//return class information
+		Army* getInfo() const;
+		//add new members of the community
+		ERR_CODE addMembers(vector<Person> & rnewsoldiers);
+		//change army lead
+		ERR_CODE changeLeader(const Warrior & rnewGeneral);
+		//modify morale
+		ERR_CODE modifyMorale(const USINT morale_margin); 
+		~Army();
 	protected:
 		
 };
