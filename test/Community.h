@@ -15,7 +15,8 @@ using namespace std;
 typedef unsigned short int USINT;
 enum GENDER {MALE=0,FMALE=1};
 enum ERR_CODE {SUCCESS,FAIL};
-enum Judge {YES,NO};
+enum Judge {YES=true,NO=false};
+#define ADULT_AGE 18
 
 //declaration of classes
 class Person;
@@ -33,43 +34,45 @@ static vector<Army> DEFAULT_VECTOR_ARMY;
 
 class Person
 {
-	private:
+	protected: 
 		//an common citzen have no name
 		//only male above 16 are allowed to recurited as soldier
 		GENDER _gender; 
 		USINT _age;
 	public:
-		Person();
+		Person(); //USINT age=0,GENDER gender=MALE
 		//print out class information
-		virtual ostream & printInfo() const;
+		virtual ostream & printInfo(ostream & ros) const;
 		//return class information
-		virtual Person* getInfo() const;
+		virtual Person* clone() const;
 		//update class information
 		virtual ERR_CODE update(const Person & rPerson);
 		//check if class information satisfy a given condition
-		Judge isSatisfied(const GENDER & gender,const USINT & _age) const;
+		Judge isSatisfied(const GENDER & gender=MALE,const USINT & age=ADULT_AGE) const;
 		virtual ~Person();
-	protected: 
+	
 };
+
 //community is the organized relationship between a group of people
-//pure virtual
+//pure virtual, community is not an entity, it should be derived befor use
 class Community
 {
 	private:
-		const string _organization_name;
-		vector<Person> _people;
+		//const string _organization_name;
+		//vector<Person> _people;
 	public:
 		Community();
 		//print out class information
-		virtual ostream & printInfo() const;
+		virtual ostream & printInfo() const =0;
 		//return class information
-		virtual Community* getInfo() const;
+		virtual Community* clone() const=0;
 		//add new members of the community
-		virtual ERR_CODE addMembers(vector<Person> & rPeople);
+		virtual ERR_CODE addMembers(vector<Person> & rPeople)=0;
 		//return organization name
-		virtual string getName() const;
+		virtual string getName() const=0;
 		virtual ~Community();
 	protected:
+		vector<Person> _organizaed_people;
 };
 
 //noble is a kind of person
@@ -83,7 +86,7 @@ class Noble: public Person
 		//print out class information
 		ostream & printInfo() const;
 		//return class information
-		Noble* getInfo() const;
+		Noble* clone() const;
 		//update class information
 		ERR_CODE update(const Noble & rNoble);
 		//change influence
@@ -105,7 +108,7 @@ class NobleFamily: public Community
 		//overload
 		ostream & printInfo() const;
 		//redefine
-		NobleFamily* getInfo() const;
+		NobleFamily* clone() const;
 		//add a family member
 		ERR_CODE addMembers(vector<Noble> & rNoble);
 		//change family leader
@@ -133,7 +136,7 @@ class King: public Noble
     	//print out class information
 		ostream & printInfo() const;
 		//return class information
-		King* getInfo() const;
+		King* clone() const;
 		//add controlled families
 		ERR_CODE addMembers(vector<NobleFamily> & rFamilynewCotrolled);
 		//update class information
@@ -157,7 +160,7 @@ class Kingdom: public NobleFamily
     	//print out class information
 		ostream & printInfo() const;
 		//return class information
-		Kingdom* getInfo() const;
+		Kingdom* clone() const;
 		//add new members of the community or army group
 		//C++ does not allow temporaries to be bound to non-const references.
 		ERR_CODE addMembers(vector<Warrior> & rWarrior, 
@@ -187,7 +190,7 @@ class Warrior: public Noble
 		//print out class information
 		ostream & printInfo() const;
 		//return class information
-		Warrior* getInfo() const;
+		Warrior* clone() const;
 		//update class information
 		//ERR_CODE update(const Warrior & rWarrior);
 		string getName() const;
@@ -208,7 +211,7 @@ class Army: public Community
 		//print out class information
 		ostream & printInfo() const;
 		//return class information
-		Army* getInfo() const;
+		Army* clone() const;
 		//add new members of the community
 		ERR_CODE addMembers(vector<Person> & rnewsoldiers);
 		//change army lead
