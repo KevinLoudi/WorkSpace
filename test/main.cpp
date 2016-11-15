@@ -2,6 +2,7 @@
 #include <vector>
 #include "basicPlace.h"
 #include "basicModel.h"
+#include "Community.h"
 using namespace std;
 
 //A static data field has to be defined before linking
