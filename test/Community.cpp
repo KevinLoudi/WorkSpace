@@ -19,7 +19,15 @@ Person::~Person()
 
 inline ostream & Person::printInfo(ostream & ros) const
 {
-	return ros<<_gender<<" aged "<<_age<<endl;
+	if(_gender==MALE)
+	{
+	  return ros<<"MALE"<<" aged "<<_age<<endl;	
+	}
+	else
+	{
+	  return ros<<"FMALE"<<" aged "<<_age<<endl;		
+	}
+	
 }
 
 inline Person* Person::clone() const
@@ -41,12 +49,12 @@ inline Judge Person::isSatisfied(const GENDER & gender,const USINT & age) const
 	return Judge(((this->_age>age)&&(this->_gender==gender)));
 }
 
-Community::Community()
-{
-
-}
-
-Community::~Community()
-{
-	
-}
+//Community::Community()
+//{
+//
+//}
+//
+//Community::~Community()
+//{
+//	
+//}

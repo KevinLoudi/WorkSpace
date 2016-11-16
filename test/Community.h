@@ -9,14 +9,15 @@
 //in western world or muslim world, things differs
 #include <vector>
 #include <iostream>
+#include "GobalDefine.h"
+#define ADULT_AGE 18
 using namespace std;
-
 
 typedef unsigned short int USINT;
 enum GENDER {MALE=0,FMALE=1};
-enum ERR_CODE {SUCCESS,FAIL};
-enum Judge {YES=true,NO=false};
-#define ADULT_AGE 18
+//keep enum members in not-confusing order
+enum ERR_CODE {FAIL,SUCCESS};
+enum Judge {NO=false,YES=true};
 
 //declaration of classes
 class Person;
@@ -50,7 +51,6 @@ class Person
 		//check if class information satisfy a given condition
 		Judge isSatisfied(const GENDER & gender=MALE,const USINT & age=ADULT_AGE) const;
 		virtual ~Person();
-	
 };
 
 //community is the organized relationship between a group of people
@@ -63,13 +63,13 @@ class Community
 	public:
 		Community();
 		//print out class information
-		virtual ostream & printInfo() const =0;
+		virtual ostream & printInfo() const;
 		//return class information
-		virtual Community* clone() const=0;
+		virtual Community* clone() const;
 		//add new members of the community
-		virtual ERR_CODE addMembers(vector<Person> & rPeople)=0;
+		virtual ERR_CODE addMembers(vector<Person> & rPeople);
 		//return organization name
-		virtual string getName() const=0;
+		virtual string getName() const;
 		virtual ~Community();
 	protected:
 		vector<Person> _organizaed_people;
