@@ -20,6 +20,8 @@ enum ERR_CODE {FAIL,SUCCESS};
 enum Judge {NO=false,YES=true};
 
 //declaration of classes
+//name of a person or a organization should be treat as 
+//key 
 class Person;
 class Community;
 class Noble;
@@ -63,13 +65,13 @@ class Community
 	public:
 		Community();
 		//print out class information
-		virtual ostream & printInfo() const;
+		virtual ostream & printInfo() const=0;
 		//return class information
-		virtual Community* clone() const;
+		virtual Community* clone() const=0;
 		//add new members of the community
-		virtual ERR_CODE addMembers(vector<Person> & rPeople);
+		virtual ERR_CODE addMembers(vector<Person> & rPeople)=0;
 		//return organization name
-		virtual string getName() const;
+		virtual string getName() const=0;
 		virtual ~Community();
 	protected:
 		vector<Person> _organizaed_people;
@@ -84,7 +86,7 @@ class Noble: public Person
 	public:
 		Noble();
 		//print out class information
-		ostream & printInfo() const;
+		ostream & printInfo(ostream & ros) const;
 		//return class information
 		Noble* clone() const;
 		//update class information

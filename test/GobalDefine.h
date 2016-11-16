@@ -2,7 +2,7 @@
 #define GOBALDEFINE_H
 
 //self-defined smart pointer
-template<typename T>
+template<typename T> //T should have deep copy operation named clone()
 class smart_pointer
 {
   private:
@@ -13,6 +13,12 @@ class smart_pointer
   	//the following two have some problems 
   	//copy constructor
   	smart_pointer(const T & ranothorp){_pRawPointer=ranothorp.clone();}
+  	//enable destructive copy
+  	smart_pointer(T & ranothorp,bool isDestructivecopy)
+  	{ 
+  		_pRawPointer=ranothorp.clone(); 
+  		ranothorp=0;
+  	}
   	//assignment operator
   	smart_pointer operator=(const T & ranothorp){_pRawPointer=ranothorp.clone();}
   	//dereference operator
