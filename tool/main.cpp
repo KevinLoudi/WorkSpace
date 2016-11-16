@@ -1,25 +1,50 @@
-#include<iostream>
-#include<string>
-#include<algorithm>
-#include<map>
-using namespace std; 
+#include <iostream>
+#include <random>
+using namespace std;
 
 int main()
 {
-  //注意这里的greater<string>，其有个参数就是key的类型，比如这里就是string
-  map<string, int, greater<string> > scoreMap;   
-  map<string, int, greater<string> >::iterator iter; 
+    // Random seed
+    random_device rd;
 
-  scoreMap["LiMin"] = 90; 
-  scoreMap["ZZihsf"] = 95; 
-  scoreMap["Kim"] = 100;
-  scoreMap.insert(map<string, int>::value_type("Jack", 88)); 
+    // Initialize Mersenne Twister pseudo-random number generator
+    mt19937 gen(rd());
 
-  for(iter=scoreMap.begin(); iter!=scoreMap.end(); iter++)
-    cout<<iter->first<<' '<<iter->second<<endl; 
+    // Generate pseudo-random numbers
+    // uniformly distributed in range (1, 100)
+    uniform_int_distribution<> dis(1, 100);
 
-  return 0; 
+    // Generate ten pseudo-random numbers
+    for (int i = 0; i < 10; i++)
+    {
+        int randomX = dis(gen);
+        cout << "\nRandom X = " << randomX;
+    }
 }
+
+
+//#include<iostream>
+//#include<string>
+//#include<algorithm>
+//#include<map>
+//using namespace std; 
+//
+//int main()
+//{
+//  //注意这里的greater<string>，其有个参数就是key的类型，比如这里就是string
+//  map<string, int, greater<string> > scoreMap;   
+//  map<string, int, greater<string> >::iterator iter; 
+//
+//  scoreMap["LiMin"] = 90; 
+//  scoreMap["ZZihsf"] = 95; 
+//  scoreMap["Kim"] = 100;
+//  scoreMap.insert(map<string, int>::value_type("Jack", 88)); 
+//
+//  for(iter=scoreMap.begin(); iter!=scoreMap.end(); iter++)
+//    cout<<iter->first<<' '<<iter->second<<endl; 
+//
+//  return 0; 
+//}
 
 
 //#include<iostream>

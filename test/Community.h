@@ -31,6 +31,8 @@ class Kingdom;
 class Warrior;
 class Army;
 
+class find_name;
+
 //C++ does not allow temporaries to be bound to non-const references.
 //so define a defalut vector as defalut value is optimal
 static vector<Army> DEFAULT_VECTOR_ARMY;
@@ -63,16 +65,19 @@ class Community
 		//const string _organization_name;
 		//vector<Person> _people;
 	public:
-		Community();
+		Community(){}
 		//print out class information
-		virtual ostream & printInfo() const=0;
+		virtual ostream & printInfo(ostream & ros) const=0;
 		//return class information
 		virtual Community* clone() const=0;
 		//add new members of the community
-		virtual ERR_CODE addMembers(vector<Person> & rPeople)=0;
+		virtual ERR_CODE addMembers(const Person & rPerson)
+		{
+			_organizaed_people.push_back(rPerson);
+		}
 		//return organization name
 		virtual string getName() const=0;
-		virtual ~Community();
+		virtual ~Community(){}
 	protected:
 		vector<Person> _organizaed_people;
 };
@@ -84,7 +89,8 @@ class Noble: public Person
 		string _first_name;
 		USINT _political_influence;
 	public:
-		Noble();
+		Noble(string name, USINT influence):
+		  _first_name(name),_political_influence(influence){}
 		//print out class information
 		ostream & printInfo(ostream & ros) const;
 		//return class information
@@ -98,6 +104,7 @@ class Noble: public Person
 		~Noble();
 	protected:
 };
+
 class NobleFamily: public Community
 {
     private:
@@ -106,18 +113,20 @@ class NobleFamily: public Community
 		vector<Noble> _famliy_members;
 		string _family_lead_s_first_name;
 	public:
-		NobleFamily();
-		//overload
-		ostream & printInfo() const;
-		//redefine
+		NobleFamily(const string & rname,const vector<Noble>& rmembers, 
+	       const string & rleadername):_last_name(rname),_famliy_members(rmembers),
+          _family_lead_s_first_name(rleadername){}
+		ostream & printInfo(ostream & ros) const;
 		NobleFamily* clone() const;
 		//add a family member
-		ERR_CODE addMembers(vector<Noble> & rNoble);
+		ERR_CODE addMembers(const Noble & rNoble);
+		//find new leader with the largest political influence
+		ERR_CODE isLeaderValid();
 		//change family leader
 		ERR_CODE updateLeader(const string & rnewLeaderName);
 	    //return organization name
 		string getName() const;
-		~NobleFamily();
+		~NobleFamily(){}
 	protected:
 		
 };
@@ -125,7 +134,7 @@ class NobleFamily: public Community
 class King: public Noble
 {
 	private:
-		NobleFamily _king_s_family;
+		//NobleFamily _king_s_family;
 		Noble _heir;
 		vector<NobleFamily> _king_s_controlled_families;
 		USINT _king_s_prestige;
@@ -154,7 +163,7 @@ class Kingdom: public NobleFamily
 {
 	private:
 		King _country_leader;
-		NobleFamily _leader_family;
+		//NobleFamily _leader_family;
 		vector<Warrior> _generals;
 		vector<Army> _army_groups;
     public:
@@ -170,7 +179,7 @@ class Kingdom: public NobleFamily
 		//change king, meanwhile change ruler family or not
 		//while a const reference is allowed
 		ERR_CODE seizPowerbyotherFamily(const Noble & rnewking, 
-			const NobleFamily & rnewFamily=NobleFamily());
+			const NobleFamily & rnewFamily);
 		//return organization name
 		string getName() const;
 		~Kingdom();

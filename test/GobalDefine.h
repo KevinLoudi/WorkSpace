@@ -1,6 +1,12 @@
 #ifndef GOBALDEFINE_H
 #define GOBALDEFINE_H
 
+#include <string>
+#include "Community.h"
+using namespace std;
+
+class Noble;
+
 //self-defined smart pointer
 template<typename T> //T should have deep copy operation named clone()
 class smart_pointer
@@ -27,5 +33,30 @@ class smart_pointer
   	T* operator-> () const{return _pRawPointer;}
 };
 
+//a functor used in compare two Person-like object with name
+//template<typename PersonLike>
+//class is_the_same_person
+//{
+//  public:
+//    string _target_name;
+//  	is_the_same_person(const string & target):_target_name(target){}	
+//  	bool operator()(const PersonLike & rp)
+//  	{
+//  		return _target_name==rp.getName();
+//  	}
+//  	~is_the_same_person(){}
+//};
+
+//A forward declaration only says that a particular class 
+//will be defined later,
+//class find_name : std::unary_function<Noble, bool> {
+//  public:
+//    string _target_name;
+//    find_name(string target):_target_name(target) { }
+//    bool operator()(const Noble & N) const 
+//	{
+//        return _target_name == N.getName();
+//    }
+//};
 
 #endif
