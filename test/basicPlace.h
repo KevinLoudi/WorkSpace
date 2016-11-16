@@ -13,7 +13,7 @@ typedef unsigned long UINT;
 class PlaceInfo
 {
   public:
-  	PlaceInfo(double lat=0.0,double lon=0.0,double high=0.0,UINT pd=0,string pr="null products",UINT area=0):_Latitude(lat),
+  	explicit PlaceInfo(double lat=0.0,double lon=0.0,double high=0.0,UINT pd=0,string pr="null products",UINT area=0):_Latitude(lat),
 		_Longitude(lon),_High(high),_PopulationDensity(pd),_ProductType(pr),_Area(area){}
 	//Basic properties of a place
 	double _Latitude;
@@ -35,7 +35,7 @@ class Place
 		static UINT _itemNum;
 	public:
 		//constructor
-		Place(PlaceInfo* p= new PlaceInfo()):_placeInfo(p){_itemNum++;}
+		explicit Place(PlaceInfo* p= new PlaceInfo()):_placeInfo(p){_itemNum++;}
 		//get information of a place
 		virtual PlaceInfo* getInfo() const;
 		//override getInfo operation to print information
@@ -77,7 +77,7 @@ class City : public Place
 	protected:
 		static UINT _cityNum;
 	public:
-		City(CityInfo* c=new CityInfo()):_cityInfo(c)
+		explicit City(CityInfo* c=new CityInfo()):_cityInfo(c)
 		{
 			_cityNum++;
 		}

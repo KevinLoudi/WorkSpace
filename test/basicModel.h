@@ -30,7 +30,7 @@ class Method
   protected:
 
   public:
-  	Method(){}
+  	explicit Method(){}
   	virtual ~Method(){}
 };
 
@@ -42,7 +42,7 @@ class FileIO: public Method
   protected:
   	static UINT _IO_Num;
   public:
-  	FileIO(const string & fn):_Filename(fn){_IO_Num++;}
+  	explicit FileIO(const string & fn):_Filename(fn){_IO_Num++;}
 
   	//reset the number of objects need operation
   	void resetFilename(const string & newname);
@@ -167,7 +167,7 @@ class Rank: public Method
 	protected:
 		
 	public:
-    Rank(VECTOR_CITY & incity):_cities(incity)
+    explicit Rank(VECTOR_CITY & incity):_cities(incity)
     {
      //initialize city rank and name dir
      VECTOR_CITY::iterator it = incity.begin();

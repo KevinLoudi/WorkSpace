@@ -10,7 +10,8 @@
 #include <vector>
 #include <iostream>
 #include "GobalDefine.h"
-#define ADULT_AGE 18
+const static unsigned short int ADULT_AGE=18
+//#define ADULT_AGE 18
 using namespace std;
 
 typedef unsigned short int USINT;
@@ -45,7 +46,7 @@ class Person
 		GENDER _gender; 
 		USINT _age;
 	public:
-		Person(); //USINT age=0,GENDER gender=MALE
+		explicit Person(); //USINT age=0,GENDER gender=MALE
 		//print out class information
 		virtual ostream & printInfo(ostream & ros) const;
 		//return class information
@@ -65,7 +66,7 @@ class Community
 		//const string _organization_name;
 		//vector<Person> _people;
 	public:
-		Community(){}
+		explicit Community(){}
 		//print out class information
 		virtual ostream & printInfo(ostream & ros) const=0;
 		//return class information
@@ -89,7 +90,7 @@ class Noble: public Person
 		string _first_name;
 		USINT _political_influence;
 	public:
-		Noble(string name, USINT influence):
+		explicit Noble(string name, USINT influence):
 		  _first_name(name),_political_influence(influence){}
 		//print out class information
 		ostream & printInfo(ostream & ros) const;
@@ -113,7 +114,7 @@ class NobleFamily: public Community
 		vector<Noble> _famliy_members;
 		string _family_lead_s_first_name;
 	public:
-		NobleFamily(const string & rname,const vector<Noble>& rmembers, 
+		explicit NobleFamily(const string & rname,const vector<Noble>& rmembers, 
 	       const string & rleadername):_last_name(rname),_famliy_members(rmembers),
           _family_lead_s_first_name(rleadername){}
 		ostream & printInfo(ostream & ros) const;
@@ -143,7 +144,7 @@ class King: public Noble
 		const USINT _diplomacy_ability;
 		const USINT _military_ability;
     public:
-    	King();
+    	explicit King();
     	//print out class information
 		ostream & printInfo() const;
 		//return class information
@@ -167,7 +168,7 @@ class Kingdom: public NobleFamily
 		vector<Warrior> _generals;
 		vector<Army> _army_groups;
     public:
-    	Kingdom();
+    	explicit Kingdom();
     	//print out class information
 		ostream & printInfo() const;
 		//return class information
@@ -197,7 +198,7 @@ class Warrior: public Noble
 		const USINT _siege_ability;
 		const USINT _intelligence;
 	public:
-		Warrior();
+		explicit Warrior();
 		//print out class information
 		ostream & printInfo() const;
 		//return class information
@@ -218,7 +219,7 @@ class Army: public Community
 		vector<Person> _soldiers;
 		USINT _morale; //power of the army
 	public:
-		Army();
+		explicit Army();
 		//print out class information
 		ostream & printInfo() const;
 		//return class information
