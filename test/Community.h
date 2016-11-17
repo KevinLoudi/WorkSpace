@@ -10,7 +10,7 @@
 #include <vector>
 #include <iostream>
 #include "GobalDefine.h"
-const static unsigned short int ADULT_AGE=18
+const static unsigned short int ADULT_AGE=18;
 //#define ADULT_AGE 18
 using namespace std;
 
@@ -209,6 +209,7 @@ class Warrior: public Noble
 		~Warrior();
 	protected:
 };
+
 class Army: public Community
 {
 	private:

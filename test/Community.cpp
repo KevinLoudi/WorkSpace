@@ -1,11 +1,13 @@
 #include "Community.h"
 #include "GobalDefine.h"
 #include <ctime>
+#include <cstdlib>
 #include <queue>
 
 Person::Person()
 {
    //random decided an age and gender
+  //srand(static_cast<unsigned int>(clock()));
   int age=(rand()%50); //[0,50] years old
   GENDER gender=GENDER((rand()%2));
   //initial class member

@@ -5,8 +5,6 @@
 #include "Community.h"
 using namespace std;
 
-class Noble;
-
 //self-defined smart pointer
 template<typename T> //T should have deep copy operation named clone()
 class smart_pointer
