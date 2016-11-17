@@ -1,8 +1,0 @@
-Jian Yan Horse 112 39 4 100 900
-Xianyang Qin Horse 117 34 11 400 2400
-DaLiang Wei Silk 114 33 18 900 3900
-ZiChen Qi Salt 118 31 12 1000 3500
-Yi Chu Wine 116 29 4 1500 2500
-Xinzhen Han Gold 114 31 14 1200 6500
-Suiyang Song Fish 115 30 12 1600 8900
-Handan Zhao Steel 112 35 8 200 1900
