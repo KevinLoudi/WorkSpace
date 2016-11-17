@@ -1,0 +1,45 @@
+//configure git
+git config --global user.name="KevinLoudi"
+git config --global  user.email kevinloudi@foxmail.com
+git config --list
+cat ~/.gitconfig
+
+//make direction
+mkdir git-repos
+cd /home/kevin/git-codebank
+git clone https://github.com/KevinLoudi/War_on_Map.git
+https://github.com/KevinLoudi/War_on_Map_mini.git
+
+//create a new branch
+cd /home/kevin/git-codebank  /War_on_Map_mini
+//swithch to new branch 'test'
+git checkout -b test 
+git branch
+
+//delete a whole branch
+git checkout master
+git branch -D test  LinuxPlatform
+
+//commit files
+git add .
+git commit -m 'Initial upload of the project'
+git commit README.md
+git commit file1 file2
+//commit all available files
+git commit -a
+
+git log --branches --not --remotes
+
+//push this commit upstream
+git push origin test
+
+git checkout master
+git pull origin master
+
+
+//general path
+git add .
+git commit -m 'balabala'
+git push origin LinuxPlatform
+
+
