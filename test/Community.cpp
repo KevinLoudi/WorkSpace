@@ -2,7 +2,7 @@
 #include "GobalDefine.h"
 #include <ctime>
 #include <cstdlib>
-#include <queue>
+#include <map>
 
 Person::Person()
 {
@@ -24,13 +24,13 @@ inline ostream & Person::printInfo(ostream & ros) const
 {
 	if(_gender==MALE)
 	{
-	  return ros<<"MALE"<<" aged "<<_age<<endl;	
+	  return ros<<"MALE"<<" aged "<<_age<<endl;
 	}
 	else
 	{
-	  return ros<<"FMALE"<<" aged "<<_age<<endl;		
+	  return ros<<"FMALE"<<" aged "<<_age<<endl;
 	}
-	
+
 }
 
 inline Person* Person::clone() const
@@ -89,7 +89,7 @@ inline string Noble::getName() const
 ostream & NobleFamily::printInfo(ostream & ros) const
 {
 	using namespace std;
-	ros<<"Noble family "<<_last_name<<" is led by "<<_family_lead_s_first_name
+	ros<<"Noble family "<<_last_name<<" is led by "<<_leader_name
 	<<" and has members listed as: "<<endl;
 	vector<Noble>::const_iterator it_c = _famliy_members.begin();
 	if (_famliy_members.empty())
@@ -108,7 +108,7 @@ ostream & NobleFamily::printInfo(ostream & ros) const
 			  ros<<endl;
 		}
 	}
-   return ros;	
+   return ros;
 }
 
 inline NobleFamily* NobleFamily::clone() const
@@ -132,34 +132,70 @@ string NobleFamily::getName() const
 	return _last_name;
 }
 
-ERR_CODE NobleFamily::updateLeader(const string & rnewLeaderName)
+ERR_CODE NobleFamily::updateLeader(const string & rcurLeaderName)
 {
-	_family_lead_s_first_name=rnewLeaderName;
+	_leader_name=rcurLeaderName;
+	return SUCCESS;
 }
 
 ERR_CODE NobleFamily::isLeaderValid()
 {
-	//sort the largest influence via priority queue
-	priority_queue <string> PoliticalInfluenceRank;
+	//a leader is valid only if he has the highest influence
+	//find the current greatest noble in the family
 	vector<Noble>::const_iterator it_c=_famliy_members.begin();
-
-	
+	Noble curLeader=_famliy_members[0];
+	Noble oriLeader=_famliy_members[0];
 	for(;it_c!=_famliy_members.end();it_c++)
 	{
-		PoliticalInfluenceRank.push((*it_c).getName());
+		if((*it_c)>curLeader)
+		{
+			curLeader=*it_c;
+		}
+
+		if((*it_c).getName()==this->getName())
+		{
+			oriLeader=*it_c;
+		}
 	}
 
-	string newLeaderName=PoliticalInfluenceRank.top();
-
-	if(_family_lead_s_first_name==newLeaderName)
+	//the new leader must be a member of the family
+	//string oriLeader(_leader_name);
+	//string curLeaderName=curLeader.getName();
+	if(curLeader==oriLeader)
 	{
+		cout<<"The original leader "<<curLeader.getName()<<" remain on power."<<endl;
 		return SUCCESS;
 	}
 	else
 	{
-		//the pervious leader has less influence
-		updateLeader(newLeaderName);
-		return FAIL;
+		cout<<"The origin leader has been overthrowned by "<<curLeader.getName()<<endl;
+		updateLeader(curLeader.getName());
+		return FAIL; //the current leader in invalid
 	}
-	
+  return SUCCESS;
 }
+// {
+// 	map<USINT,string> PoliticalInfluenceRank;
+// 	vector<Noble>::const_iterator it_c=_famliy_members.begin();
+
+// 	for(;it_c!=_famliy_members.end();it_c++)
+// 	{
+// 		PoliticalInfluenceRank.insert(make_pair(it_c->getInfluence(),it_c->getName()));
+// 	}
+//     return SUCCESS;
+// }
+
+// ostream & King::printInfo(ostream & ros) const
+// {
+// 	//get the family of the king
+// 	vector<NobleFamily> familes= _king_s_controlled_families; 
+// 	for(int i=0; i<familes.size();i++)
+// 	{
+// 		vector<NobleFamily>::const_iterator it_c=familes.begin();
+// 		//sameperson not implemented
+// 		it_c=find(familes.begin(),familes.end();sameperson);
+// 		if(it_c!=)
+// 	}
+// 	ros<<"King "<<this->Noble::getName()<<" from noble family "<<
+
+// }

@@ -75,6 +75,7 @@ class Community
 		virtual ERR_CODE addMembers(const Person & rPerson)
 		{
 			_organizaed_people.push_back(rPerson);
+			return SUCCESS;
 		}
 		//return organization name
 		virtual string getName() const=0;
@@ -102,6 +103,20 @@ class Noble: public Person
 		ERR_CODE updateInfluence(const USINT & influence_margin);
 	    //return organization name
 		string getName() const;
+		//return influence 
+		USINT getInfluence() const {return _political_influence;}
+		//is the same noble, since only noble have a name
+		//same-person comparsion is only valid for noble and its derived
+		//class
+		bool operator==(const Noble & rnoble) const
+		{
+			return this->getName()==rnoble.getName();
+		}
+		//a noble greater than another when he has more influence;
+		bool operator>(const Noble & rn2) const
+		{
+			return this->getInfluence()>rn2.getInfluence();
+		}
 		~Noble();
 	protected:
 };
@@ -112,21 +127,24 @@ class NobleFamily: public Community
     	const string _last_name;
     	//each family member have the same last name
 		vector<Noble> _famliy_members;
-		string _family_lead_s_first_name;
+		string _leader_name;
 	public:
 		explicit NobleFamily(const string & rname,const vector<Noble>& rmembers, 
 	       const string & rleadername):_last_name(rname),_famliy_members(rmembers),
-          _family_lead_s_first_name(rleadername){}
+          _leader_name(rleadername){}
 		ostream & printInfo(ostream & ros) const;
 		NobleFamily* clone() const;
 		//add a family member
 		ERR_CODE addMembers(const Noble & rNoble);
 		//find new leader with the largest political influence
 		ERR_CODE isLeaderValid();
+		//is the name, return if the string named the family
+		ERR_CODE islastName(const string & nameStr) const;
 		//change family leader
 		ERR_CODE updateLeader(const string & rnewLeaderName);
 	    //return organization name
 		string getName() const;
+
 		~NobleFamily(){}
 	protected:
 		
@@ -137,14 +155,17 @@ class King: public Noble
 	private:
 		//NobleFamily _king_s_family;
 		Noble _heir;
-		vector<NobleFamily> _king_s_controlled_families;
-		USINT _king_s_prestige;
+		string _family_name;
+		vector<NobleFamily> _controlled_families;
+		USINT _prestige;
 
 		const USINT _administration_ability;
 		const USINT _diplomacy_ability;
 		const USINT _military_ability;
     public:
-    	explicit King();
+    	explicit King(string name, USINT influence,const string & family_name, const Noble & heir,const vector<NobleFamily>
+	       leading_family,const USINT prestige):Noble(name,influence),_heir(heir),_family_name(family_name),_controlled_families(leading_family),
+          _prestige(prestige),_administration_ability(0),_diplomacy_ability(0),_military_ability(0){}
     	//print out class information
 		ostream & printInfo() const;
 		//return class information
@@ -157,6 +178,8 @@ class King: public Noble
 		ERR_CODE changeheir(const Noble & rnewheir);
 		//modify prestige of the king
 		ERR_CODE modifyPrestige(const USINT margins);
+		//which family the king come from
+		string getfamilyName() const {return _family_name;}
     	~King();
 	protected:
 };
