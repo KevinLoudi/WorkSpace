@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1479379930 source:/home/kevin/git-codebank/War_on_Map/test/Community.cpp
+	"Community.h"
+	"GobalDefine.h"
+	<ctime>
+	<cstdlib>
+	<queue>
+
+1479379930 /home/kevin/git-codebank/War_on_Map/test/Community.h
+	<vector>
+	<iostream>
+	"GobalDefine.h"
+
+1479379930 /home/kevin/git-codebank/War_on_Map/test/GobalDefine.h
+	<string>
+	"Community.h"
+
+1479382729 source:/home/kevin/git-codebank/War_on_Map/test/test_in_codeblock/main.cpp
+	<cstdlib>
+	<ctime>
+	<iostream>
+	"../Community.h"
+	"../GobalDefine.h"
+
