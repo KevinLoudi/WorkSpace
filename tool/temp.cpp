@@ -1,4 +1,101 @@
+/*Read-write mutex*/
+#include <iostream>
 #include <boost/thread/thread.hpp>
+#include <boost/thread/read_write_mutex.hpp>
+#include <string>
+using namespace std;
+
+const string EMPTY_QUEUE="empty queue! can not dequeue!!";
+
+template<typename T>
+class Queue
+{
+    public:
+      //give writers priority
+      Queue():_rwMutex(boost::read_write_scheduling_policy::write_priority){}
+      ~Queue(){}
+
+      void enQueue(const T & x)
+      {
+      	//use r/w lock when enQueue update data
+      	boost::read_write_mutex::scoped_write_lock writeLock(_rwMutex);
+      	_list.push_back(x);
+      }
+
+      T getFront()
+      {
+      	boost::read_write_mutex::scoped_read_lock readLock(_rwMutex);
+      	if(_list.empty())
+      		throw EMPTY_QUEUE;
+      	return (_list.front());
+      }
+
+      void deQueue()
+      {
+      	boost::read_write_mutex::scoped_write_lock writeLock(_rwMutex);
+      	if(_list.empty())
+      		throw EMPTY_QUEUE;
+        T tmp=_list.front();
+        _list.pop_front();
+      	return(tmp);
+      }
+    private:
+      std::list<T> _list;
+      boost::read_write_mutex _rwMutex;
+  };
+
+Queue<string> strQueue;
+
+void send()
+{
+	string instr="Yan";
+	for(int i=0;i<10;i++)
+    {
+  	 strQueue.enQueue(s);
+  	 cout<<"enter "<<s<<" to queue."<<endl;
+    }
+}
+
+void recv()
+{
+
+}
+
+void check()
+{
+   string s;
+   for(int i=0;i<10;i++)
+   {
+    try
+    {
+    	s=strQueue.getFront();
+    	cout<<"the front element is "<<s<<endl;
+    }
+    catch(string es)
+    {
+    	cout<<es<<endl;
+    }
+   }
+}
+
+int main()
+{
+	boost::thread writer(send);
+	boost::thread_group grp;
+
+	grp.create_thread(check);
+	grp.create_thread(check);
+	grp.create_thread(check);
+	grp.create_thread(check);
+	grp.create_thread(check);
+	grp.create_thread(check);
+	grp.create_thread(check);
+
+	thr1.join();
+	grp.join_all();
+}
+
+/*#include <boost/thread/thread.hpp>
 #include <iostream>
 #include <string>
 using namespace std;
@@ -77,7 +174,7 @@ int main()
 	thr2.join();
 
 	return 0;
-}
+}*/
 
 // #include <iostream>
 // #include <string>
