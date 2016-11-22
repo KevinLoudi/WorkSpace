@@ -1,5 +1,9 @@
 #include "basicPlace.h"
 
+
+UINT Place::_itemNum=0;
+UINT City::_cityNum=0;
+
 inline PlaceInfo* Place::getInfo() const
 {
 	return _placeInfo;
@@ -14,6 +18,7 @@ inline bool Place::updateInfo(PlaceInfo & P)
 ostream & Place::getInfo(ostream & os) const
 {
 	os<<"This is a place with an area of "<<_placeInfo->_Area<<endl;
+	return os;
 }
 
 ostream & City::getInfo(ostream & os) const
@@ -21,6 +26,7 @@ ostream & City::getInfo(ostream & os) const
 	os<<_cityInfo->_CityName<<" is holded by "<<
 	_cityInfo->_CityHolder<<" and have a population of "<<
 	getPopulation()<<endl;
+	return os; //actually return is not needed
 }
 
 void City::investMoney(const UINT cash)
@@ -35,6 +41,7 @@ void City::investMoney(const UINT cash)
 bool City::alterHolder(const string & newHolder)
 {
 	_cityInfo->_CityHolder=newHolder;
+	return true;
 }
 
 UINT City::getPopulation() const

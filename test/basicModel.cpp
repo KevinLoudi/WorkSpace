@@ -1,5 +1,7 @@
 #include "basicModel.h"
 
+UINT FileIO:: _IO_Num=0;
+
 bool FileIO::readTextFile(City* cities,UINT len)
 {
   //be care of the default file folder
@@ -21,15 +23,15 @@ bool FileIO::readTextFile(City* cities,UINT len)
     cout<<cityname<<" "<<cityholder<<" "<<products<<" "
     <<lat<<" "<<lon<<" "<<defencelev<<" "<<pop_den<<" "
     <<area<<endl;
-    cities[i]._cityInfo->_CityName=cityname; cities[i]._cityInfo->_CityHolder=cityholder; 
-    cities[i]._cityInfo->_ProductType=products; cities[i]._cityInfo->_Latitude=lat; 
-    cities[i]._cityInfo->_Longitude=lon; cities[i]._cityInfo->_High=high; 
+    cities[i]._cityInfo->_CityName=cityname; cities[i]._cityInfo->_CityHolder=cityholder;
+    cities[i]._cityInfo->_ProductType=products; cities[i]._cityInfo->_Latitude=lat;
+    cities[i]._cityInfo->_Longitude=lon; cities[i]._cityInfo->_High=high;
     cities[i]._cityInfo->_DenfenceLevel=defencelev;
     cities[i]._cityInfo->_Area=area; cities[i]._cityInfo->_PopulationDensity=pop_den;
     //cities[i].GetInfo();
     i++;
    }
-  
+
   infile.close();
   return true;
 }
@@ -60,7 +62,7 @@ bool FileIO::saveBinaryFile(City* c,UINT len) const
 		cin>>c[ix]._cityInfo->_PopulationDensity;
 		cin>>c[ix]._cityInfo->_Area;
 
-		cout<<"Continue input (Yes=c/No=q)..."<<endl; 
+		cout<<"Continue input (Yes=c/No=q)..."<<endl;
 		cin>>state;
 
 		//output data as file
@@ -150,10 +152,10 @@ bool Rank::isexist(const string & cityname)
 {
   //find in the name set
   SET_STRING::const_iterator ie=_citynames.find(cityname);
-  
+
   //find in _rand map
   MAP_STRING_UINT::const_iterator ir=_rank.find(cityname);
-  
+
   //check if found
   if(ie!=_citynames.end()&&ir!=_rank.end())
   {
@@ -183,7 +185,7 @@ void Rank::printCityname()
 template<typename Container>
 void Rank::printContents(const Container & stlcontainer)
 {
-  //need to add "typename" before iterator 
+  //need to add "typename" before iterator
   typename Container::const_iterator ie=stlcontainer.begin();
   while(ie!=stlcontainer.end())
   {
@@ -219,12 +221,12 @@ void Rank::findLargerItems(const UINT & stand, vector<string>& v_find_result) co
     v_city_names.push_back(ie->first);
     v_city_pop.push_back(ie->second);
   }
-  
+
   vector<UINT>::iterator it_find;
   vector<UINT>::iterator it_start=v_city_pop.begin();
   const vector<UINT>::iterator it_end=v_city_pop.end();
   int dis=0; //distance from the found element to the begin point
-  
+
   //I intend to find out all satisfied elements
   while(it_start!=it_end)
   {

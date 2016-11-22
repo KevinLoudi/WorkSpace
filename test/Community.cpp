@@ -174,28 +174,3 @@ ERR_CODE NobleFamily::isLeaderValid()
 	}
   return SUCCESS;
 }
-// {
-// 	map<USINT,string> PoliticalInfluenceRank;
-// 	vector<Noble>::const_iterator it_c=_famliy_members.begin();
-
-// 	for(;it_c!=_famliy_members.end();it_c++)
-// 	{
-// 		PoliticalInfluenceRank.insert(make_pair(it_c->getInfluence(),it_c->getName()));
-// 	}
-//     return SUCCESS;
-// }
-
-// ostream & King::printInfo(ostream & ros) const
-// {
-// 	//get the family of the king
-// 	vector<NobleFamily> familes= _king_s_controlled_families; 
-// 	for(int i=0; i<familes.size();i++)
-// 	{
-// 		vector<NobleFamily>::const_iterator it_c=familes.begin();
-// 		//sameperson not implemented
-// 		it_c=find(familes.begin(),familes.end();sameperson);
-// 		if(it_c!=)
-// 	}
-// 	ros<<"King "<<this->Noble::getName()<<" from noble family "<<
-
-// }

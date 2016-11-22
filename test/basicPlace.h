@@ -17,7 +17,7 @@ class PlaceInfo
 		_Longitude(lon),_High(high),_PopulationDensity(pd),_ProductType(pr),_Area(area){}
 	//Basic properties of a place
 	double _Latitude;
-	double _Longitude; 
+	double _Longitude;
 	double _High;
 	UINT  _PopulationDensity;
 	string _ProductType;
@@ -44,8 +44,8 @@ class Place
 		virtual bool updateInfo(PlaceInfo &  P);
 		//access number of actived place
 		virtual UINT getObjectNum() const {return _itemNum;}
-		
-		
+
+
 		//deconstructor
 		virtual ~Place()
 		{
@@ -60,12 +60,12 @@ class CityInfo: public PlaceInfo
   	//PlaceInfo Pos;
 	//a city has name, holder and denfence level
 	string _CityName;
-	string _CityHolder; 
+	string _CityHolder;
 	int _DenfenceLevel;
-	
+
 	CityInfo(double lat=0.0,double lon=0.0,double high=0.0,UINT pd=0,string pr="null products",UINT area=0,
 		string cn="null name",string ch="null holder",int df=0):PlaceInfo(lat,lon,high,pd,pr,area),
-		_CityName(cn),_CityHolder(ch),_DenfenceLevel(df){}		
+		_CityName(cn),_CityHolder(ch),_DenfenceLevel(df){}
 
 	~CityInfo(){}
 };

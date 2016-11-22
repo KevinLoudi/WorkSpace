@@ -38,7 +38,7 @@ class Method
 class FileIO: public Method
 {
   private:
-  	string _Filename; 
+  	string _Filename;
   protected:
   	static UINT _IO_Num;
   public:
@@ -87,7 +87,7 @@ struct displayAssElement
   }
 };
 
-//make non-sensitive comparsion 
+//make non-sensitive comparsion
 struct caseInsensitive
 {
   bool operator()(const string & str1,const string & str2) const
@@ -103,11 +103,11 @@ struct caseInsensitive
 };
 
 //make comparsion on the length of key-string
-struct comparelength 
+struct comparelength
 {
   bool operator() (const string& str1, const string& str2)
   {
-    return str1.length() < str2.length(); 
+    return str1.length() < str2.length();
   }
 };
 
@@ -145,7 +145,7 @@ class Multiplyer
       return elem1*elem2;
     }
 };
- 
+
 class Rank: public Method
 {
   private:
@@ -156,7 +156,7 @@ class Rank: public Method
     MAP_STRING_UINT _rank;
     VECTOR_CITY _cities;
     SET_STRING _citynames; //city name is unqiue
-    
+
     //print contents of sequence container
     template<typename Container>
     void printContents(const Container & stlcontainer);
@@ -165,7 +165,7 @@ class Rank: public Method
     template<typename assConatiner>
     void printAssContainer(const assConatiner & asscontainer);
 	protected:
-		
+
 	public:
     explicit Rank(VECTOR_CITY & incity):_cities(incity)
     {
@@ -177,10 +177,10 @@ class Rank: public Method
      {
         _citynames.insert((*it)._cityInfo->_CityName);
 
-        //_rank.insert(make_pair((*it)._cityInfo->_CityName,(*it)._cityInfo->_PopulationDensity)); 
+        //_rank.insert(make_pair((*it)._cityInfo->_CityName,(*it)._cityInfo->_PopulationDensity));
         _rank.insert(pair<string,UINT>((*it)._cityInfo->_CityName,(*it)._cityInfo->_PopulationDensity));
         //_rank[(*it)._cityInfo->_CityName]=(*it)._cityInfo->_PopulationDensity);
-     } 
+     }
 
      //display elements using std::for_each
      displayElement<string> mResult;
