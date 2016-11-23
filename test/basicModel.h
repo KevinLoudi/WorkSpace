@@ -18,8 +18,8 @@
 #include "basicPlace.h"
 #define CITYLIST "CityList.txt"
 using namespace std;
+typedef unsigned short int USINT;
 
-typedef unsigned long UINT;
 
 //reserved is-a relationship for potential usage;
 class Method

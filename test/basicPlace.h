@@ -7,7 +7,7 @@
 #include <iostream>
 #include <ctime>
 using namespace std;
-typedef unsigned long UINT;
+typedef unsigned int UINT;
 
 //work as a struct
 class PlaceInfo

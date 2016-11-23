@@ -5,9 +5,10 @@
 #include "Community.h"
 #include "GobalDefine.h"
 #include "basicModel.h"
-#include "basicPlace.h"
+//#include "basicPlace.h"
 #include "basicEvent.h"
-using namespace std;
+
+typedef unsigned short int USINT;
 
 //self-defined smart pointer
 template<typename T> //T should have deep copy operation named clone()

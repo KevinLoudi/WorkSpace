@@ -1,8 +1,8 @@
 #ifndef COMMUNITY_H
 #define COMMUNITY_H
-//Person act as a brick of a community, and can derived to 
+//Person act as a brick of a community, and can derived to
 //more specified type: nobel, warrior, priest, and king (now we limited
-//person type to only political issues in mediaeval) 
+//person type to only political issues in mediaeval)
 
 //all class should work as template class since they present different
 //in different culture, in China, is Wangye, Jiangjue, Daoshi, Huangdi,
@@ -10,19 +10,20 @@
 #include <vector>
 #include <iostream>
 #include "GobalDefine.h"
+typedef unsigned short int USINT;
 const static unsigned short int ADULT_AGE=18;
 //#define ADULT_AGE 18
 using namespace std;
 
-typedef unsigned short int USINT;
+
 enum GENDER {MALE=0,FMALE=1};
 //keep enum members in not-confusing order
 enum ERR_CODE {FAIL,SUCCESS};
 enum Judge {NO=false,YES=true};
 
 //declaration of classes
-//name of a person or a organization should be treat as 
-//key 
+//name of a person or a organization should be treat as
+//key
 class Person;
 class Community;
 class Noble;
@@ -40,10 +41,10 @@ static vector<Army> DEFAULT_VECTOR_ARMY;
 
 class Person
 {
-	protected: 
+	protected:
 		//an common citzen have no name
 		//only male above 16 are allowed to recurited as soldier
-		GENDER _gender; 
+		GENDER _gender;
 		USINT _age;
 	public:
 		explicit Person(); //USINT age=0,GENDER gender=MALE
@@ -103,7 +104,7 @@ class Noble: public Person
 		ERR_CODE updateInfluence(const USINT & influence_margin);
 	    //return organization name
 		string getName() const;
-		//return influence 
+		//return influence
 		USINT getInfluence() const {return _political_influence;}
 		//is the same noble, since only noble have a name
 		//same-person comparsion is only valid for noble and its derived
@@ -129,7 +130,7 @@ class NobleFamily: public Community
 		vector<Noble> _famliy_members;
 		string _leader_name;
 	public:
-		explicit NobleFamily(const string & rname,const vector<Noble>& rmembers, 
+		explicit NobleFamily(const string & rname,const vector<Noble>& rmembers,
 	       const string & rleadername):_last_name(rname),_famliy_members(rmembers),
           _leader_name(rleadername){}
 		ostream & printInfo(ostream & ros) const;
@@ -147,7 +148,7 @@ class NobleFamily: public Community
 
 		~NobleFamily(){}
 	protected:
-		
+
 };
 
 class King: public Noble
@@ -198,11 +199,11 @@ class Kingdom: public NobleFamily
 		Kingdom* clone() const;
 		//add new members of the community or army group
 		//C++ does not allow temporaries to be bound to non-const references.
-		ERR_CODE addMembers(vector<Warrior> & rWarrior, 
+		ERR_CODE addMembers(vector<Warrior> & rWarrior,
 			vector<Army> & rnewArmies=DEFAULT_VECTOR_ARMY);
 		//change king, meanwhile change ruler family or not
 		//while a const reference is allowed
-		ERR_CODE seizPowerbyotherFamily(const Noble & rnewking, 
+		ERR_CODE seizPowerbyotherFamily(const Noble & rnewking,
 			const NobleFamily & rnewFamily);
 		//return organization name
 		string getName() const;
@@ -253,10 +254,10 @@ class Army: public Community
 		//change army lead
 		ERR_CODE changeLeader(const Warrior & rnewGeneral);
 		//modify morale
-		ERR_CODE modifyMorale(const USINT morale_margin); 
+		ERR_CODE modifyMorale(const USINT morale_margin);
 		~Army();
 	protected:
-		
+
 };
 
 
