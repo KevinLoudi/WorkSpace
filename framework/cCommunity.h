@@ -26,10 +26,11 @@ namespace FrameWork
     {
      protected:
         string _King;
-        vector<aPlace> *_Cities;
+        vector<City> _Cites;
+        vector<aPlace> *_Site;  //a general place that could point to any kind of place
      public:
-        Kingdom(const UINT & tag, const string & name, const string & king, vector<City> & cities):
-             aCommunity(tag,name),_King(king),_Cities(cities){}
+        Kingdom(const UINT & tag, const string & name, const string & king, vector<City> & cites,  vector<aPlace> *site):
+             aCommunity(tag,name),_King(king),_Cites(cites),_Site(site){}
         ~Kingdom() {}
         ostream & info(ostream & ros) const;
     };

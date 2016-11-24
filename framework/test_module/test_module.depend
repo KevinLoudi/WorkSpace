@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1479949685 source:d:\code\workspace\framework\framework\ccommunity.cpp
+1479956898 source:d:\code\workspace\framework\framework\ccommunity.cpp
 	"cCommunity.h"
 
-1479949658 d:\code\workspace\framework\framework\ccommunity.h
+1479956737 d:\code\workspace\framework\framework\ccommunity.h
 	<iostream>
 	<vector>
 	"cPlace.h"
@@ -20,4 +20,14 @@
 
 1479948764 source:d:\code\workspace\framework\framework\cplace.cpp
 	"cPlace.h"
+
+1479956377 source:d:\code\workspace\framework\framework\test_module\main.cpp
+	"../../common/cGobalDefine.h"
+
+1479953179 d:\code\workspace\framework\common\cgobaldefine.h
+	"../framework/cPlace.h"
+	"../framework/cCommunity.h"
+	"../framework/cEvent.h"
+	<iostream>
+	<vector>
 

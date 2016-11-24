@@ -1,9 +1,3 @@
-/*
- Author: Kevin
- Propose:
- Environment:
-*/
-
 #include "cCommunity.h"
 
 namespace FrameWork
@@ -12,7 +6,11 @@ namespace FrameWork
 
    ostream & Kingdom::info(ostream & ros) const
    {
-       return ros<<"a kingdom named "<<this->_Name<<" , whose king is "<<this->_King<<" and hold "<<this->_Cities.size()
-        <<" cities"<<endl;
+       ros<<"a kingdom named "<<this->_Name<<" , whose king is "<<this->_King<<" and hold "
+       <<this->_Cites.size() <<" cities, and hold ";
+       if(_Site->empty())
+         return ros;
+      else
+         return ros;  //<<_Site.begin().;
    }
 };

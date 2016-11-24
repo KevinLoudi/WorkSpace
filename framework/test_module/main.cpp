@@ -5,6 +5,8 @@ int main()
     using namespace std;
     typedef FrameWork::City City_;
     typedef FrameWork::Kingdom Kingdom_;
+    typedef FrameWork::Farmland Farmland_;
+    typedef FrameWork::aPlace aPlace_;
     vector<City_> cities;
     //ancient Chinese cities name in dynasty of Zhou
     cities.push_back(City_(2,3,"Jian",23000)); //¼» , base of Yan, Ñà
@@ -30,12 +32,17 @@ int main()
     vector<City_> zhao_cities(it+3,it+6);
     vector<City_> wei_cities(it+6,it+9);
 
+    Farmland_  *field1 = new Farmland_(3,3,"Wheat",2);
+    aPlace_ *site1 = field1;
+    vector<aPlace_> *yan_site;
+    yan_site.push_back(site1);
+    Kingdom_ Yan(1,"Yan","YanZhaoWang",yan_cities,yan_site);
+    cout<<Yan.info(cout);
 
-    Kingdom_ Yan(1,"Yan","YanZhaoWang",yan_cities);
-    Kingdom_ Zhao(3,"Zhao","ZhaoHuiWenWang",zhao_cities);
-    Kingdom_ Wei(2,"Wei","WeiHuiWang",wei_cities);
-
-    cout<<Yan.info(cout)<<Zhao.info(cout)<<Wei.info(cout);
+//    Kingdom_ Zhao(3,"Zhao","ZhaoHuiWenWang",zhao_cities);
+//    Kingdom_ Wei(2,"Wei","WeiHuiWang",wei_cities);
+//
+//    cout<<Yan.info(cout)<<Zhao.info(cout)<<Wei.info(cout);
     return 0;
 }
 
