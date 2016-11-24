@@ -1,50 +1,64 @@
 #ifndef CPLACE_H_INCLUDED
 #define CPLACE_H_INCLUDED
 
+#include<iostream>
+
+typedef unsigned int UINT;
+
 namespace FrameWork
 {
     using namespace std;
-    class PlaceInfo
+    //abstract class aPlace
+    class aPlace
     {
-    public:
-  	 explicit PlaceInfo(double lat=0.0,double lon=0.0,double high=0.0,UINT pd=0,string pr="null products",UINT area=0):_Latitude(lat),
-		_Longitude(lon),_High(high),_PopulationDensity(pd),_ProductType(pr),_Area(area){}
-	 //Basic properties of a place
-	 double _Latitude;
-	 double _Longitude;
-	 double _High;
-	 UINT  _PopulationDensity;
-	 string _ProductType;
-	 UINT _Area;
-	 ~PlaceInfo(){}
+       protected:
+          const UINT _Lat;
+          const UINT _Lon;
+       public:
+         aPlace(const UINT & lat,const UINT & lon ):_Lat(lat),_Lon(lon){}
+         virtual ~aPlace() {}
+         virtual ostream & info(ostream & ros) const=0;
     };
 
-   class Place
+    class City: public aPlace
     {
-	 private:
-		//information about a place
-		PlaceInfo* _placeInfo;
-	protected:
-		//number of actived place
-		static UINT _itemNum;
-	public:
-		//constructor
-		explicit Place(PlaceInfo* p= new PlaceInfo()):_placeInfo(p){_itemNum++;}
-		//get information of a place
-		virtual PlaceInfo* getInfo() const;
-		//override getInfo operation to print information
-		virtual ostream & getInfo(ostream & os) const;
-		//update information of a place
-		virtual bool updateInfo(PlaceInfo &  P);
-		//access number of actived place
-		virtual UINT getObjectNum() const {return _itemNum;}
-		//deconstructor
-		virtual ~Place()
-		{
-			delete _placeInfo;
-			_itemNum--;
-		}
-   };
+       protected:
+         const string _Name;
+         UINT _Population;
+       public:
+         City(const UINT & lat,const UINT & lon,const string & name, const UINT & pop):
+             aPlace(lat,lon),_Name(name),_Population(pop){}
+         //copy constructor
+         City(const City& c): aPlace(c._Lat, c._Lon),_Name(c._Name),_Population(c._Population) {}
+         ~City(){}
+         //get name
+         string name() const {return this->_Name;}
+         ostream & info(ostream & ros) const;
+    };
+
+    class Mountian: public aPlace
+    {
+      protected:
+        const UINT _High;
+        UINT _Denfence;
+      public:
+        Mountian(const UINT & lat,const UINT & lon,const UINT & high,const UINT & den):
+            aPlace(lat,lon),_High(high),_Denfence(den){}
+         ~Mountian() {}
+         ostream & info(ostream & ros) const;
+    };
+
+    class Farmland: public aPlace
+    {
+      protected:
+        const string _Crop;
+        UINT _Productive;
+     public:
+         Farmland(const UINT & lat,const UINT & lon, const string & crop, const UINT & pro):
+            aPlace(lat,lon),_Crop(crop),_Productive(pro){}
+         ~Farmland() {}
+         ostream & info(ostream & ros) const;
+    };
 };
 
 

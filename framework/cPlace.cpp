@@ -8,24 +8,18 @@
 
 namespace FrameWork
 {
-    UINT Place::_itemNum=0;
-    UINT City::_cityNum=0;
-
-    inline PlaceInfo* Place::getInfo() const
+    ostream & City::info(ostream & ros) const
     {
-        return _placeInfo;
+        return ros<<"a city named "<<this->_Name<<" with a population of "<<this->_Population<<endl;
     }
 
-    inline bool Place::updateInfo(PlaceInfo & P)
+    ostream & Mountian::info(ostream & ros) const
     {
-        *(this->_placeInfo)=P;
-        return true;
+        return ros<<"a mountain region with high "<<this->_High<<" and denfence level of "<<this->_Denfence<<endl;
     }
 
-    ostream & Place::getInfo(ostream & os) const
+    ostream & Farmland::info(ostream & ros) const
     {
-        os<<"This is a place with an area of "<<_placeInfo->_Area<<endl;
-        return os;
+        return ros<<"a farmland region plant "<<this->_Crop<<" as a productivity of "<<this->_Productive<<endl;
     }
-
 };

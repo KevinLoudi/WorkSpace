@@ -1,0 +1,34 @@
+# depslib dependency file v1.0
+1479952056 source:d:\code\workspace\framework\framework\framework_output\main.cpp
+	"main.h"
+	"../../common/cGobalDefine.h"
+
+1446667744 d:\code\workspace\framework\framework\framework_output\main.h
+	<windows.h>
+
+1479951755 d:\code\workspace\framework\common\cgobaldefine.h
+	"../framework/cPlace.h"
+	<iostream>
+
+1479951563 d:\code\workspace\framework\framework\cplace.h
+	<iostream>
+
+1479948764 source:d:\code\workspace\framework\framework\cplace.cpp
+	"cPlace.h"
+
+1479949685 source:d:\code\workspace\framework\framework\ccommunity.cpp
+	"cCommunity.h"
+
+1479949658 d:\code\workspace\framework\framework\ccommunity.h
+	<iostream>
+	<vector>
+	"cPlace.h"
+
+1479951563 source:d:\code\workspace\framework\framework\cevent.cpp
+	"cEvent.h"
+
+1479951429 d:\code\workspace\framework\framework\cevent.h
+	<iostream>
+	"cPlace.h"
+	"cCommunity.h"
+
