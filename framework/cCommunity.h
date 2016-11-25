@@ -19,6 +19,7 @@ namespace FrameWork
         aCommunity(const UINT & tag, const string & name):
            _Tag(tag),_Name(name) {}
         virtual ~aCommunity() {}
+        string name() {return _Name;}
         virtual ostream & info(ostream & ros) const=0;
     };
 
@@ -27,10 +28,10 @@ namespace FrameWork
      protected:
         string _King;
         vector<City> _Cites;
-        vector<aPlace> *_Site;  //a general place that could point to any kind of place
+        //vector<aPlace> *_Site;  //a general place that could point to any kind of place
      public:
-        Kingdom(const UINT & tag, const string & name, const string & king, vector<City> & cites,  vector<aPlace> *site):
-             aCommunity(tag,name),_King(king),_Cites(cites),_Site(site){}
+        Kingdom(const UINT & tag, const string & name, const string & king, vector<City> & cites):
+             aCommunity(tag,name),_King(king),_Cites(cites){}
         ~Kingdom() {}
         ostream & info(ostream & ros) const;
     };
