@@ -32,6 +32,16 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="../../common/cAlgorithm.cpp" />
+		<Unit filename="../../common/cAlgorithm.h" />
+		<Unit filename="../../common/cGobalDefine.cpp" />
+		<Unit filename="../../common/cGobalDefine.h" />
+		<Unit filename="../cCommunity.cpp" />
+		<Unit filename="../cCommunity.h" />
+		<Unit filename="../cEvent.cpp" />
+		<Unit filename="../cEvent.h" />
+		<Unit filename="../cPlace.cpp" />
+		<Unit filename="../cPlace.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

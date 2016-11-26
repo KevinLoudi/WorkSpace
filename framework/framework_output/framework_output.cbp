@@ -41,6 +41,10 @@
 			</Target>
 		</Build>
 		<Unit filename="../../common/cGobalDefine.h" />
+		<Unit filename="../cCommunity.cpp" />
+		<Unit filename="../cCommunity.h" />
+		<Unit filename="../cEvent.cpp" />
+		<Unit filename="../cEvent.h" />
 		<Unit filename="../cPlace.cpp" />
 		<Unit filename="../cPlace.h" />
 		<Unit filename="main.cpp" />

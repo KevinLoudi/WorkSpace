@@ -1,5 +1,12 @@
+#include <C:\Program Files\boost_1_62_0\boost/algorithm/string.hpp>
+
+int int main(int argc, char const *argv[])
+{
+  /* code */
+  return 0;
+}
 /*thread in stl*/
-#include <string>
+/*#include <string>
 #include <iostream>
 #include <thread>
 
@@ -18,7 +25,7 @@ int main()
 
     // Makes the main thread wait for the new thread to finish execution, therefore blocks its own execution.
     t1.join();
-}
+}*/
 
 
 /*Read-write mutex in boost*/

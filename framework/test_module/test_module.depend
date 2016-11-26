@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1479956898 source:d:\code\workspace\framework\framework\ccommunity.cpp
+1479965118 source:d:\code\workspace\framework\framework\ccommunity.cpp
 	"cCommunity.h"
 
-1479956737 d:\code\workspace\framework\framework\ccommunity.h
+1479969323 d:\code\workspace\framework\framework\ccommunity.h
 	<iostream>
 	<vector>
 	"cPlace.h"
@@ -21,13 +21,29 @@
 1479948764 source:d:\code\workspace\framework\framework\cplace.cpp
 	"cPlace.h"
 
-1479956377 source:d:\code\workspace\framework\framework\test_module\main.cpp
+1480128103 source:d:\code\workspace\framework\framework\test_module\main.cpp
 	"../../common/cGobalDefine.h"
 
-1479953179 d:\code\workspace\framework\common\cgobaldefine.h
+1480053218 d:\code\workspace\framework\common\cgobaldefine.h
 	"../framework/cPlace.h"
 	"../framework/cCommunity.h"
 	"../framework/cEvent.h"
+	"cAlgorithm.h"
 	<iostream>
+	<fstream>
 	<vector>
+	<thread>
+
+1479970344 source:d:\code\workspace\framework\common\cgobaldefine.cpp
+	"cGobalDefine.h"
+
+1479963124 d:\code\workspace\framework\data\s.h
+
+1480130144 d:\code\workspace\framework\common\calgorithm.h
+	<iostream>
+	<pthread.h>
+	<assert.h>
+
+1480128730 source:d:\code\workspace\framework\common\calgorithm.cpp
+	"cAlgorithm.h"
 
