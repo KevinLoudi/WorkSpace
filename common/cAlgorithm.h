@@ -58,44 +58,45 @@ class VirBase
 {
 public:
     std::string _ClassName;
-    VirBase(std::string name):_ClassName(name)
+    VirBase(std::string name="null VirBase"):_ClassName(name)
      {std::cout <<"VirBase object"<< _ClassName<<"constructed"<<std::endl;}
-    ~VirBase() {std::cout <<"VirBase object"<< _ClassName<<"destructed"<<std::endl;}
-    virtual void sleep() = 0;
-    virtual void see() = 0;
+    virtual ~VirBase() {std::cout <<"VirBase object"<< _ClassName<<"destructed"<<std::endl;}
+    virtual void sleep() {};
+    virtual void see() {};
 };
 
 class VirDerivedOne: public VirBase
 {
 public:
-    VirDerivedOne(std::string name):VirBase(name)
+    VirDerivedOne(std::string name="null VirDerivedOne"):VirBase(name)
      {std::cout <<"VirDerivedOne object"<< _ClassName<<"constructed"<<std::endl;}
      ~VirDerivedOne()
      {std::cout <<"VirDerivedOne object"<< _ClassName<<"destructed"<<std::endl;}
-    void sleep()  {std::cout <<"one sleep"<<std::endl;}
-    void eat() {std::cout <<"one see"<<std::endl;}
+    virtual void sleep()  {std::cout <<"one sleep"<<std::endl;}
+    virtual void eat() {std::cout <<"one see"<<std::endl;}
 };
 
 class VirDerivedTwo: public VirBase
 {
 public:
-     VirDerivedTwo(std::string name):VirBase(name)
+     VirDerivedTwo(std::string name="null VirDerivedTwo"):VirBase(name)
      {std::cout <<"VirDerivedTwo object"<< _ClassName<<"constructed"<<std::endl;}
      ~VirDerivedTwo()
      {std::cout <<"VirDerivedTwo object"<< _ClassName<<"destructed"<<std::endl;}
-    void sleep()  {std::cout <<"two sleep"<<std::endl;}
-    void eat() {std::cout <<"two see"<<std::endl;}
+    virtual void sleep()  {std::cout <<"two sleep"<<std::endl;}
+    virtual void eat() {std::cout <<"two see"<<std::endl;}
 };
 
 //if I do not use virtual inheritance, error "reference ambiguous" will happen
-class VirMulDerived: virtual  public VirDerivedOne,  virtual public VirDerivedTwo
+class VirMulDerived: virtual  public VirDerivedOne, virtual public VirDerivedTwo
 {
-      VirMulDerived(std::string name):VirDerivedOne(name)
-     {std::cout <<"VirMulDerived object"<< _ClassName<<"constructed"<<std::endl;}
+public:
+      VirMulDerived(std::string name="null VirDerivedTwo")
+     {std::cout <<"VirMulDerived object"<<VirBase::_ClassName<<"constructed"<<std::endl;}
      ~VirMulDerived()
-     {std::cout <<"VirMulDerived object"<< _ClassName<<"destructed"<<std::endl;}
+     {std::cout <<"VirMulDerived object"<<VirBase:: _ClassName<<"destructed"<<std::endl;}
     //life is more than sleep and eat
-    void life() {VirDerivedOne::sleep(); VirDerivedTwo::eat();}
+    void life() {VirDerivedOne::sleep(); }
 };
 
 class Method
