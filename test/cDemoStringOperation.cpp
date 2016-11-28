@@ -125,6 +125,12 @@ char* m_delet(char* str,  char sub)
     //cout<<&head<<endl; //p and head have identical address
     cout<<"End of Debug messages...."<<endl;
     #endif // DEBUG
+
+    if (*p) //discuss for first char
+    {
+        *str++ = *p;
+    }
+    
     while(*p++)
     {
         //every char not equal sub is part of the new str
@@ -133,7 +139,7 @@ char* m_delet(char* str,  char sub)
             *str++=*p;
         }
     }
-    *str=='\0';
+    *str ='\0';
 
     return head;
 }
