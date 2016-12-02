@@ -4,21 +4,14 @@
 
 namespace Algorithm
 {
-     template<typename T>
-     inline _swap(T &a, T &b)
-     {
-         T tmp=a;
-         a=b;
-         b=tmp;
-     }
-
      template<class T>
      class Sort
      {
      public:
             Sort() {}
             ~Sort() {}
-            std::ostream& print(std::ostream & ros, T *a, const int& n);
+            void _swap(T &a, T &b);
+            //std::ostream& print(std::ostream & ros, T *a, int n);
             void selectsort(T *a, int n);
      };
 };

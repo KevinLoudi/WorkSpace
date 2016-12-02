@@ -9,7 +9,7 @@ int main()
     using namespace Algorithm;
     Sort<int> s;
     int a[]={12,15,78,96,53,47,19,44};
-    s.selectsort<int>(a,8);
-    cout << "Hello world!" << endl;
+    s.selectsort(a,8);
+    //s.print(cout,a,8);
     return 0;
 }

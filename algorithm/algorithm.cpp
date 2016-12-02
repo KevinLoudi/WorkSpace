@@ -2,6 +2,14 @@
 
 namespace Algorithm
 {
+     template<class T>
+     inline void Sort<T>::_swap(T &a, T &b)
+     {
+         T tmp=a;
+         a=b;
+         b=tmp;
+     }
+
     template<class T>
     void Sort<T>::selectsort(T *a, int n)
     {
@@ -16,8 +24,8 @@ namespace Algorithm
         }
     }
 
-    template<class T>
-    std::ostream& Sort<T>::print(std::ostream & ros, T *a, const int& n)
+    /*template<class T>
+    std::ostream& Sort<T>::print(std::ostream & ros, T *a, int n)
     {
         int ix=n;
         while(ix--)
@@ -25,5 +33,5 @@ namespace Algorithm
             ros<<a[ix]<<std::endl;
         }
         return ros;
-    }
+    }*/
 };
