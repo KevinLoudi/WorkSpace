@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1480662729 source:d:\code\workspace\practices\project\test_in_codeblock\main.cpp
+	<iostream>
+	"../../algorithm/algorithm.h"
+
+1480663078 d:\code\workspace\practices\algorithm\algorithm.h
+	<iostream>
+
+1480662976 source:d:\code\workspace\practices\algorithm\algorithm.cpp
+	"algorithm.h"
+
