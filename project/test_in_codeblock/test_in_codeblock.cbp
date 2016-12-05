@@ -12,6 +12,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-Wall" />
 					<Add option="-g" />
 				</Compiler>
 			</Target>
@@ -34,6 +35,8 @@
 		</Compiler>
 		<Unit filename="../../algorithm/algorithm.cpp" />
 		<Unit filename="../../algorithm/algorithm.h" />
+		<Unit filename="../../algorithm/basic_data_structure.cpp" />
+		<Unit filename="../../algorithm/basic_data_structure.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

@@ -1,11 +1,19 @@
 # depslib dependency file v1.0
-1480836482 source:d:\code\workspace\practices\project\test_in_codeblock\main.cpp
+1480925795 source:d:\code\workspace\practices\project\test_in_codeblock\main.cpp
 	<iostream>
 	"../../algorithm/algorithm.h"
+	"../../algorithm/basic_data_structure.h"
 
-1480837199 d:\code\workspace\practices\algorithm\algorithm.h
+1480837275 d:\code\workspace\practices\algorithm\algorithm.h
 	<iostream>
 
 1480663859 source:d:\code\workspace\practices\algorithm\algorithm.cpp
 	"algorithm.h"
+
+1480926002 d:\code\workspace\practices\algorithm\basic_data_structure.h
+	<iostream>
+
+1480926002 source:d:\code\workspace\practices\algorithm\basic_data_structure.cpp
+	"basic_data_structure.h"
+	<iostream>
 
