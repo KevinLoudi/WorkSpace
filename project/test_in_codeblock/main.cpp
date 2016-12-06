@@ -30,8 +30,12 @@ int main()
     //cout<<l.removeLast()<<" "<<l.removeFirst()<<endl;
     l.addix("cc",2);
     cout<<"access "<<l.getix(2)<<endl;
+    cout<<"find "<<"cc at"<<l.searchix("cc")<<endl;
     cout<<l.removeix(2)<<endl;
     cout<<"newest list"<<endl;
+    cout<<l.print(cout);
+    cout<<"clear list"<<endl;
+    cout<<l.clearlist();
     cout<<l.print(cout);
     /*int b=23;
     int* pb=&b;

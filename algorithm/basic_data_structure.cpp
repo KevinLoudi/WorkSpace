@@ -12,7 +12,7 @@ namespace DataStructure
     template<typename T>
     LinkList<T>::~LinkList()
     {
-
+        //clearlist(); //clear list in destructor
     }
 
     template<typename T>
@@ -43,6 +43,7 @@ namespace DataStructure
         if(pnode==NULL)
         {
             ros<<"empty list"<<std::endl;
+            ros<<"current list length: "<<getsize()<<std::endl;
             return ros;
         }
         //find the tail of the list
@@ -52,6 +53,7 @@ namespace DataStructure
             pnode=pnode->next;
             ros<<pnode->element<<std::endl;
         }
+        ros<<"current list length: "<<getsize()<<std::endl;
         return ros;
     }
 
@@ -200,11 +202,69 @@ namespace DataStructure
      template<typename T>
      const T& LinkList<T>::getix(const int ix) const
      {
-         Node<T>* cur=head; //cur will point to the would-be accessed element
+         const Node<T>* cur=head; //cur will point to the would-be accessed element
          for(int i=0; i<ix; ++i) //oo2ooo-->0[pnode][cur]000-->0[pnode][nnode][cur]000
          {
             cur=cur->next;
          }
          return cur->element;
+     }
+
+     template<typename T>
+     int LinkList<T>::searchix(const T& ele) const
+     {
+         int ix=0;
+         const Node<T>* cur=head; //cur will point to the would-be accessed element
+         while((cur->next!=NULL)&&(cur->element!=ele))
+         {
+             cur=cur->next;
+             ++ix;
+         }
+
+         if(cur->next==NULL)
+         {
+             return -1;
+         }
+         else
+         {
+             return ix;
+         }
+     }
+
+     template<typename T>
+     bool LinkList<T>::clearlist() throw (std::runtime_error)
+     {
+         if(head==NULL)
+         {
+             throw std::runtime_error("cannot clear an empty list");
+         }
+
+         Node<T>* pnode=head;
+         Node<T>* cur=pnode;
+         //release all memory allocated for list except the tail element
+         while(pnode->next!=NULL)
+         {
+            cur=pnode;
+            pnode=pnode->next;
+            delete cur;
+         }
+         //release the tail element, the list become empty
+         delete pnode;
+         head=NULL;
+         return true;
+     }
+
+     template<typename T>
+     int LinkList<T>::getsize() const
+     {
+         int count_=0;
+         if(head==NULL)
+         {
+             return count_;
+         }
+         const Node<T>* pnode=head;
+         ++count_;
+         for(; pnode->next!=NULL; pnode=pnode->next, ++count_);
+         return count_;
      }
 };

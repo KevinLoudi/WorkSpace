@@ -31,12 +31,16 @@ namespace DataStructure
         void addLast(const T& ele);
         void addFirst(const T& ele);
         void addix(const T& ele, const int ix);
-        const T& getFirst() const {return head->element;}
+        const T& getFirst() const {return head->element;} //access first, last and random
         const T& getLast() const;
         const T& getix(const int ix) const; //enable random access
-        T removeLast() throw (std::runtime_error);
+        T removeLast() throw (std::runtime_error); //remove first. last and random
         T removeFirst() throw (std::runtime_error);
         T removeix(const int ix) throw (std::runtime_error);
+        int searchix(const T& ele) const; //search the index of an element
+        bool isempty() const {return head==NULL;}
+        int getsize() const;
+        bool clearlist() throw (std::runtime_error); //delete the list
     private:
         Node<T> *head;
     };
