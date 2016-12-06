@@ -1,38 +1,48 @@
 #ifndef BASIC_DATA_STRUCTURE_H_INCLUDED
 #define BASIC_DATA_STRUCTURE_H_INCLUDED
 #include <iostream>
+#include <stdexcept>
 
 namespace DataStructure
 {
-    typedef int T; //replace the unfriendly template
-
-    struct Node
+    //typedef int T; //replace the unfriendly template
+    template<typename T>
+    class Node
     {
-        T data;
-        Node* next;
+    public:
+        T element;
+        Node<T>* next;
+
+        Node() {next=NULL;} //no-arg constructor
+        Node(const T& ele) // constructor
+        {
+            this->element=ele;
+            next=NULL;
+        }
     };
 
+    template<typename T>
     class LinkList
     {
-    private:
-        Node* head;
-        //Node* tail;
-        int length;
-        Node* getNode(const int ix) const;
     public:
-       LinkList();
-       ~LinkList();
-       std::ostream & print(std::ostream & ros) const;
-       T get(int ix) const;
-       bool add(const T data, const int ix);
-       void addFirst(T data);
-       void addLast(T data);
-       T remove_(int ix);
-       T removeFirst();
-       T removeLast();
-       int size_() const;
+        LinkList();
+        ~LinkList();
+        std::ostream & print(std::ostream & ros) const;
+        void addLast(const T& ele);
+        void addFirst(const T& ele);
+        void addix(const T& ele, const int ix);
+        const T& getFirst() const {return head->element;}
+        const T& getLast() const;
+        const T& getix(const int ix) const; //enable random access
+        T removeLast() throw (std::runtime_error);
+        T removeFirst() throw (std::runtime_error);
+        T removeix(const int ix) throw (std::runtime_error);
+    private:
+        Node<T> *head;
     };
 
+    //add lines explicitly instantiating all the relevant templates
+    template class LinkList<std::string>;
 };
 
 #endif // BASIC_DATA_STRUCTURE_H_INCLUDED
