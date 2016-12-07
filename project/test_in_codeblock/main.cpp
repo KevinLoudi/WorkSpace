@@ -3,6 +3,7 @@
 #include <string>
 #include "../../algorithm/algorithm.h"
 #include "../../algorithm/basic_data_structure.h"
+#include "../../algorithm/ddlinklist.h"
 
 using namespace std;
 int main()
@@ -18,12 +19,14 @@ int main()
     s.print(cout,a,8); */
 
     using namespace DataStructure;
-    LinkList<string> l;
+    /*LinkList<string> l;
     l.addLast("a");
     l.addLast("b");
     l.addLast("c");
-    l.addFirst("0");
-    cout<<l.print(cout);
+    /*l.addFirst("0");
+    l.addFirst("-1");
+    l.addFirst("-2");*/
+    /*cout<<l.print(cout);
     cout<<endl<<l.getFirst()<<" "<<l.getLast()<<endl;
     //make run-time error happen
     //cout<<l.removeLast()<<l.removeLast()<<l.removeLast()<<l.removeLast()<<l.removeLast();
@@ -36,13 +39,25 @@ int main()
     cout<<l.print(cout);
     cout<<"clear list"<<endl;
     cout<<l.clearlist();
-    cout<<l.print(cout);
-    /*int b=23;
-    int* pb=&b;
-    LinkList l;
-    l.addLast(b);
-    l.addLast(b+10);
-    l.addLast(b-10);
     cout<<l.print(cout);*/
+
+    //int ix=l.searchix("0");
+    //cout<<l.print_reverse_helper(cout,ix);
+
+    /*cout<<"Initial list: "<<endl;
+    cout<<l.print(cout)<<endl;
+    Node<string>* StrHead=l.getHead();
+    Node<string>* StrTail=l.getTail();
+    cout<<StrHead->element<<" "<<StrTail->element<<endl;
+    l.reverselist();
+    cout<<"Reversed list: "<<endl;
+    cout<<l.print(cout)<<endl; */
+
+    DoubleLinkList<string> dlst;
+    dlst.addFirst("a");
+    dlst.addFirst("b");
+    dlst.addFirst("c");
+    dlst.addFirst("d");
+    cout<<dlst.print(cout);
     return 0;
 }
