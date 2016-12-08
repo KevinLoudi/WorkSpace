@@ -1,4 +1,9 @@
 /*project test in code block*/
+/*
+ Author: Kevin
+ Propose:
+ Environment: GCC 4.9 for C++11
+*/
 #include <iostream>
 #include <string>
 #include "../../algorithm/algorithm.h"
@@ -53,17 +58,45 @@ int main()
     cout<<"Reversed list: "<<endl;
     cout<<l.print(cout)<<endl; */
 
-    DoubleLinkList<string> dlst;
-    dlst.addFirst("a");
-    dlst.addFirst("b");
-    dlst.addFirst("c");
-    dlst.addFirst("d");
-    dlst.addLast("e");
-    dlst.addLast("f");
-    dlst.addAt("c2",2);
-    dlst.addAt("a1",1);
-    //cout<<dlst.removeHead()<<endl;
-    cout<<dlst.print(cout);
-    cout<<dlst.print_reverse(cout);
+//    DoubleLinkList<string> dlst;
+//    /*dlst.addFirst("a");
+//    dlst.addFirst("b");
+//    dlst.addFirst("c");
+//    dlst.addFirst("d");
+//    dlst.addLast("e");
+//    dlst.addLast("f");
+//    dlst.addAt("c2",2);
+//    dlst.addAt("a1",1);*/
+//    dlst.addLast("a");
+//    dlst.addLast("b");
+//    dlst.addLast("c");
+//    dlst.addLast("d");
+//    //cout<<dlst.removeHead()<<endl;
+//    //cout<<dlst.removeTail()<<endl;
+//    dlst.addAt("e",4);
+//    dlst.addAt("f",dlst.size_());
+//    cout<<dlst.print(cout);
+//    /*dlst.removeAt(dlst.size_());
+//    dlst.removeAt(0);
+//    dlst.removeAt(1);*/
+//    //cout<<dlst.print_reverse(cout);
+//    cout<<"c at "<<dlst.findAt("c")<<endl;
+//    cout<<"c is found and remove at "<<dlst.removeIf("c")<<endl;
+//    cout<<"x is found and remove at "<<dlst.removeIf("x");//dlst.removeIf("c")<<endl;
+//    cout<<dlst.print(cout);
+//    dlst.clear_();
+//    cout<<dlst.print(cout);
+
+    const int LEN=5;
+    string str1[LEN]={"a","b","c","d","e"};
+    string str2[LEN]={"0","1","2","3","4"};
+    DoubleLinkList<string> dlst1(str1,LEN);
+    DoubleLinkList<string> dlst2(str2,LEN);
+    dlst1.setAt("a1",0);
+
+    cout<<dlst1.print(cout);
+    cout<<dlst2.print(cout);
+    /*dlst2=dlst1;
+    cout<<dlst2.print(cout);*/
     return 0;
 }

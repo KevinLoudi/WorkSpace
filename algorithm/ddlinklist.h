@@ -33,21 +33,26 @@ namespace DataStructure
     {
     public:
         DoubleLinkList();
+        DoubleLinkList(const T* ele_arr, const int ele_size); //initial list with an array of elements
+        DoubleLinkList(const DoubleLinkList<T>& other_list);//copy constructor
+        DoubleLinkList<T>& operator=(const DoubleLinkList<T>& other_list);//copy assignment
         ~DoubleLinkList();
         void addFirst(const T& ele);
         void addLast(const T& ele);
         bool addAt(const T& ele, const int ix);
         T removeHead() throw (std::runtime_error);
         T removeTail() throw (std::runtime_error);
-        //null implement
+        T removeAt(const int ix) throw (std::runtime_error);
+        int findAt(const T& ele) const; //return -1: No found, -2: empty list, [0,length-1]: the first found position
+        int removeIf(const T& ele);
+        int size_() const {return length;}
+        T getAt(const int ix) const;
+        void clear_() throw (std::runtime_error);
+        bool setAt(const T& ele, const int ix);
 
-        bool removeAt(const int ix);
-        bool setAt(const int ix);
-        const T getAt(const int ix) const;
-        int findAt(const T& ele) const;
+        //null implement
         const T getPrev(const T& ele) const;
         const T getNext(const T& ele) const;
-
 
         T begin_() const {return head->element;}
         T end_() const {return tail->element;}
@@ -58,6 +63,7 @@ namespace DataStructure
         Dnode<T>* head;
         Dnode<T>* tail;
         int length;
+        Dnode<T>* is_(const int pos) const; //return a node pointer to a specified position
     };
 
     template class DoubleLinkList <std::string>;

@@ -3,16 +3,57 @@
 namespace DataStructure
 {
     template<typename T>
-    DoubleLinkList<T>::DoubleLinkList()
+    inline DoubleLinkList<T>::DoubleLinkList():head(NULL), tail(NULL), length(0)
     {
-        head=tail=NULL;
-        length=0;
+    }
+
+    template<typename T>
+    DoubleLinkList<T>::DoubleLinkList(const T* ele_arr, const int ele_size):head(NULL), tail(NULL), length(0)
+    {
+        for(int ix=0; ix<ele_size; ++ix)
+        {
+            addLast(*(ele_arr+ix)); //would there be a problem for using class methods within constructor
+        }
+    }
+
+    template<typename T>
+    DoubleLinkList<T>::DoubleLinkList(const DoubleLinkList<T>& other_list):head(NULL), tail(NULL), length(0)
+    {
+        int other_size=other_list.size_();
+        //copy all elements from other_list to this list
+        for(int ix=0; ix<other_size; ++ix)
+        {
+            T tmp=other_list.getAt(ix);
+            addLast(tmp);
+        }
+    }
+
+    template<typename T>
+    inline DoubleLinkList<T>& DoubleLinkList<T>::operator=(const DoubleLinkList<T>& other_list)
+    {
+        //not do copy for indentical list
+        if(this==&other_list)
+        {
+            return *this;
+        }
+        //delete the old list and renew its nodes
+        clear_();
+        int other_size=other_list.size_();
+        int ix=0;
+        //copy all elements from other_list to this list
+        while(ix<other_size)
+        {
+            T tmp=other_list.getAt(ix);
+            addLast(tmp);
+            ++ix;
+        }
+        return *this;
     }
 
     template<typename T>
     DoubleLinkList<T>::~DoubleLinkList()
     {
-
+        clear_(); //release memories allocated for nodes
     }
 
     template<typename T>
@@ -63,11 +104,11 @@ namespace DataStructure
     {
         if(isempty())
         {
-            ros<<"empty list"<<std::endl;
+            ros<<"\nempty list\n";
             return ros;
         }
         Dnode<T>* pnode=head;
-        ros<<"ordered print\n list length: "<<length<<std::endl;
+        ros<<"\nordered print\n list length: "<<length<<std::endl;
         //traversal elements backwards
         do
         {
@@ -82,11 +123,11 @@ namespace DataStructure
     {
         if(isempty())
         {
-            ros<<"empty list"<<std::endl;
+            ros<<"\nempty list\n";
             return ros;
         }
         Dnode<T>* pnode=tail;
-        ros<<"reversed print\n list length: "<<length<<std::endl;
+        ros<<"\nreversed print\n list length: "<<length<<std::endl;
         //traversal elements backwards
         do
         {
@@ -99,7 +140,7 @@ namespace DataStructure
     template<typename T>
     bool DoubleLinkList<T>::addAt(const T& ele, const int ix)
     {
-        if(ix>length) {addLast(ele);return true;}
+        if(ix>=(length-1)) {addLast(ele);return true;}
         else if (ix<=0) {addFirst(ele); return true;}
         int ixx=ix;
         Dnode<T>* pnode=NULL;
@@ -183,8 +224,119 @@ namespace DataStructure
         {
             Dnode<T>* pnode=tail;
             Dnode<T>* pprev=tail->prev;
-            ///.unfinished
+            //pprev<=>
             T ele=tail->element;
+            tail=pprev;
+            tail->next=NULL;
+
+            delete pnode;
+            --length;
+            return ele;
         }
+    }
+
+    template<typename T>
+    T DoubleLinkList<T>::removeAt(const int ix) throw (std::runtime_error)
+    {
+        if(isempty()) throw std::runtime_error("cannot do delete on an empty list");
+        if(ix<=0) return removeHead();
+        else if(ix>=(length-1)) return removeTail();
+        //locate the node through index--ix
+        Dnode<T>* pnode=is_(ix);
+
+        //now pnode has been put on the given position
+        //pprev<=>pnode<=>pnext  ---> pprev<=>pnext
+        Dnode<T>* pprev=pnode->prev;
+        Dnode<T>* pnext=pnode->next;
+        T ele=pnode->element;
+        //build link
+        pprev->next=pnext;
+        pnext->prev=pprev;
+        //release link
+        pnode->next=NULL;
+        pnode->prev=NULL;
+        delete pnode;
+        length--;
+        return ele;
+    }
+
+    template<typename T>
+    int DoubleLinkList<T>::findAt(const T& ele) const
+    {
+        if(isempty()) return -2;
+        Dnode<T>* pnode=head;
+        int pos=0;
+
+        while(pnode!=NULL)
+        {
+            if(pnode->element==ele) break;
+            pnode=pnode->next;
+            ++pos;
+        }
+
+        if(pnode==NULL) return -1; //no found until the tail of the list
+        return pos;
+    }
+
+    template<typename T>
+    int DoubleLinkList<T>::removeIf(const T& ele)
+    {
+        int pos=findAt(ele);
+        if(pos==-1 || pos== -2) return pos; //return if not found the element
+        removeAt(pos); //remove if found the element
+        return pos;
+    }
+
+    template<typename T>
+    Dnode<T>* DoubleLinkList<T>::is_(const int pos) const
+    {
+        if(pos<=0) return head;
+        else if(pos>=(length-1)) return tail;
+
+        //locate the element
+        int ixx=0;
+        Dnode<T>* pnode=head;
+        while((ixx++)<pos) pnode=pnode->next;
+        return pnode;
+    }
+
+    template<typename T>
+    inline  T DoubleLinkList<T>::getAt(const int ix) const
+    {
+        Dnode<T>* pnode=NULL;
+        pnode=is_(ix);
+        return pnode->element;
+    }
+
+    template<typename T>
+    void DoubleLinkList<T>::clear_() throw (std::runtime_error)
+    {
+        if(isempty())
+        {
+            return;
+        }
+
+        int ori_len=length;
+
+        for(int count_=0; count_<ori_len; ++count_)
+            removeTail();
+
+        if(length!=0)
+        {
+            throw std::runtime_error("delete failure!");
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    template<typename T>
+    inline bool DoubleLinkList<T>::setAt(const T& ele, const int ix)
+    {
+        if(ix>(length-1)||ix<0) return false;
+        Dnode<T>* pnode=is_(ix);
+        pnode->element=ele;
+        return true;
     }
 };

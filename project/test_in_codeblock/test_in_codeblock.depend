@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1481160444 source:d:\code\workspace\practices\project\test_in_codeblock\main.cpp
+1481181606 source:d:\code\workspace\practices\project\test_in_codeblock\main.cpp
 	<iostream>
 	<string>
 	"../../algorithm/algorithm.h"
@@ -20,10 +20,10 @@
 	"basic_data_structure.h"
 	<iostream>
 
-1481160997 d:\code\workspace\practices\algorithm\ddlinklist.h
+1481181551 d:\code\workspace\practices\algorithm\ddlinklist.h
 	<iostream>
 	<stdexcept>
 
-1481160991 source:d:\code\workspace\practices\algorithm\ddlinklist.cpp
+1481181552 source:d:\code\workspace\practices\algorithm\ddlinklist.cpp
 	"ddlinklist.h"
 
