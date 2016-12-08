@@ -22,7 +22,7 @@ int main()
     /*LinkList<string> l;
     l.addLast("a");
     l.addLast("b");
-    l.addLast("c");
+    l.addLast("c");*/
     /*l.addFirst("0");
     l.addFirst("-1");
     l.addFirst("-2");*/
@@ -58,6 +58,12 @@ int main()
     dlst.addFirst("b");
     dlst.addFirst("c");
     dlst.addFirst("d");
+    dlst.addLast("e");
+    dlst.addLast("f");
+    dlst.addAt("c2",2);
+    dlst.addAt("a1",1);
+    //cout<<dlst.removeHead()<<endl;
     cout<<dlst.print(cout);
+    cout<<dlst.print_reverse(cout);
     return 0;
 }
