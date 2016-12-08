@@ -9,6 +9,7 @@
 #include "../../algorithm/algorithm.h"
 #include "../../algorithm/basic_data_structure.h"
 #include "../../algorithm/ddlinklist.h"
+#include "../../algorithm/sstack.h"
 
 using namespace std;
 int main()
@@ -90,9 +91,15 @@ int main()
     const int LEN=5;
     string str1[LEN]={"a","b","c","d","e"};
     string str2[LEN]={"0","1","2","3","4"};
-    DoubleLinkList<string> dlst1(str1,LEN);
-    DoubleLinkList<string> dlst2(str2,LEN);
+    DoubleLinkList<string> dlst1(str1,LEN,"null");
+    DoubleLinkList<string> dlst2(str2,LEN,"null");
     dlst1.setAt("a1",0);
+    cout<<dlst1.getNext("e");
+
+    //random access
+    /*int len=dlst1.size_();
+    for(int ix=0; ix<len; ++ix)
+        cout<<dlst1.getAt(ix)<<endl; */
 
     cout<<dlst1.print(cout);
     cout<<dlst2.print(cout);

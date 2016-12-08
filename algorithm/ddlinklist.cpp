@@ -3,12 +3,14 @@
 namespace DataStructure
 {
     template<typename T>
-    inline DoubleLinkList<T>::DoubleLinkList():head(NULL), tail(NULL), length(0)
+    inline DoubleLinkList<T>::DoubleLinkList(T def):head(NULL), tail(NULL), length(0), default_element(def)
     {
+        //set a default value for type T
     }
 
     template<typename T>
-    DoubleLinkList<T>::DoubleLinkList(const T* ele_arr, const int ele_size):head(NULL), tail(NULL), length(0)
+    DoubleLinkList<T>::DoubleLinkList(const T* ele_arr, const int ele_size, T def):head(NULL),
+    tail(NULL), length(0), default_element(def)
     {
         for(int ix=0; ix<ele_size; ++ix)
         {
@@ -17,8 +19,10 @@ namespace DataStructure
     }
 
     template<typename T>
-    DoubleLinkList<T>::DoubleLinkList(const DoubleLinkList<T>& other_list):head(NULL), tail(NULL), length(0)
+    DoubleLinkList<T>::DoubleLinkList(const DoubleLinkList<T>& other_list):head(NULL),
+    tail(NULL), length(0)
     {
+        this->default_element=other_list.default_element;
         int other_size=other_list.size_();
         //copy all elements from other_list to this list
         for(int ix=0; ix<other_size; ++ix)
@@ -311,24 +315,17 @@ namespace DataStructure
     template<typename T>
     void DoubleLinkList<T>::clear_() throw (std::runtime_error)
     {
-        if(isempty())
-        {
-            return;
-        }
-
+        if(isempty()) return;
+        //length of the original list
         int ori_len=length;
-
+        //remove node one by one
         for(int count_=0; count_<ori_len; ++count_)
             removeTail();
-
+        //exception handling
         if(length!=0)
-        {
             throw std::runtime_error("delete failure!");
-        }
         else
-        {
             return;
-        }
     }
 
     template<typename T>
@@ -337,6 +334,41 @@ namespace DataStructure
         if(ix>(length-1)||ix<0) return false;
         Dnode<T>* pnode=is_(ix);
         pnode->element=ele;
+        return true;
+    }
+
+    template<typename T>
+    const T DoubleLinkList<T>::getPrev(const T& ele) const throw (std::runtime_error)
+    {
+        int pos=findAt(ele);
+        if(pos==-1||pos==-2) return default_element; //return default if fail to find the element
+        Dnode<T>* pnode=is_(pos);
+        if(pnode->prev==NULL) //return default if the found element is the head
+            return default_element;
+        else
+            return pnode->prev->element;
+    }
+
+    template<typename T>
+    const T DoubleLinkList<T>::getNext(const T& ele) const throw (std::runtime_error)
+    {
+        int pos=findAt(ele);
+        if(pos==-1||pos==-2) return default_element; //return if fail to find the element
+        Dnode<T>* pnode=is_(pos);
+        if(pnode->next==NULL) //return default if the found element is the tail
+            return default_element;
+        else
+            return pnode->next->element;
+    }
+
+    template<typename T>
+    bool DoubleLinkList<T>::removeRange(const int lowix, const int highix) throw (std::runtime_error)
+    {
+        if(lowix>highix || highix>length-1) return false; //error input index, out of bound
+        for(int ix=lowix; ix<=highix; ++ix)
+        {
+            removeAt(ix);
+        }
         return true;
     }
 };
