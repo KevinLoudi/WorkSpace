@@ -18,8 +18,11 @@ namespace DataStructure
         //read and write
         T top() const;
         T pop() {return data.removeTail();}
-        bool push(const T& ele)
+        bool push(const T& ele);
         //get status
+        //reuse print operation in link list, but in reverse way
+        std::ostream & print(std::ostream & ros) const {return ros<<data.print_reverse(ros);} //print elements
+        std::ostream & printInfo(std::ostream & ros) const; //print elements along with stack information
         bool isEmpty() const {return data.isempty();}
         bool isFull() const {return max_size==data.size_();}
         int size_() const{return data.size_();}
@@ -35,7 +38,6 @@ namespace DataStructure
     template class Sstack <int>;
     template class Sstack <float>;
     template class Sstack <char*>;
-
 };
 
 #endif // SSTACK_H_INCLUDED

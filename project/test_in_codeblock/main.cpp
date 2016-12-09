@@ -88,22 +88,36 @@ int main()
 //    dlst.clear_();
 //    cout<<dlst.print(cout);
 
-    const int LEN=5;
-    string str1[LEN]={"a","b","c","d","e"};
-    string str2[LEN]={"0","1","2","3","4"};
-    DoubleLinkList<string> dlst1(str1,LEN,"null");
-    DoubleLinkList<string> dlst2(str2,LEN,"null");
-    dlst1.setAt("a1",0);
-    cout<<dlst1.getNext("e");
+//    const int LEN=5;
+//    string str1[LEN]={"a","b","c","d","e"};
+//    string str2[LEN]={"0","1","2","3","4"};
+//    DoubleLinkList<string> dlst1(str1,LEN,"null");
+//    DoubleLinkList<string> dlst2(str2,LEN,"null");
+//    dlst1.setAt("a1",0);
+//    cout<<dlst1.getNext("e");
+//
+//    //random access
+//    /*int len=dlst1.size_();
+//    for(int ix=0; ix<len; ++ix)
+//        cout<<dlst1.getAt(ix)<<endl; */
+//
+//    cout<<dlst1.print(cout);
+//    cout<<dlst2.print(cout);
+//    /*dlst2=dlst1;
+//    cout<<dlst2.print(cout);*/
 
-    //random access
-    /*int len=dlst1.size_();
-    for(int ix=0; ix<len; ++ix)
-        cout<<dlst1.getAt(ix)<<endl; */
-
-    cout<<dlst1.print(cout);
-    cout<<dlst2.print(cout);
-    /*dlst2=dlst1;
-    cout<<dlst2.print(cout);*/
+    Sstack<string>ss1(10,"null");
+    ss1.push("a");
+    ss1.push("b");
+    ss1.push("c");
+    cout<<ss1.print(cout)<<endl;
+    cout<<ss1.pop()<<endl;
+    cout<<"new stack"<<endl;
+    ss1.push("0");
+    //cout<<ss1.printInfo(cout)<<endl;
+    Sstack<string>ss2=ss1;
+    cout<<ss2.print(cout)<<endl;
+    Sstack<string>ss3(ss1);
+    cout<<ss3.print(cout)<<endl;
     return 0;
 }

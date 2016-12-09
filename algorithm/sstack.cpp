@@ -34,9 +34,29 @@ namespace DataStructure
     }
 
     template<typename T>
-    T Sstack<T>::top() const
+    inline T Sstack<T>::top() const
     {
+        if(isEmpty()) return data.default_element;
         return data.end_();
+    }
+
+    template<typename T>
+    inline bool Sstack<T>::push(const T& ele)
+    {
+        if(isFull()) return false;
+        data.addLast(ele); //automatic add 1 in list
+        return true;
+    }
+
+    template<typename T>
+    inline std::ostream & Sstack<T>::printInfo(std::ostream & ros) const
+    {
+        ros<<"Stack Information:\t\n"<<"Current Size:\t "<<size_()
+            <<" Capacity:\t "<<capacity_()<<"\nElements:\t ";
+        //there is a problem, I can not chain the output of following line with first line
+        //it works when I separate them
+        ros<<data.print_reverse(ros);
+        return ros;
     }
 
 };

@@ -21,6 +21,18 @@ namespace DataStructure
             next=NULL;
             prev=NULL;
         }
+        Dnode<T> & operator=(const Dnode<T>& other_node)
+        {
+            if(this==&other_node) return *this;
+            this->element=other_node.element;
+            this->next=other_node.next;
+            this->prev=other_node.prev;
+            return *this;
+        }
+        bool operator==(const Dnode<T>& other_node)
+        {
+            return this->element==other_node.element;
+        }
     };
 
     template class Dnode <std::string>;
