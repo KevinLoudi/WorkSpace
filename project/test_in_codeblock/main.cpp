@@ -5,19 +5,29 @@
  Environment: GCC 4.9 for C++11
 */
 #include <iostream>
+#include <vector>
 /*#include <string>
 #include "../../algorithm/algorithm.h"
 #include "../../algorithm/basic_data_structure.h"
 #include "../../algorithm/ddlinklist.h"
 #include "../../algorithm/sstack.h" */
 #include "../../algorithm/c_string_operations.h"
+#include "../../algorithm/mmatrix.h"
 
 using namespace std;
 
 int main()
 {
     using namespace DataStructure;
-
+    Mmatrix<double> s1(1,2,8);
+    Mmatrix<double> s2(2,1,3);
+    Mmatrix<double> s3(1,1,0);
+    vector<double> v1(2,3);
+    vector<double> v2=s1*v1;
+    s3=s1*s2;
+    cout<<s1.print(cout);
+    cout<<s2.print(cout);
+    cout<<s3.print(cout);
 }
 //int main()
 //{

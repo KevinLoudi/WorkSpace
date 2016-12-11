@@ -1,11 +1,13 @@
 # depslib dependency file v1.0
-1481249212 source:d:\code\workspace\practices\project\test_in_codeblock\main.cpp
+1481424252 source:d:\code\workspace\practices\project\test_in_codeblock\main.cpp
 	<iostream>
+	<vector>
 	"../../algorithm/algorithm.h"
 	"../../algorithm/basic_data_structure.h"
 	"../../algorithm/ddlinklist.h"
 	"../../algorithm/sstack.h"
 	"../../algorithm/c_string_operations.h"
+	"../../algorithm/mmatrix.h"
 
 1480837275 d:\code\workspace\practices\algorithm\algorithm.h
 	<iostream>
@@ -39,4 +41,15 @@
 1481251149 d:\code\workspace\practices\algorithm\c_string_operations.h
 	<iostream>
 	<stdexcept>
+
+1481251363 source:d:\code\workspace\practices\algorithm\c_string_operations.cpp
+	"c_string_operations.h"
+
+1481425468 d:\code\workspace\practices\algorithm\mmatrix.h
+	<vector>
+	<iostream>
+	<stdexcept>
+
+1481425494 source:d:\code\workspace\practices\algorithm\mmatrix.cpp
+	"mmatrix.h"
 
