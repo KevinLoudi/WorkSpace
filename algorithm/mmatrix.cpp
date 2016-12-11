@@ -263,11 +263,11 @@ namespace DataStructure
     }
 
     template<typename T>
-    std::vector<T> Mmatrix<T>::operator*(const std::vector<T>& rarr) const throw (std::runtime_error)
+    Mmatrix<T> Mmatrix<T>::operator*(const std::vector<T>& rarr) const throw (std::runtime_error)
     {
         UINT s_len=rarr.size();
         if(s_len!=cols) throw std::runtime_error("the input vector does not match the dimension of the matrix!!!");
-        std::vector<T> res_vec(rows,0.0);
+        Mmatrix<T> res_vec(rows,1,0.0);
 
         for(UINT i=0; i<rows; ++i)
          {

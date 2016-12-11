@@ -23,7 +23,8 @@ int main()
     Mmatrix<double> s2(2,1,3);
     Mmatrix<double> s3(1,1,0);
     vector<double> v1(2,3);
-    vector<double> v2=s1*v1;
+    Mmatrix<double> v2(1,1,0);
+    v2=s1*v1;
     s3=s1*s2;
     cout<<s1.print(cout);
     cout<<s2.print(cout);

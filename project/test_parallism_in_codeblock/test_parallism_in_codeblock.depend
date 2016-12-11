@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1481442557 source:d:\code\workspace\practices\project\test_parallism_in_codeblock\main.cpp
+	<iostream>
+	<thread>
+

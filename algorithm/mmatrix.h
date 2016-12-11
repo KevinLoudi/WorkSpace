@@ -40,7 +40,7 @@ namespace DataStructure
     Mmatrix<T> operator*(const T& rT) const;
     Mmatrix<T> operator/(const T& rT) const;
     //overload operators for matrix-vector operations
-    std::vector<T> operator*(const std::vector<T>& rarr) const throw (std::runtime_error);
+    Mmatrix<T> operator*(const std::vector<T>& rarr) const throw (std::runtime_error);
 
     //random access for read and write matrix members
     T& operator()(const UINT& row, const UINT& col); //write
