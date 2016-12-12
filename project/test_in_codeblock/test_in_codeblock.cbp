@@ -41,6 +41,8 @@
 		<Unit filename="../../algorithm/c_string_operations.h" />
 		<Unit filename="../../algorithm/ddlinklist.cpp" />
 		<Unit filename="../../algorithm/ddlinklist.h" />
+		<Unit filename="../../algorithm/mmatrix.cpp" />
+		<Unit filename="../../algorithm/mmatrix.h" />
 		<Unit filename="../../algorithm/sstack.cpp" />
 		<Unit filename="../../algorithm/sstack.h" />
 		<Unit filename="main.cpp" />

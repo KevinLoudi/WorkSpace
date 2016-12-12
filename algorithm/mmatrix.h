@@ -30,6 +30,7 @@ namespace DataStructure
   {
   public:
     Mmatrix(const UINT& rows_, const UINT& cols_, const T& initial_=0);
+    Mmatrix(const UINT& rows_, const UINT& cols_, const std::vector<T>& arr);
     Mmatrix(const Mmatrix& rmat);
     //allow to change the shape of the matrix
     Mmatrix<T> operator=(const Mmatrix<T>& rmat);//copy assigment for matrix equation
@@ -37,13 +38,15 @@ namespace DataStructure
     Mmatrix<T> ones(const UINT& rows_, const UINT& cols_);
     //Mmatrix<T> zeros(const UINT& rows_, const UINT& cols_); //constructor work as zeros
     Mmatrix<T> diag(const UINT & len); //return a n*n diagonal matrix
-    Mmatrix<T> inverse(); //inverse the current matrix
+    Mmatrix<T> inverse() const; //inverse the current matrix
     Mmatrix<T> inverse(const Mmatrix<T> & rmat) const; //inverse a given matrix
-    double Det(const Mmatrix<T> & rmat) const; //calculate the determinant of a matrix
-    double Det() const;
+    double det(Mmatrix<T> & rmat); //calculate the determinant of a matrix
+    //double det(UINT & len) const;
     //get sub-matrix of the given matrix, start from [row_.col_] cover a range of len_
     Mmatrix<T> sub_matrix(const Mmatrix<T> & rmat, const UINT row_, const UINT col_, const UINT len_) const throw (std::runtime_error);
     Mmatrix<T> sub_matrix(const UINT row_, const UINT col_, const UINT len_) const throw (std::runtime_error); //sub-matrix of this matrix
+    //return a minor matrix where the selected row and column are removed
+    Mmatrix<T> minor_matrix(const UINT& row, const UINT& col) const;
 
     //overload operators for matrix to matrix mathematical operations
     Mmatrix<T> operator+(const Mmatrix<T>& rmat) const throw (std::runtime_error);
@@ -73,9 +76,13 @@ namespace DataStructure
     //access row and column size
     UINT get_rows() const {return this->rows;}
     UINT get_cols() const {return this->cols;}
+    UINT get_len() const;
+    UINT get_len(const Mmatrix<T> & rmat) const;
     std::ostream & print(std::ostream & ros) const; //print out all elements of the matrix
     bool is_same_shape(const Mmatrix<T> & rmat) const; //see if two matrix have the indentical size
     bool is_multiplable(const Mmatrix<T> & rmat) const; //see if two matrix have the ability to do right multiple; //this*matrix
+    bool is_square() const {return this->rows==this->cols;}
+    bool is_square(const Mmatrix<T> & rmat) const {return rmat.get_cols()==rmat.get_rows();}
     const double EPS=0.00001; //a threshold for float-zero
 
   private:

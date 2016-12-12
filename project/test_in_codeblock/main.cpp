@@ -29,6 +29,16 @@ int main()
     cout<<s1.print(cout);
     cout<<s2.print(cout);
     cout<<s3.print(cout);
+    cout<<"new matrix\n";
+    vector<double> v4;
+    v4.push_back(0);
+    v4.push_back(1);
+    v4.push_back(0);
+    v4.push_back(1);
+    Mmatrix<double> s4(2,2,v4);
+    cout<<s4.det(s4);
+
+    return 0;
 }
 //int main()
 //{

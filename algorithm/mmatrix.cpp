@@ -23,6 +23,22 @@ namespace DataStructure
     }
 
     template<typename T>
+    Mmatrix<T>::Mmatrix(const UINT& rows_, const UINT& cols_, const std::vector<T>& arr)
+    {
+        if((rows_*cols_)>arr.size()) throw Eexception("initialize data is not enough!!!");
+        typename std::vector<T>::const_iterator it=arr.begin();
+
+        for(UINT rx=0; rx<rows_; ++rx)
+        {
+            for(UINT cx=0; cx<cols_; ++cx)
+            {
+                this->mat[rx][cx]=*it;
+                ++it;
+            }
+        }
+    }
+
+    template<typename T>
     Mmatrix<T>::~Mmatrix()
     {
 
@@ -71,14 +87,12 @@ namespace DataStructure
     }
 
     template<typename T>
-    double Mmatrix<T>::Det() const
+    double Mmatrix<T>::det(Mmatrix<T> & rmat)
     {
-        double d=0.0;
-        UINT m_rows=rows;
-        UINT m_cols=cols;
+        if (!is_square()) throw Eexception("this matrix is not a square, cannot calculate determinate!!!");
 
-        if (m_rows!=m_cols) throw Eexception("this matrix is not a square, cannot calculate determinate!!!");
-        UINT len=m_rows;
+        double d=0.0;
+        UINT len=rows;
 
         if(len==1) d=this->mat[0][0];
         else if(len==2) d=this->mat[0][0]*this->mat[1][1]-this->mat[0][1]*this->mat[1][0];
@@ -86,14 +100,32 @@ namespace DataStructure
         {
             for(UINT ix=0; ix<len; ++ix)
             {
-                //Mmatrix<T> m()=sub_matrix(1,ix);
-                //d+=pow(-1,1+ix)*this->mat[1][ix]*Det(m);
+                Mmatrix<T>m=rmat.minor_matrix(0,ix);
+                d+=(double)(pow(-1,ix+1)*this->mat[0][ix]*det(m));
                 //recursive take part the big matrix to a 2*2 matrxi
-                //Mmatrix<T> M=
             }
         }
 
         return d;
+    }
+
+    template<typename T>
+    Mmatrix<T> Mmatrix<T>::minor_matrix(const UINT& row, const UINT& col) const
+    {
+        if( row>rows || col>cols) throw Eexception("error input");
+        Mmatrix<T> res(rows-1,cols-1);
+
+        for(UINT rx=0; rx <(rows-(row>=rows)) ; ++rx) //subtract one when index pass the would-be deleted row or col
+        {
+            for(UINT cx=0; cx<(cols-(col>=cols)); ++cx)
+            {
+                //pass the row,col before would-be deleted one normally
+                //and pass them with one minus index when after
+                res(rx-(rx>row),cx-(cx>col))=this->mat[rx-1][cx-1];
+            }
+        }
+
+        return res;
     }
 
     template<typename T>
@@ -145,6 +177,12 @@ namespace DataStructure
         }
         return ros;
     }
+
+//    template<typename T>
+//    Mmatrix<T> Mmatrix<T>::inverse() const
+//    {
+//
+//    }
 
     template<typename T>
     inline T& Mmatrix<T>::operator()(const UINT& row, const UINT& col)
@@ -387,5 +425,19 @@ namespace DataStructure
         T tmp=a;
         a=b;
         b=tmp;
+    }
+
+    template<typename T>
+    UINT Mmatrix<T>::get_len() const
+    {
+        if(!is_square()) throw Eexception("this is not a square, operations illegal!!!");
+        return this->rows;
+    }
+
+    template<typename T>
+    UINT Mmatrix<T>::get_len(const Mmatrix<T> & rmat) const
+    {
+        if(!is_square(rmat)) throw Eexception("this is not a square, operations illegal!!!");
+        return rmat.get_rows();
     }
 };
