@@ -71,6 +71,67 @@ namespace DataStructure
     }
 
     template<typename T>
+    double Mmatrix<T>::Det() const
+    {
+        double d=0.0;
+        UINT m_rows=rows;
+        UINT m_cols=cols;
+
+        if (m_rows!=m_cols) throw Eexception("this matrix is not a square, cannot calculate determinate!!!");
+        UINT len=m_rows;
+
+        if(len==1) d=this->mat[0][0];
+        else if(len==2) d=this->mat[0][0]*this->mat[1][1]-this->mat[0][1]*this->mat[1][0];
+        else
+        {
+            for(UINT ix=0; ix<len; ++ix)
+            {
+                //Mmatrix<T> m()=sub_matrix(1,ix);
+                //d+=pow(-1,1+ix)*this->mat[1][ix]*Det(m);
+                //recursive take part the big matrix to a 2*2 matrxi
+                //Mmatrix<T> M=
+            }
+        }
+
+        return d;
+    }
+
+    template<typename T>
+    Mmatrix<T> Mmatrix<T>::sub_matrix(const Mmatrix<T> & rmat, const UINT row_, const UINT col_, const UINT len_) const throw (std::runtime_error)
+    {
+        //see if the intended cut area will out bound
+        if( ( (row_+len_)>rmat.get_rows())||( (col_+len_)>rmat.get_cols()) ) throw std::runtime_error("cut sub-matrix out of range!!");
+
+        Mmatrix<T> res(len_,len_);
+        for(UINT i=0; i<len_; ++i)
+        {
+            for(UINT j=0; j<len_; ++j)
+            {
+                res(i,j)=rmat(row_+i, col_+j);
+            }
+        }
+
+        return res;
+    }
+
+    template<typename T>
+    Mmatrix<T> Mmatrix<T>::sub_matrix(const UINT row_, const UINT col_, const UINT len_) const throw (std::runtime_error)
+    {
+        if( ( (row_+len_)>rows)||( (col_+len_)>cols) ) throw std::runtime_error("cut sub-matrix out of range!!");
+
+        Mmatrix<T> res(len_,len_);
+        for(UINT i=0; i<len_; ++i)
+        {
+            for(UINT j=0; j<len_; ++j)
+            {
+                res(i,j)=this->mat[row_+i][col_+j];
+            }
+        }
+
+        return res;
+    }
+
+    template<typename T>
     std::ostream & Mmatrix<T>::print(std::ostream & ros) const
     {
         ros<<"\nFollowing is all elements of the matrix....\n";
@@ -318,5 +379,13 @@ namespace DataStructure
     {
         //[M,N]*[N,K]
         return ((this->cols==rmat.get_rows()));
+    }
+
+    template<typename T>
+    inline void Mmatrix<T>::swap_(T& a, T& b)
+    {
+        T tmp=a;
+        a=b;
+        b=tmp;
     }
 };

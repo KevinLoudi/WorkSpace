@@ -45,10 +45,11 @@
 1481251363 source:d:\code\workspace\practices\algorithm\c_string_operations.cpp
 	"c_string_operations.h"
 
-1481507392 d:\code\workspace\practices\algorithm\mmatrix.h
+1481510296 d:\code\workspace\practices\algorithm\mmatrix.h
 	<vector>
 	<iostream>
 	<stdexcept>
+	<math.h>
 
 1481504934 source:d:\code\workspace\practices\algorithm\mmatrix.cpp
 	"mmatrix.h"

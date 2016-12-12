@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include <stdexcept>
+#include <math.h>
 typedef unsigned int UINT;
 
 namespace DataStructure
@@ -36,8 +37,13 @@ namespace DataStructure
     Mmatrix<T> ones(const UINT& rows_, const UINT& cols_);
     //Mmatrix<T> zeros(const UINT& rows_, const UINT& cols_); //constructor work as zeros
     Mmatrix<T> diag(const UINT & len); //return a n*n diagonal matrix
+    Mmatrix<T> inverse(); //inverse the current matrix
+    Mmatrix<T> inverse(const Mmatrix<T> & rmat) const; //inverse a given matrix
     double Det(const Mmatrix<T> & rmat) const; //calculate the determinant of a matrix
     double Det() const;
+    //get sub-matrix of the given matrix, start from [row_.col_] cover a range of len_
+    Mmatrix<T> sub_matrix(const Mmatrix<T> & rmat, const UINT row_, const UINT col_, const UINT len_) const throw (std::runtime_error);
+    Mmatrix<T> sub_matrix(const UINT row_, const UINT col_, const UINT len_) const throw (std::runtime_error); //sub-matrix of this matrix
 
     //overload operators for matrix to matrix mathematical operations
     Mmatrix<T> operator+(const Mmatrix<T>& rmat) const throw (std::runtime_error);
@@ -76,6 +82,7 @@ namespace DataStructure
     std::vector<std::vector<T> > mat;
     UINT rows; //using unsigned int to make sure the matrix set up has at least one element
     UINT cols;
+    void swap_(T& a, T& b); //swap a with b
   };
 
   template class Mmatrix <double>;
