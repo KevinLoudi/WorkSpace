@@ -32,6 +32,19 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="../../thread/create_thread_in_three_ways.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../thread/demo_performace_enhance_with_thread.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../thread/join_or_detach_thread_in_safe.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../thread/pass_arguments_in_thread.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../../thread/pparallelism.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

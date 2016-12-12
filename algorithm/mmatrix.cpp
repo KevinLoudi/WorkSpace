@@ -3,7 +3,7 @@
 namespace DataStructure
 {
     template<typename T>
-    Mmatrix<T>::Mmatrix(UINT rows_, UINT cols_, const T& initial_)
+    Mmatrix<T>::Mmatrix(const UINT& rows_, const UINT & cols_, const T& initial_)
     {
         mat.resize(rows_); //let the container contains rows_ elements
         for(UINT i=0; i<mat.size(); ++i)
@@ -31,6 +31,7 @@ namespace DataStructure
     template<typename T>
     Mmatrix<T> Mmatrix<T>::operator=(const Mmatrix<T>& rmat)
     {
+        if(!is_same_shape(rmat)) throw Eexception("cannot assign matrix to a different shaped matrix!!!");
         if(this==&rmat) return *this;
         UINT new_rows=rmat.get_rows();
         UINT new_cols=rmat.get_cols();
@@ -54,6 +55,22 @@ namespace DataStructure
     }
 
     template<typename T>
+    Mmatrix<T> Mmatrix<T>::ones(const UINT& rows_, const UINT& cols_)
+    {
+         Mmatrix<T> res= Mmatrix<T>(rows_,cols_,1);
+         return res;
+    }
+
+    template<typename T>
+    Mmatrix<T> Mmatrix<T>::diag(const UINT & len)
+    {
+        Mmatrix<T> res= Mmatrix<T>(len,len);
+        for(UINT ix=0; ix<len; ++ix)
+            res(ix,ix)=1;
+        return res;
+    }
+
+    template<typename T>
     std::ostream & Mmatrix<T>::print(std::ostream & ros) const
     {
         ros<<"\nFollowing is all elements of the matrix....\n";
@@ -71,13 +88,19 @@ namespace DataStructure
     template<typename T>
     inline T& Mmatrix<T>::operator()(const UINT& row, const UINT& col)
     {
-        return this->mat[row][col];
+        if(row<this->rows && col<this->cols)
+            return this->mat[row][col];
+        else
+            throw Eexception("Subscript out of range!!");
     }
 
     template<typename T>
     inline const T& Mmatrix<T>::operator()(const UINT& row, const UINT& col) const
     {
-        return this->mat[row][col];
+        if(row<this->rows && col<this->cols)
+            return this->mat[row][col];
+        else
+            throw Eexception("Subscript out of range!!");
     }
 
     template<typename T>
@@ -147,7 +170,7 @@ namespace DataStructure
     Mmatrix<T>& Mmatrix<T>::operator-=(const Mmatrix<T>& rmat) throw (std::runtime_error)
     {
         //execute after evaluate the expression as true
-        if(rows!=rmat.get_rows() || cols!=rmat.get_cols())
+        if(!is_same_shape(rmat))
             throw std::runtime_error("matrix dimension do not match!!");
         UINT s_rows=rmat.get_rows();
         UINT s_cols=rmat.get_cols();
@@ -165,14 +188,15 @@ namespace DataStructure
     template<typename T>
     Mmatrix<T> Mmatrix<T>::operator*(const Mmatrix<T>& rmat) const throw (std::runtime_error)
     {
-        UINT l_rows=rows;
-        UINT l_cols=cols;
-        UINT r_rows=rmat.get_rows();
-        UINT r_cols=rmat.get_cols();
         //execute after evaluate the expression as true
         //[M,N]*[N,T], so l_cols should equals to r_rows
-        if(l_cols!=r_rows )
-            throw std::runtime_error("matrix dimension do not match!!");
+        if( !is_multiplable(rmat) )
+            throw std::runtime_error("matrix dimension does not match!!");
+
+        UINT l_rows=rows;
+        UINT l_cols=cols;
+        //UINT r_rows=rmat.get_rows();
+        UINT r_cols=rmat.get_cols();
 
         Mmatrix<T> result(l_rows,r_cols,0.0);
         /**| 1   1 |    | 2 |        | 4 |
@@ -196,6 +220,8 @@ namespace DataStructure
     template<typename T>
     Mmatrix<T>& Mmatrix<T>::operator*=(const Mmatrix<T>& rmat) throw (std::runtime_error)
     {
+        if( !is_multiplable(rmat) ) throw Eexception("two matrix does not match in dimension!!");
+        if(!is_same_shape(rmat)) throw Eexception("the matrix cannot be assigned for the differed shape!!");
         Mmatrix<T> result=(*this)*rmat;
         //re-assign the result to 'this' object
         *this=result;
@@ -250,6 +276,7 @@ namespace DataStructure
     template<typename T>
     Mmatrix<T> Mmatrix<T>::operator/(const T& rT) const
     {
+         if(!((rT>EPS)||(rT<EPS))) throw Eexception("cannot divide zeros");
          Mmatrix<T> result(rows, cols, 0.0);
          for(UINT i=0; i<rows; ++i)
          {
@@ -273,10 +300,23 @@ namespace DataStructure
          {
             for(UINT j=0; j<cols;++j) //cols also indicate the length of input vector
              {
-                 res_vec[i]+=this->mat[i][j]*rarr[j]; //each vector element multiple with each row of the matrix
+                 res_vec(i,0)+=this->mat[i][j]*rarr[j]; //each vector element multiple with each row of the matrix
              }
          }
 
         return res_vec;
+    }
+
+    template<typename T>
+    inline bool Mmatrix<T>::is_same_shape(const Mmatrix<T> & rmat) const
+    {
+        return ((this->rows==rmat.get_rows()) && (this->cols==rmat.get_cols()));
+    }
+
+    template<typename T>
+    inline bool Mmatrix<T>::is_multiplable(const Mmatrix<T> & rmat) const
+    {
+        //[M,N]*[N,K]
+        return ((this->cols==rmat.get_rows()));
     }
 };
