@@ -1,5 +1,10 @@
 # depslib dependency file v1.0
-1481442557 source:d:\code\workspace\practices\project\test_parallism_in_codeblock\main.cpp
-	<iostream>
+1481594708 source:d:\code\workspace\practices\project\test_parallism_in_codeblock\main.cpp
 	<thread>
+	<vector>
+	<mutex>
+	<iostream>
+
+1481443303 d:\code\workspace\practices\thread\pparallelism.h
+	<time.h>
 
