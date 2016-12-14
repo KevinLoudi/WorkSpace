@@ -41,6 +41,7 @@ namespace DataStructure
     Mmatrix<T> inverse() const; //inverse the current matrix
     Mmatrix<T> inverse(const Mmatrix<T> & rmat) const; //inverse a given matrix
     double det(Mmatrix<T> & rmat); //calculate the determinant of a matrix
+    double det(Mmatrix<T> & rmat, const UINT len) const;
     //double det(UINT & len) const;
     //get sub-matrix of the given matrix, start from [row_.col_] cover a range of len_
     Mmatrix<T> sub_matrix(const Mmatrix<T> & rmat, const UINT row_, const UINT col_, const UINT len_) const throw (std::runtime_error);

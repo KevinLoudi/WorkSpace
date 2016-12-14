@@ -30,12 +30,10 @@ int main()
     cout<<s2.print(cout);
     cout<<s3.print(cout);
     cout<<"new matrix\n";
-    vector<double> v4;
-    v4.push_back(0);
-    v4.push_back(1);
-    v4.push_back(0);
-    v4.push_back(1);
-    Mmatrix<double> s4(2,2,v4);
+    Mmatrix<double> s4(2,2,1);
+    cout<<s4.det(s4)<<"\n";
+    Mmatrix<double> s5(4,4,1);
+    s5(0,0)=12.0; s5(0,3)=17.0; s5(2,3)=24.0;
     cout<<s4.det(s4);
 
     return 0;

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="test_alglib_in_codeblocks" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/test_alglib_in_codeblocks" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/test_alglib_in_codeblocks" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="main.cpp" />
+		<Unit filename="src/alglibinternal.cpp" />
+		<Unit filename="src/alglibinternal.h" />
+		<Unit filename="src/alglibmisc.cpp" />
+		<Unit filename="src/alglibmisc.h" />
+		<Unit filename="src/ap.cpp" />
+		<Unit filename="src/ap.h" />
+		<Unit filename="src/dataanalysis.cpp" />
+		<Unit filename="src/dataanalysis.h" />
+		<Unit filename="src/diffequations.cpp" />
+		<Unit filename="src/diffequations.h" />
+		<Unit filename="src/fasttransforms.cpp" />
+		<Unit filename="src/fasttransforms.h" />
+		<Unit filename="src/integration.cpp" />
+		<Unit filename="src/integration.h" />
+		<Unit filename="src/interpolation.cpp" />
+		<Unit filename="src/interpolation.h" />
+		<Unit filename="src/linalg.cpp" />
+		<Unit filename="src/linalg.h" />
+		<Unit filename="src/optimization.cpp" />
+		<Unit filename="src/optimization.h" />
+		<Unit filename="src/solvers.cpp" />
+		<Unit filename="src/solvers.h" />
+		<Unit filename="src/specialfunctions.cpp" />
+		<Unit filename="src/specialfunctions.h" />
+		<Unit filename="src/statistics.cpp" />
+		<Unit filename="src/statistics.h" />
+		<Unit filename="src/stdafx.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

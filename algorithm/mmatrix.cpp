@@ -89,7 +89,7 @@ namespace DataStructure
     template<typename T>
     double Mmatrix<T>::det(Mmatrix<T> & rmat)
     {
-        if (!is_square()) throw Eexception("this matrix is not a square, cannot calculate determinate!!!");
+        if (!is_square(rmat)) throw Eexception("this matrix is not a square, cannot calculate determinate!!!");
 
         double d=0.0;
         UINT len=rows;
@@ -105,9 +105,41 @@ namespace DataStructure
                 //recursive take part the big matrix to a 2*2 matrxi
             }
         }
-
         return d;
     }
+
+    template<typename T>
+    double Mmatrix<T>::det(Mmatrix<T> & rmat, const UINT len) const
+    {
+        if (!is_square(rmat)) throw Eexception("this matrix is not a square, cannot calculate determinate!!!");
+        UINT i,j,j1,j2;
+        double d = 0;
+        UINT n=len;
+
+        if (n < 1) { /* Error */}
+        else if (n == 1) { /* Shouldn't get used */d = rmat(0,0);}
+        else if (n == 2) {
+          d = rmat(0,0) * rmat(1,1) - rmat(1,0) * rmat(0,1);
+        }
+        else {
+        d = 0;
+        for (j1=0;j1<n;j1++)
+         {
+            Mmatrix<T> m(n-1,n-1);
+         for (i=1;i<n;i++) {
+            j2 = 0;
+            for (j=0;j<n;j++) {
+               if (j == j1)
+                  continue;
+               m(i-1,j2) = rmat(i,j);
+               j2++;
+            }
+         }
+         d += pow(-1.0,j1+2.0) * rmat(0,j1) * det(m,n-1);
+      }
+   }
+   return(d);
+}
 
     template<typename T>
     Mmatrix<T> Mmatrix<T>::minor_matrix(const UINT& row, const UINT& col) const

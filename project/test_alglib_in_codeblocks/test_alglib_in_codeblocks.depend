@@ -1,0 +1,334 @@
+# depslib dependency file v1.0
+1439987061 source:d:\code\workspace\practices\alglib\alglibinternal.cpp
+	"stdafx.h"
+	"alglibinternal.h"
+
+1439987063 d:\code\workspace\practices\alglib\stdafx.h
+
+1439987061 d:\code\workspace\practices\alglib\alglibinternal.h
+	"ap.h"
+
+1439987063 d:\code\workspace\practices\alglib\ap.h
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<string>
+	<cstring>
+	<math.h>
+	<list>
+	<vector>
+	<list.h>
+	<vector.h>
+	<list>
+	<vector>
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<setjmp.h>
+	<math.h>
+	<stddef.h>
+	<stdint.h>
+	<emmintrin.h>
+	<xmmintrin.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+
+1439987062 source:d:\code\workspace\practices\alglib\alglibmisc.cpp
+	"stdafx.h"
+	"alglibmisc.h"
+
+1439987062 d:\code\workspace\practices\alglib\alglibmisc.h
+	"ap.h"
+	"alglibinternal.h"
+
+1439987063 source:d:\code\workspace\practices\alglib\ap.cpp
+	"stdafx.h"
+	"ap.h"
+	<limits>
+	<locale.h>
+	<intrin.h>
+	<windows.h>
+	<process.h>
+	<time.h>
+	<unistd.h>
+	<pthread.h>
+	<sched.h>
+	<windows.h>
+	<stdio.h>
+	<sys/time.h>
+
+1439987062 source:d:\code\workspace\practices\alglib\dataanalysis.cpp
+	"stdafx.h"
+	"dataanalysis.h"
+
+1439987062 d:\code\workspace\practices\alglib\dataanalysis.h
+	"ap.h"
+	"alglibinternal.h"
+	"linalg.h"
+	"statistics.h"
+	"alglibmisc.h"
+	"specialfunctions.h"
+	"solvers.h"
+	"optimization.h"
+
+1439987062 d:\code\workspace\practices\alglib\linalg.h
+	"ap.h"
+	"alglibinternal.h"
+	"alglibmisc.h"
+
+1439987062 d:\code\workspace\practices\alglib\statistics.h
+	"ap.h"
+	"alglibinternal.h"
+	"linalg.h"
+	"specialfunctions.h"
+
+1439987062 d:\code\workspace\practices\alglib\specialfunctions.h
+	"ap.h"
+	"alglibinternal.h"
+
+1439987062 d:\code\workspace\practices\alglib\solvers.h
+	"ap.h"
+	"alglibinternal.h"
+	"linalg.h"
+	"alglibmisc.h"
+
+1439987062 d:\code\workspace\practices\alglib\optimization.h
+	"ap.h"
+	"alglibinternal.h"
+	"alglibmisc.h"
+	"linalg.h"
+	"solvers.h"
+
+1439987062 source:d:\code\workspace\practices\alglib\diffequations.cpp
+	"stdafx.h"
+	"diffequations.h"
+
+1439987062 d:\code\workspace\practices\alglib\diffequations.h
+	"ap.h"
+	"alglibinternal.h"
+
+1439987063 source:d:\code\workspace\practices\alglib\fasttransforms.cpp
+	"stdafx.h"
+	"fasttransforms.h"
+
+1439987063 d:\code\workspace\practices\alglib\fasttransforms.h
+	"ap.h"
+	"alglibinternal.h"
+
+1439987063 source:d:\code\workspace\practices\alglib\integration.cpp
+	"stdafx.h"
+	"integration.h"
+
+1439987063 d:\code\workspace\practices\alglib\integration.h
+	"ap.h"
+	"alglibinternal.h"
+	"linalg.h"
+	"specialfunctions.h"
+
+1439987063 source:d:\code\workspace\practices\alglib\interpolation.cpp
+	"stdafx.h"
+	"interpolation.h"
+
+1439987063 d:\code\workspace\practices\alglib\interpolation.h
+	"ap.h"
+	"alglibinternal.h"
+	"alglibmisc.h"
+	"linalg.h"
+	"solvers.h"
+	"optimization.h"
+	"specialfunctions.h"
+	"integration.h"
+
+1439987062 source:d:\code\workspace\practices\alglib\linalg.cpp
+	"stdafx.h"
+	"linalg.h"
+
+1439987062 source:d:\code\workspace\practices\alglib\optimization.cpp
+	"stdafx.h"
+	"optimization.h"
+
+1439987062 source:d:\code\workspace\practices\alglib\solvers.cpp
+	"stdafx.h"
+	"solvers.h"
+
+1439987062 source:d:\code\workspace\practices\alglib\specialfunctions.cpp
+	"stdafx.h"
+	"specialfunctions.h"
+
+1439987062 source:d:\code\workspace\practices\alglib\statistics.cpp
+	"stdafx.h"
+	"statistics.h"
+
+1481684674 source:d:\code\workspace\practices\project\test_alglib_in_codeblocks\main.cpp
+	<stdio.h>
+	<windows.h>
+	"..\..\alglib\linalg.cpp"
+
+1439987062 d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\linalg.cpp
+	"stdafx.h"
+	"linalg.h"
+
+1439987063 d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\stdafx.h
+
+1439987062 d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\linalg.h
+	"ap.h"
+	"alglibinternal.h"
+	"alglibmisc.h"
+
+1439987063 d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\ap.h
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<string>
+	<cstring>
+	<math.h>
+	<list>
+	<vector>
+	<list.h>
+	<vector.h>
+	<list>
+	<vector>
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<setjmp.h>
+	<math.h>
+	<stddef.h>
+	<stdint.h>
+	<emmintrin.h>
+	<xmmintrin.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+
+1439987061 d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\alglibinternal.h
+	"ap.h"
+
+1439987062 d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\alglibmisc.h
+	"ap.h"
+	"alglibinternal.h"
+
+1439987061 source:d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\alglibinternal.cpp
+	"stdafx.h"
+	"alglibinternal.h"
+
+1439987062 source:d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\alglibmisc.cpp
+	"stdafx.h"
+	"alglibmisc.h"
+
+1439987063 source:d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\ap.cpp
+	"stdafx.h"
+	"ap.h"
+	<limits>
+	<locale.h>
+	<intrin.h>
+	<windows.h>
+	<process.h>
+	<time.h>
+	<unistd.h>
+	<pthread.h>
+	<sched.h>
+	<windows.h>
+	<stdio.h>
+	<sys/time.h>
+
+1439987062 source:d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\dataanalysis.cpp
+	"stdafx.h"
+	"dataanalysis.h"
+
+1439987062 d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\dataanalysis.h
+	"ap.h"
+	"alglibinternal.h"
+	"linalg.h"
+	"statistics.h"
+	"alglibmisc.h"
+	"specialfunctions.h"
+	"solvers.h"
+	"optimization.h"
+
+1439987062 d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\statistics.h
+	"ap.h"
+	"alglibinternal.h"
+	"linalg.h"
+	"specialfunctions.h"
+
+1439987062 d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\specialfunctions.h
+	"ap.h"
+	"alglibinternal.h"
+
+1439987062 d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\solvers.h
+	"ap.h"
+	"alglibinternal.h"
+	"linalg.h"
+	"alglibmisc.h"
+
+1439987062 d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\optimization.h
+	"ap.h"
+	"alglibinternal.h"
+	"alglibmisc.h"
+	"linalg.h"
+	"solvers.h"
+
+1439987062 source:d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\diffequations.cpp
+	"stdafx.h"
+	"diffequations.h"
+
+1439987062 d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\diffequations.h
+	"ap.h"
+	"alglibinternal.h"
+
+1439987063 source:d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\fasttransforms.cpp
+	"stdafx.h"
+	"fasttransforms.h"
+
+1439987063 d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\fasttransforms.h
+	"ap.h"
+	"alglibinternal.h"
+
+1439987063 source:d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\integration.cpp
+	"stdafx.h"
+	"integration.h"
+
+1439987063 d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\integration.h
+	"ap.h"
+	"alglibinternal.h"
+	"linalg.h"
+	"specialfunctions.h"
+
+1439987063 source:d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\interpolation.cpp
+	"stdafx.h"
+	"interpolation.h"
+
+1439987063 d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\interpolation.h
+	"ap.h"
+	"alglibinternal.h"
+	"alglibmisc.h"
+	"linalg.h"
+	"solvers.h"
+	"optimization.h"
+	"specialfunctions.h"
+	"integration.h"
+
+1439987062 source:d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\linalg.cpp
+	"stdafx.h"
+	"linalg.h"
+
+1439987062 source:d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\optimization.cpp
+	"stdafx.h"
+	"optimization.h"
+
+1439987062 source:d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\solvers.cpp
+	"stdafx.h"
+	"solvers.h"
+
+1439987062 source:d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\specialfunctions.cpp
+	"stdafx.h"
+	"specialfunctions.h"
+
+1439987062 source:d:\code\workspace\practices\project\test_alglib_in_codeblocks\src\statistics.cpp
+	"stdafx.h"
+	"statistics.h"
+
+1439987062 d:\code\workspace\practices\alglib\linalg.cpp
+	"stdafx.h"
+	"linalg.h"
+

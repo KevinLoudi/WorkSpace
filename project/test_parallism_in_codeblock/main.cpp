@@ -1,135 +1,93 @@
-#include <string>
 #include <iostream>
-#include <thread>
-#include <mutex>
 #include <vector>
-#include "../../thread/pparallelism.h"
-
-//easy sharing of data between thread can cause problems-- race condition
-//two parallel operations access the same memory
-//this kind of bugs is hard to find and reproduce
-
-//5 threads to increment money until reach 5000
-const static int TARGET_MONEY=6000;
-const static int MONEY_CHANNEL=6;
-
-class Wallet
-{
- public:
-    Wallet():money(0) {}
-    ~Wallet() {}
-    int getMoney() const {return money;}
-    void addMoney(int mon)
-    {
-        for(int i=0; i<mon; ++i)
-            ++money;
-        //internal mechanism of race condition happens
-        /** 1. load 'money' variable value in register
-              2. do increment
-              3. update 'money' with register's value
-              when this three steps has been disorder, register could get a overwritten
-              value
-        to solve the problem, lock mechanism need to be introduced
-         */
+using namespace std;
 
 
-    }
- private:
-    int money;
-};
-
-class Wallet_mutex
-{
-public:
-     Wallet_mutex():money_(0) {}
-    ~Wallet_mutex() {}
-     int getMoney() const {return money_;}
-     void addMoney(int mon)
-     {
-         //mutex lock prevent the disorder lead by race condition
-         mutex_.lock();
-         for(int i=0; i<mon; ++i)
-            ++money_;
-         mutex_.unlock();
-     }
-     void addMoney_2(int mon)
-     {
-         //in 'locker' 's constructor it locks the mutex
-         std::lock_guard<std::mutex> locker(mutex_);
-         for(int i=0; i<mon; ++i)
-            ++money_; //collect the exceptions and call the stack unwinding
-         //once function exits, the destructor of 'locker' will
-         //be called and unlocks the mutex
-     }
-private:
-    int money_;
-    std::mutex  mutex_;
-};
-
-int MultithreadWallet()
-{
-    Wallet m_wallet;
-    std::vector<std::thread> threads;
-    for(unsigned int i=0 ; i<MONEY_CHANNEL; ++i)
-    {
-        threads.push_back(std::thread(&Wallet::addMoney, &m_wallet,
-                                      TARGET_MONEY/MONEY_CHANNEL));
-
-    }
-
-    for(unsigned int i=0 ; i<threads.size(); ++i)
-    {
-        threads.at(i).join();
-    }
-
-    return m_wallet.getMoney();
-}
-
-int MultithreadWallet_reliable()
-{
-    Wallet_mutex m_wallet_r;
-    std::vector<std::thread> threads_r;
-    for(unsigned int i=0 ; i<MONEY_CHANNEL; ++i)
-    {
-       // threads_r.push_back(std::thread(&Wallet_mutex::addMoney, &m_wallet_r,
-       //                               TARGET_MONEY/MONEY_CHANNEL));
-       //using the template class lock_guard which implements RAII for mutex
-          threads_r.push_back(std::thread(&Wallet_mutex::addMoney_2, &m_wallet_r,
-                                      TARGET_MONEY/MONEY_CHANNEL));
-    }
-
-    for(unsigned int i=0 ; i<threads_r.size(); ++i)
-    {
-        threads_r.at(i).join();
-    }
-
-    return m_wallet_r.getMoney();
-}
+void MatrixInversion(vector<vector<float> >A, int order, vector<vector<float> >Y);
+int GetMinor(vector<vector<float> >src, vector<vector<float> >dest, int row, int col, int order);
+double CalcDeterminant( vector<vector<float> >mat, int order);
 
 int main()
 {
-  int val = 0;
-  //executed in parallel, hence the money will be less than the target
-  //this is a race condition, as two or more threads are trying to modify the same memory location
-  //  and lead to unexpected conditions
-  for(int k = 0; k < TARGET_MONEY/MONEY_CHANNEL; k++)
-  {
-     if((val = MultithreadWallet()) != TARGET_MONEY)
-     {
-       std::cout << "Error at count = "<<k<<" Money in Wallet = "<<val << std::endl;
-     }
-  }
+    return 0;
+}
 
-  //using mutex to prevent race condition
- std::cout <<"After lock guarantees\n";
- int val_r=0;
- for(int kr = 0; kr < TARGET_MONEY/MONEY_CHANNEL; kr++)
-  {
-     if((val_r = MultithreadWallet_reliable()) != TARGET_MONEY)
-     {
-       std::cout << "Error at count = "<<kr<<" Money in Wallet = "<<val_r << std::endl;
-     }
-  }
-  return 0;
+// matrix inversioon
+// the result is put in Y
+void MatrixInversion(vector<vector<float> >A, int order, vector<vector<float> >Y)
+{
+    // get the determinant of a
+    double det = 1.0/CalcDeterminant(A,order);
+
+    // memory allocation
+    vector<vector<float> (order-1) > minor((order-1));
+    vector<float> temp(order-1);
+    for(int i=0;i<order-1;i++)
+        minor[i] = temp+(i*(order-1));
+
+    for(int j=0;j<order;j++)
+    {
+        for(int i=0;i<order;i++)
+        {
+            // get the co-factor (matrix) of A(j,i)
+            GetMinor(A,minor,j,i,order);
+            Y[i][j] = det*CalcDeterminant(minor,order-1);
+            if( (i+j)%2 == 1)
+                Y[i][j] = -Y[i][j];
+        }
+    }
+}
+
+// calculate the cofactor of element (row,col)
+int GetMinor(vector<vector<float> >src, vector<vector<float> >dest, int row, int col, int order)
+{
+    // indicate which col and row is being copied to dest
+    int colCount=0,rowCount=0;
+
+    for(int i = 0; i < order; i++ )
+    {
+        if( i != row )
+        {
+            colCount = 0;
+            for(int j = 0; j < order; j++ )
+            {
+                // when j is not the element
+                if( j != col )
+                {
+                    dest[rowCount][colCount] = src[i][j];
+                    colCount++;
+                }
+            }
+            rowCount++;
+        }
+    }
+
+    return 1;
+}
+
+// Calculate the determinant recursively.
+double CalcDeterminant( vector<vector<float> >mat, int order)
+{
+    // order must be >= 0
+    // stop the recursion when matrix is a single element
+    if( order == 1 )
+        return mat[0][0];
+
+    // the determinant value
+    float det = 0;
+
+    // allocate the cofactor matrix
+    vector<vector<float> > minor((order-1),(order-1));
+
+    for(int i = 0; i < order; i++ )
+    {
+        // get minor of element (0,i)
+        GetMinor( mat, minor, 0, i , order);
+        // the recusion is here!
+
+        det += (i%2==1?-1.0:1.0) * mat[0][i] * CalcDeterminant(minor,order-1);
+        //det += pow( -1.0, i ) * mat[0][i] * CalcDeterminant( minor,order-1 );
+    }
+    return det;
 }
 

@@ -37,6 +37,7 @@
 		<Unit filename="../../algorithm/algorithm.h" />
 		<Unit filename="../../algorithm/basic_data_structure.cpp" />
 		<Unit filename="../../algorithm/basic_data_structure.h" />
+		<Unit filename="../../algorithm/bbinary_tree.h" />
 		<Unit filename="../../algorithm/c_string_operations.cpp" />
 		<Unit filename="../../algorithm/c_string_operations.h" />
 		<Unit filename="../../algorithm/ddlinklist.cpp" />
