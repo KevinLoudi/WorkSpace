@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1481678270 source:d:\code\workspace\practices\project\test_in_codeblock\main.cpp
+1481718333 source:d:\code\workspace\practices\project\test_in_codeblock\main.cpp
 	<iostream>
 	<vector>
 	"../../algorithm/algorithm.h"
@@ -45,12 +45,13 @@
 1481251363 source:d:\code\workspace\practices\algorithm\c_string_operations.cpp
 	"c_string_operations.h"
 
-1481677590 d:\code\workspace\practices\algorithm\mmatrix.h
+1481718394 d:\code\workspace\practices\algorithm\mmatrix.h
 	<vector>
 	<iostream>
 	<stdexcept>
 	<math.h>
+	<iomanip>
 
-1481677966 source:d:\code\workspace\practices\algorithm\mmatrix.cpp
+1481717985 source:d:\code\workspace\practices\algorithm\mmatrix.cpp
 	"mmatrix.h"
 

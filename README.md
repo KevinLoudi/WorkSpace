@@ -12,3 +12,6 @@ Let everything clear and denfinate, good-looking and friendly for search
 
 # Test
 Test whenever finish something, make each of them as a moddule with update-ability
+
+# Programming mathemetic
+Coding for mathemetic solutions, such as linear equations and optimize problem

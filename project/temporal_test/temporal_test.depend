@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1481715784 source:d:\code\workspace\practices\project\temporal_test\main.cpp
+	<iostream>
+	<cmath>
+	<vector>
+

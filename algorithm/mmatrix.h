@@ -6,6 +6,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <math.h>
+#include <iomanip>
 typedef unsigned int UINT;
 
 namespace DataStructure
@@ -31,6 +32,7 @@ namespace DataStructure
   public:
     Mmatrix(const UINT& rows_, const UINT& cols_, const T& initial_=0);
     Mmatrix(const UINT& rows_, const UINT& cols_, const std::vector<T>& arr);
+    Mmatrix(const std::vector<std::vector<T> >& vmat);
     Mmatrix(const Mmatrix& rmat);
     //allow to change the shape of the matrix
     Mmatrix<T> operator=(const Mmatrix<T>& rmat);//copy assigment for matrix equation
@@ -42,6 +44,7 @@ namespace DataStructure
     Mmatrix<T> inverse(const Mmatrix<T> & rmat) const; //inverse a given matrix
     double det(Mmatrix<T> & rmat); //calculate the determinant of a matrix
     double det(Mmatrix<T> & rmat, const UINT len) const;
+    std::vector<T> gauss_elimination_solver();
     //double det(UINT & len) const;
     //get sub-matrix of the given matrix, start from [row_.col_] cover a range of len_
     Mmatrix<T> sub_matrix(const Mmatrix<T> & rmat, const UINT row_, const UINT col_, const UINT len_) const throw (std::runtime_error);
@@ -80,6 +83,7 @@ namespace DataStructure
     UINT get_len() const;
     UINT get_len(const Mmatrix<T> & rmat) const;
     std::ostream & print(std::ostream & ros) const; //print out all elements of the matrix
+    std::ostream & print(std::vector<T>& rarr, std::ostream & ros) const;
     bool is_same_shape(const Mmatrix<T> & rmat) const; //see if two matrix have the indentical size
     bool is_multiplable(const Mmatrix<T> & rmat) const; //see if two matrix have the ability to do right multiple; //this*matrix
     bool is_square() const {return this->rows==this->cols;}
@@ -91,6 +95,7 @@ namespace DataStructure
     UINT rows; //using unsigned int to make sure the matrix set up has at least one element
     UINT cols;
     void swap_(T& a, T& b); //swap a with b
+    std::vector<T> gauss(std::vector< std::vector<T> > A);
   };
 
   template class Mmatrix <double>;

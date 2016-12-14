@@ -19,25 +19,28 @@ using namespace std;
 int main()
 {
     using namespace DataStructure;
-    Mmatrix<double> s1(1,2,8);
-    Mmatrix<double> s2(2,1,3);
-    Mmatrix<double> s3(1,1,0);
-    vector<double> v1(2,3);
-    Mmatrix<double> v2(1,1,0);
-    v2=s1*v1;
-    s3=s1*s2;
-    cout<<s1.print(cout);
-    cout<<s2.print(cout);
-    cout<<s3.print(cout);
-    cout<<"new matrix\n";
-    Mmatrix<double> s4(2,2,1);
-    cout<<s4.det(s4)<<"\n";
-    Mmatrix<double> s5(4,4,1);
-    s5(0,0)=12.0; s5(0,3)=17.0; s5(2,3)=24.0;
-    cout<<s4.det(s4);
+    double data[] = {2,9,4,6,7,3,1,5,12,14,8,11,9.7,8.3,4.5,2.5,7.6};
+    const UINT M=3;
+    const UINT N=4;
+    vector<double> datalst(data, data+M*N);
 
+
+    Mmatrix<double> equ(3,4,datalst);
+    cout<<equ.print(datalst,cout);
+
+    //solve the 3*4 equation
+    vector<double> x =equ.gauss_elimination_solver();
+    cout<<equ.print(x,cout)<<"\n";
+
+    //calculate determinate
+    Mmatrix<double> mat(M,M,datalst);
+    cout<<equ.det(mat);
     return 0;
 }
+
+
+
+
 //int main()
 //{
 //    /*using namespace Algorithm;

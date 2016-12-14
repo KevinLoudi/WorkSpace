@@ -26,16 +26,34 @@ namespace DataStructure
     Mmatrix<T>::Mmatrix(const UINT& rows_, const UINT& cols_, const std::vector<T>& arr)
     {
         if((rows_*cols_)>arr.size()) throw Eexception("initialize data is not enough!!!");
-        typename std::vector<T>::const_iterator it=arr.begin();
+        this->rows=rows_;
+        this->cols=cols_;
 
-        for(UINT rx=0; rx<rows_; ++rx)
+        //assign memory for storing the matrix
+        mat.resize(rows_); //let the container contains rows_ elements
+        for(UINT i=0; i<mat.size(); ++i)
         {
-            for(UINT cx=0; cx<cols_; ++cx)
+            mat[i].resize(cols_,0); //let each containers contain cols_ initial_ values
+        }
+
+        //pass the value from vector to matrix
+        typename std::vector<T>::const_iterator it=arr.begin();
+        for(UINT rx=0; rx<this->rows; ++rx)
+        {
+            for(UINT cx=0; cx< this->cols; ++cx)
             {
                 this->mat[rx][cx]=*it;
                 ++it;
             }
         }
+    }
+
+    template<typename T>
+    Mmatrix<T>::Mmatrix(const std::vector<std::vector<T> >& vmat)
+    {
+        this->rows=vmat.size();
+        this->cols=vmat[0].size();
+        this->mat=vmat;
     }
 
     template<typename T>
@@ -92,19 +110,19 @@ namespace DataStructure
         if (!is_square(rmat)) throw Eexception("this matrix is not a square, cannot calculate determinate!!!");
 
         double d=0.0;
-        UINT len=rows;
-
-        if(len==1) d=this->mat[0][0];
-        else if(len==2) d=this->mat[0][0]*this->mat[1][1]-this->mat[0][1]*this->mat[1][0];
-        else
-        {
-            for(UINT ix=0; ix<len; ++ix)
-            {
-                Mmatrix<T>m=rmat.minor_matrix(0,ix);
-                d+=(double)(pow(-1,ix+1)*this->mat[0][ix]*det(m));
-                //recursive take part the big matrix to a 2*2 matrxi
-            }
-        }
+//        UINT len=rows;
+//
+//        if(len==1) d=this->mat[0][0];
+//        else if(len==2) d=this->mat[0][0]*this->mat[1][1]-this->mat[0][1]*this->mat[1][0];
+//        else
+//        {
+//            for(UINT ix=0; ix<len; ++ix)
+//            {
+//                Mmatrix<T>m=rmat.minor_matrix(0,ix);
+//                d+=(double)(pow(-1,ix+1)*this->mat[0][ix]*det(m));
+//                //recursive take part the big matrix to a 2*2 matrxi
+//            }
+//        }
         return d;
     }
 
@@ -196,6 +214,19 @@ namespace DataStructure
     }
 
     template<typename T>
+    std::ostream & Mmatrix<T>::print(std::vector<T>& rarr, std::ostream & ros) const
+    {
+        ros<<"\nFollowing is elements of a input vector....\n";
+        for(UINT i=0; i<rarr.size(); ++i)
+        {
+                 ros<<std::setprecision(4)<<std::setiosflags(std::ios_base::left)<<std::setw(7)
+                 <<rarr[i]<<"\t";
+        }
+        ros<<"\n";
+        return ros;
+    }
+
+    template<typename T>
     std::ostream & Mmatrix<T>::print(std::ostream & ros) const
     {
         ros<<"\nFollowing is all elements of the matrix....\n";
@@ -203,7 +234,8 @@ namespace DataStructure
         {
              for(UINT j=0; j<this->cols; ++j)
              {
-                 ros<<this->mat[i][j]<<"\t";
+                 ros<<std::setprecision(4)<<std::setiosflags(std::ios_base::left)<<std::setw(7)
+                 <<this->mat[i][j]<<"\t";
              }
              ros<<"\n";
         }
@@ -471,5 +503,115 @@ namespace DataStructure
     {
         if(!is_square(rmat)) throw Eexception("this is not a square, operations illegal!!!");
         return rmat.get_rows();
+    }
+
+    template<typename T>
+    std::vector<T> Mmatrix<T>::gauss_elimination_solver()
+    {
+        return gauss(this->mat);
+//        UINT t_rows=rows; //unknown x num
+//        UINT t_cols=cols;
+//        if((t_cols!=t_rows+1))
+//            throw Eexception("illegal linear equation!!");
+//
+//        UINT n=t_rows;
+//        for(UINT i=0; i<n; ++i)
+//        {
+//            //search for the maximum in this column
+//            T maxEle=abs(rmat(i,i));
+//            UINT maxRow=i;
+//            for(UINT k=i+1; k<n; ++k)
+//            {
+//                //do search
+//                if(abs(rmat(k,i)>maxEle))
+//                {
+//                    maxEle=rmat(k,i);
+//                    maxRow=k;
+//                }
+//            }
+//
+//            //swap the row with max element with the current row
+//            for(UINT k=i; k<n+1; ++k)
+//            {
+//                T tmp=rmat(maxRow,k);
+//                rmat(maxRow,k)=rmat(i,k);
+//                rmat(i,k)=tmp;
+//            }
+//
+//            //make all other row element of this column zero
+//            for(UINT k=i+1; k<n; ++k)
+//            {
+//                T c=-rmat(k,i)/rmat(i,i);
+//                for(UINT j=i; j<n+1; ++j)
+//                {
+//                    if(i==j)
+//                    {
+//                        rmat(k,j)=0;
+//                    }else
+//                    {
+//                        rmat(k,j)+=c*rmat(i,j);
+//                    }
+//                }
+//            }
+//        }
+//
+//      //solve equation Ax=b in the upper triangular matrix rmat
+//      std::vector<T> x(n);
+//      for(UINT i=t_rows; i>0; --i)
+//      {
+//        x[i]=rmat(i,n)/rmat(i,i);
+//        for(UINT k=i; k>=0; --k)
+//        {
+//            rmat(k,n)-=rmat(k,i)*x[i];
+//        }
+//      }
+//      return x;
+    }
+
+    template<typename T>
+    std::vector<T>  Mmatrix<T>::gauss(std::vector< std::vector<T> > A)
+    {
+        int n = A.size();
+
+        for (int i=0; i<n; i++) {
+        // Search for maximum in this column
+        double maxEl = abs(A[i][i]);
+        int maxRow = i;
+        for (int k=i+1; k<n; k++) {
+            if (abs(A[k][i]) > maxEl) {
+                maxEl = abs(A[k][i]);
+                maxRow = k;
+            }
+        }
+
+        // Swap maximum row with current row (column by column)
+        for (int k=i; k<n+1;k++) {
+            double tmp = A[maxRow][k];
+            A[maxRow][k] = A[i][k];
+            A[i][k] = tmp;
+        }
+
+        // Make all rows below this one 0 in current column
+        for (int k=i+1; k<n; k++) {
+            double c = -A[k][i]/A[i][i];
+            for (int j=i; j<n+1; j++) {
+                if (i==j) {
+                    A[k][j] = 0;
+                } else {
+                    A[k][j] += c * A[i][j];
+                }
+            }
+        }
+    }
+
+    // Solve equation Ax=b for an upper triangular matrix A
+    std::vector<double> x(n);
+    for (int i=n-1; i>=0; i--) {
+        x[i] = A[i][n]/A[i][i];
+        for (int k=i-1;k>=0; k--) {
+            A[k][n] -= A[k][i] * x[i];
+        }
+    }
+    return x;
     }
 };
