@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="SimpleApp"
-	ProjectGUID="{0EED9028-F267-4FE2-8BF2-42CFFD81F366}"
-	RootNamespace="SimpleApp"
+	Name="test_in_vs"
+	ProjectGUID="{B3CF4404-5CD7-4B2B-873C-AE0FDB233121}"
+	RootNamespace="test_in_vs"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
@@ -21,7 +21,6 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
-			UseOfMFC="1"
 			CharacterSet="2"
 			>
 			<Tool
@@ -42,10 +41,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
+				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="4"
@@ -63,7 +62,7 @@
 				Name="VCLinkerTool"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
-				SubSystem="2"
+				SubSystem="1"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -115,7 +114,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="0"
@@ -135,7 +134,7 @@
 				Name="VCLinkerTool"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
-				SubSystem="2"
+				SubSystem="1"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				TargetMachine="1"
@@ -172,7 +171,31 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\startup.cpp"
+				RelativePath="..\..\..\algorithm\algorithm.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\algorithm\basic_data_structure.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\algorithm\c_string_operations.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\algorithm\ddlinklist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\main.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\algorithm\mmatrix.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\algorithm\sstack.cpp"
 				>
 			</File>
 		</Filter>
@@ -182,15 +205,31 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\resource.h"
+				RelativePath="..\..\..\algorithm\algorithm.h"
 				>
 			</File>
 			<File
-				RelativePath=".\resource1.h"
+				RelativePath="..\..\..\algorithm\basic_data_structure.h"
 				>
 			</File>
 			<File
-				RelativePath=".\startup.h"
+				RelativePath="..\..\..\algorithm\bbinary_tree.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\algorithm\c_string_operations.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\algorithm\ddlinklist.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\algorithm\mmatrix.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\algorithm\sstack.h"
 				>
 			</File>
 		</Filter>
@@ -199,14 +238,6 @@
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
-			<File
-				RelativePath=".\icon1.ico"
-				>
-			</File>
-			<File
-				RelativePath=".\SimpleApp.rc"
-				>
-			</File>
 		</Filter>
 	</Files>
 	<Globals>

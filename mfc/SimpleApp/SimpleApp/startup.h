@@ -7,6 +7,7 @@ class CSimpleFrame: public CFrameWnd
 {
 public:
 	CSimpleFrame();
+	HACCEL m_hAccel;
 	DECLARE_DYNCREATE(CSimpleFrame)
 
    #ifdef _DEBUG
@@ -20,4 +21,5 @@ public:
 struct CSimpleApp: public CWinApp
 {
 	BOOL InitInstance();
+	void OnMsgBox();
 };
