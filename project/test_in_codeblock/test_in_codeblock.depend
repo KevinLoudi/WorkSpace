@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1481718333 source:d:\code\workspace\practices\project\test_in_codeblock\main.cpp
+1481976454 source:d:\code\workspace\practices\project\test_in_codeblock\main.cpp
 	<iostream>
 	<vector>
 	"../../algorithm/algorithm.h"
@@ -8,11 +8,12 @@
 	"../../algorithm/sstack.h"
 	"../../algorithm/c_string_operations.h"
 	"../../algorithm/mmatrix.h"
+	"../../algorithm/bbinary_tree.h"
 
 1480837275 d:\code\workspace\practices\algorithm\algorithm.h
 	<iostream>
 
-1480663859 source:d:\code\workspace\practices\algorithm\algorithm.cpp
+1481870602 source:d:\code\workspace\practices\algorithm\algorithm.cpp
 	"algorithm.h"
 
 1481077855 d:\code\workspace\practices\algorithm\basic_data_structure.h
@@ -23,8 +24,9 @@
 	"basic_data_structure.h"
 	<iostream>
 
-1481245540 d:\code\workspace\practices\algorithm\ddlinklist.h
+1481870528 d:\code\workspace\practices\algorithm\ddlinklist.h
 	<iostream>
+	<string>
 	<stdexcept>
 
 1481185557 source:d:\code\workspace\practices\algorithm\ddlinklist.cpp
@@ -42,7 +44,7 @@
 	<iostream>
 	<stdexcept>
 
-1481251363 source:d:\code\workspace\practices\algorithm\c_string_operations.cpp
+1481870557 source:d:\code\workspace\practices\algorithm\c_string_operations.cpp
 	"c_string_operations.h"
 
 1481718394 d:\code\workspace\practices\algorithm\mmatrix.h
@@ -52,6 +54,9 @@
 	<math.h>
 	<iomanip>
 
-1481717985 source:d:\code\workspace\practices\algorithm\mmatrix.cpp
+1481718371 source:d:\code\workspace\practices\algorithm\mmatrix.cpp
 	"mmatrix.h"
+
+1481976739 d:\code\workspace\practices\algorithm\bbinary_tree.h
+	<iostream>
 

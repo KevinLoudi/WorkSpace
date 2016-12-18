@@ -13,6 +13,7 @@
 #include "../../algorithm/sstack.h" */
 #include "../../algorithm/c_string_operations.h"
 #include "../../algorithm/mmatrix.h"
+#include "../../algorithm/bbinary_tree.h"
 
 using namespace std;
 
