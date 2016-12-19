@@ -36,6 +36,10 @@ int main()
     //calculate determinate
     Mmatrix<double> mat(M,M,datalst);
     cout<<equ.det(mat);
+
+    //generate a binary tree
+    BTree<double> tree(data, M*N);
+    cout<<tree.print_helper(cout);
     return 0;
 }
 
