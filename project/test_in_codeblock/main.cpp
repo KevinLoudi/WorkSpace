@@ -14,6 +14,7 @@
 #include "../../algorithm/c_string_operations.h"
 #include "../../algorithm/mmatrix.h"
 #include "../../algorithm/bbinary_tree.h"
+#include "../../algorithm/c_std_string.h"
 
 using namespace std;
 
@@ -35,11 +36,27 @@ int main()
 
     //calculate determinate
     Mmatrix<double> mat(M,M,datalst);
-    cout<<equ.det(mat);
+    cout<<equ.det(mat)<<"\n";
 
     //generate a binary tree
-    BTree<double> tree(data, M*N);
-    cout<<tree.print_helper(cout);
+    /*BTree<double> tree(data, M*N);
+    cout<<tree.print_helper(cout); */
+
+    /*string*/
+    char orign[100]="mnbv", add[100]="cxz";
+    cout<<"orign length: "<<strlen_(orign)<<"\n"<<"add length: "<<strlen_(add)<<"\n";
+    strncat_(orign, add,2);
+    cout<<"dest length: "<<strlen_(orign)<<" "<<orign<<"\n";
+    char* pdst=strnset_(orign, 'a',3);
+    cout<<"set string: "<<pdst<<"\n";
+
+    char str1[100]="abcdefgh";
+    char* str2="ab8902";
+    cout<<"difference: "<<strcmp_(str1,str1)<<"\n";
+    cout<<"search sub string: "<<strstr_(str1,"cde")<<"\n";
+    //reverse need more memory
+    cout<<"reverse string: "<<str1<<strrev_(str1)<<"\n";
+
     return 0;
 }
 

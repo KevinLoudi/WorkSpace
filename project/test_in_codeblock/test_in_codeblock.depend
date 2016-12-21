@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1482116821 source:d:\code\workspace\practices\project\test_in_codeblock\main.cpp
+1482306440 source:d:\code\workspace\practices\project\test_in_codeblock\main.cpp
 	<iostream>
 	<vector>
 	"../../algorithm/algorithm.h"
@@ -9,6 +9,7 @@
 	"../../algorithm/c_string_operations.h"
 	"../../algorithm/mmatrix.h"
 	"../../algorithm/bbinary_tree.h"
+	"../../algorithm/c_std_string.h"
 
 1480837275 d:\code\workspace\practices\algorithm\algorithm.h
 	<iostream>
@@ -62,4 +63,12 @@
 
 1482116768 source:d:\code\workspace\practices\algorithm\bbinary_tree.cpp
 	"bbinary_tree.h"
+
+1482304132 source:d:\code\workspace\practices\algorithm\c_std_string.c
+	"c_std_string.h"
+
+1482307331 d:\code\workspace\practices\algorithm\c_std_string.h
+	<stdio.h>
+	<stdlib.h>
+	<assert.h>
 
