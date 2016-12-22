@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1482306440 source:d:\code\workspace\practices\project\test_in_codeblock\main.cpp
+1482372457 source:d:\code\workspace\practices\project\test_in_codeblock\main.cpp
 	<iostream>
 	<vector>
 	"../../algorithm/algorithm.h"
@@ -41,11 +41,12 @@
 1481247070 source:d:\code\workspace\practices\algorithm\sstack.cpp
 	"sstack.h"
 
-1481251149 d:\code\workspace\practices\algorithm\c_string_operations.h
+1482372515 d:\code\workspace\practices\algorithm\c_string_operations.h
 	<iostream>
 	<stdexcept>
+	<iomanip>
 
-1481870557 source:d:\code\workspace\practices\algorithm\c_string_operations.cpp
+1482371828 source:d:\code\workspace\practices\algorithm\c_string_operations.cpp
 	"c_string_operations.h"
 
 1481718394 d:\code\workspace\practices\algorithm\mmatrix.h
@@ -67,8 +68,9 @@
 1482304132 source:d:\code\workspace\practices\algorithm\c_std_string.c
 	"c_std_string.h"
 
-1482307331 d:\code\workspace\practices\algorithm\c_std_string.h
+1482372414 d:\code\workspace\practices\algorithm\c_std_string.h
 	<stdio.h>
 	<stdlib.h>
 	<assert.h>
+	<stdbool.h>
 

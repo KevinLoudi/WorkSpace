@@ -23,6 +23,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <stdbool.h>
 typedef unsigned int UINT;
 
 /**get length of a string */
@@ -44,6 +45,67 @@ int strcmp_(const char*, const char*);
 int strstr_(const char*, const char*);
 /**reverse a string */
 char* strrev_(char*);
+/**string-based calculator */
+int strtoint_(const char*); //atoi(const char *str)
+char* inttostr_(const int); //iota
+
+char* inttostr_(const int num)
+{
+    int tmp_num=num;
+    const int n=log10(num)+1; //get digital bits
+    //memory leakage
+    char* num_str=(char*)malloc(n*sizeof(char)); //allocate memory
+
+    int i;
+    for(i=0; i<n; ++i, tmp_num/=10)
+    {
+        num_str[i]=tmp_num%10+'0';
+    }
+    num_str[n]='\0';
+    #ifdef DEBUG
+      printf("%s%s", "converted string: ", num_str);
+    #endif // DEBUG
+    return num_str;
+}
+
+int strtoint_(const char* pstrnum)
+{
+    assert(pstrnum!=NULL);
+    long long num=0;
+    const long long max_num=999999999;
+    bool minus=false;
+
+    const char* digit=pstrnum;
+    //const UINT num_len=strlen_(pstrnum); //get the length of the input string
+    //if the sign presence, move backward, else do nothing
+    if(*digit=='-')
+    {
+        minus=true;
+        ++digit;
+    }
+    else if(*digit=='+')
+    {
+        ++digit;
+    }
+    else;
+
+    while(*digit!='\0')
+    {
+        assert(*digit>='0' && *digit<='9'); //prevent illegal input
+        num=num*10+(*digit-'0'); //conduct carry
+
+        //overflow
+        if(num>=max_num)
+        {
+            perror("calculation overflow!!!");
+            return (int)(num);
+        }
+
+        ++digit;
+    }
+
+    return minus==true?(int)(-1*num):(int)(num);
+}
 
 char* strrev_(char* pStr)
 {

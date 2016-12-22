@@ -51,11 +51,21 @@ int main()
     cout<<"set string: "<<pdst<<"\n";
 
     char str1[100]="abcdefgh";
-    char* str2="ab8902";
     cout<<"difference: "<<strcmp_(str1,str1)<<"\n";
     cout<<"search sub string: "<<strstr_(str1,"cde")<<"\n";
     //reverse need more memory
-    cout<<"reverse string: "<<str1<<strrev_(str1)<<"\n";
+    cout<<"reverse string: "<<str1;
+    cout<<"=>"<<strrev_(str1)<<"\n";
+
+    char* numstr="-345123";
+    cout<<"present number in string: "<<strtoint_(numstr)<<"\n";
+    int num=897;
+    cout<<"convert number to string: "<<inttostr_(num)<<"\n";
+
+    cout<<"self-defined string\n";
+    Sstring s1("abc");
+    Sstring s2;
+    s2=s1;
 
     return 0;
 }

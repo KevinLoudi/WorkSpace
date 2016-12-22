@@ -2,6 +2,8 @@
 
 namespace DataStructure
 {
+    const UINT Sstring::max_length=255;
+
     Sstring::Sstring():data(NULL),length(0)
     {
 
@@ -22,11 +24,47 @@ namespace DataStructure
          if(this==&other_string) return;
          this->length=strlen_(other_string.data);
          strcpy_(this->data,other_string.data);
-         /*this->length=other_string.length;
-         if(data[0]!='0') delete data;
-         data=new char(length);
-         for(UINT i=0;i<length;++i)
-            data[i]=other_string.data[i];*/
+     }
+
+     Sstring::~Sstring()
+     {
+
+     }
+
+     Sstring& Sstring::operator=(const Sstring& other)
+     {
+         if(this==&other) return *this;
+
+         delete[] data;
+         if(!other.data) this->data=NULL;
+         else
+         {
+             this->data=new char[strlen_(other.data)+1];
+             strcpy_(this->data, other.data);
+         }
+
+         return *this;
+     }
+
+      Sstring& Sstring::operator=(const char* other)
+      {
+          delete[] data;
+          if(!other) this->data=NULL;
+          else
+          {
+              this->data=new char[strlen_(other)+1];
+              strcpy_(this->data, other);
+          }
+
+          return *this;
+      }
+
+     Sstring Sstring::operator+(const Sstring& other) const
+     {
+         if(!other.data) return *this;
+         //will it cause problem when this and other share the same memory location
+         strcpy_(this->data,other.data);
+         return *this;
      }
 
      UINT Sstring::strlen_(const char* str) const
@@ -53,6 +91,20 @@ namespace DataStructure
         }
         dst[len_src]='0';
         return  true;
+     }
+
+     std::ostream & operator<<(std::ostream & ros, Sstring& str)
+     {
+         ros<<str.data;
+         return ros;
+     }
+
+     std::istream & operator>>(std::istream & rin, Sstring& str)
+     {
+         char buff[Sstring::max_length];
+         rin>>std::setw(Sstring::max_length)>>buff;
+         //str.Sstring::strcpy_(buff);
+         return rin;
      }
 
 };
