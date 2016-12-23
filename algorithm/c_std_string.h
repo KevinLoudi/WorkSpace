@@ -19,11 +19,15 @@
 #endif
 
 #define DEBUG
+#define __STDC_VERSION__ >= 199901L
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
-#include <stdbool.h>
+#include <math.h>
+#define bool int
+#define true 1
+#define false 0
 typedef unsigned int UINT;
 
 /**get length of a string */
@@ -48,14 +52,127 @@ char* strrev_(char*);
 /**string-based calculator */
 int strtoint_(const char*); //atoi(const char *str)
 char* inttostr_(const int); //iota
+/*allocate memory*/
+//void* is a special pointer with no type, and can not 
+//sizeof(), any pointer can assign value to void* without 
+//cast
+void* memcre_(size_t);
+/*fill a region of memory with given value of c*/
+void* memset_(void*, const char , size_t);
+/*copy one area of memory to another*/
+void* memcpy_(void*, const void*, size_t);
+/*copy one area of memory to another (in overlapping areas)*/
+void* memmove_(void*, const void*, size_t);
+/*release allocated memory*/
+void memrel_(void*, size_t);
+/*is the string a palindrome*/
+bool is_palindrome_(char* str);
+/*insert sort for char* string*/
+void insert_sort_(char* str, const size_t n);
+
+void insert_sort_(char* str, const size_t n)
+{
+  char key;
+  UINT j=1; //the first element considered sorted
+  for(;j<n-1;++j)
+  {
+    key=str[j]; //select a key
+    UINT i=j-1; //search in the current unsorted region
+    for(; i>0&&str[i]>key;--i)
+    {
+      //move backward if the current element 
+      //is greater than the key
+      str[i+1]=str[i];
+    }
+    //put the key in the right place
+    str[i+1]=key;
+  }
+}
+
+bool is_palindrome_(char* str)
+{
+  if(str==NULL) return false;
+  if(strlen_(str)==1) return true;
+
+  char* head=str;
+  //remember '\0' remained at the last
+  char* tail=str+strlen_(str)-1;
+
+  while(*head==*tail && head<tail)
+    head++, tail--;
+
+  if(head<tail) return false; //at least one head-tail do not match
+  return true; //all head-tail pairs matched
+}
+
+void* memmove_(void* dest, const void* src, size_t count)
+{
+  char* d;
+  const char* s;
+
+  if(dest<=src)
+  {
+    d=(char*)dest;
+    s=(char*)src;
+    while(count--)
+      *d++=*s++; //move contents
+  }
+  else
+  {
+    d=(char*)dest;
+    d+=count;
+    s=(char*)src;
+    s+=count;
+    while(count--)
+      *--d=*--s;
+  }
+  return dest;
+}
+
+void memrel_(void* src, size_t count)
+{
+  if(src==NULL) return;
+  free(src);
+  src=NULL; //prevent the illegal use after deleted
+  return;
+}
+
+void* memcre_(size_t count)
+{
+  void* tmp=(void*)malloc(count*sizeof(char));
+  if(tmp==NULL) //fail to malloc memory
+    exit(1);
+  return tmp;
+}
+
+void* memcpy_(void* dest, const void* src, size_t count)
+{
+  char* tmp=(char*)dest;
+  const char* s=(char*)src;
+
+  while(count--)
+    *tmp++=*s++;
+  return dest;
+}
+
+void* memset_(void* s, const char c, size_t count)
+{
+  char *xs=(char*)s;
+  while(count--)
+    *xs++=c;
+  *--xs='\0'; //add an end flag at the string-end
+  return s;
+}
 
 char* inttostr_(const int num)
 {
     int tmp_num=num;
-    const int n=log10(num)+1; //get digital bits
+    //avoid ambiguous calling through cast, C
+	  const int n=(int)(log10((double)(num)+1)); //get digital bits
     //memory leakage
     char* num_str=(char*)malloc(n*sizeof(char)); //allocate memory
-
+    if(num_str==NULL)
+      exit(1);
     int i;
     for(i=0; i<n; ++i, tmp_num/=10)
     {
@@ -164,7 +281,7 @@ char* strnset_(char* str, char c, UINT cnt)
 {
     assert(str != NULL);
     char* s=str;
-    for(; (*s != '\0')&&((s-str)<cnt); ++s)
+    for(; (*s != '\0')&&((s-str) < (int)cnt); ++s)
         *s=c;
     return str;
 }
