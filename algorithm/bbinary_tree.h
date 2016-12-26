@@ -49,7 +49,7 @@ namespace DataStructure
     UINT size;
     const UINT max_size; //max number of node a tree can hold
     std::ostream & print(const BTnode<T>* curnode, std::ostream & ros) const;
-    bool insert(const BTnode<T>* curnode ,const T& val);
+    bool insert(BTnode<T>* curnode ,const T& val);
    };
 
    template class BTree <double>;

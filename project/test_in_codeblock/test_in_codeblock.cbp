@@ -39,10 +39,6 @@
 		<Unit filename="../../algorithm/basic_data_structure.h" />
 		<Unit filename="../../algorithm/bbinary_tree.cpp" />
 		<Unit filename="../../algorithm/bbinary_tree.h" />
-		<Unit filename="../../algorithm/c_std_string.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../../algorithm/c_std_string.h" />
 		<Unit filename="../../algorithm/c_string_operations.cpp" />
 		<Unit filename="../../algorithm/c_string_operations.h" />
 		<Unit filename="../../algorithm/ddlinklist.cpp" />

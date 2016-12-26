@@ -14,7 +14,6 @@
 #include "../../algorithm/c_string_operations.h"
 #include "../../algorithm/mmatrix.h"
 #include "../../algorithm/bbinary_tree.h"
-#include "../../algorithm/c_std_string.h"
 
 using namespace std;
 
@@ -24,7 +23,7 @@ int main()
     double data[] = {2,9,4,6,7,3,1,5,12,14,8,11,9.7,8.3,4.5,2.5,7.6};
     const UINT M=3;
     const UINT N=4;
-    vector<double> datalst(data, data+M*N);
+    /*vector<double> datalst(data, data+M*N);
 
 
     Mmatrix<double> equ(3,4,datalst);
@@ -36,36 +35,16 @@ int main()
 
     //calculate determinate
     Mmatrix<double> mat(M,M,datalst);
-    cout<<equ.det(mat)<<"\n";
+    cout<<equ.det(mat)<<"\n"; */
 
     //generate a binary tree
-    /*BTree<double> tree(data, M*N);
-    cout<<tree.print_helper(cout); */
+    BTree<double> tree;
+    for(UINT i=0; i<M*N; ++i)
+    {
+        tree.insert_helper(data[i]);
+    }
 
-    /*string*/
-    char orign[100]="mnbv", add[100]="cxz";
-    cout<<"orign length: "<<strlen_(orign)<<"\n"<<"add length: "<<strlen_(add)<<"\n";
-    strncat_(orign, add,2);
-    cout<<"dest length: "<<strlen_(orign)<<" "<<orign<<"\n";
-    char* pdst=strnset_(orign, 'a',3);
-    cout<<"set string: "<<pdst<<"\n";
-
-    char str1[100]="abcdefgh";
-    cout<<"difference: "<<strcmp_(str1,str1)<<"\n";
-    cout<<"search sub string: "<<strstr_(str1,"cde")<<"\n";
-    //reverse need more memory
-    cout<<"reverse string: "<<str1;
-    cout<<"=>"<<strrev_(str1)<<"\n";
-
-    char* numstr="-345123";
-    cout<<"present number in string: "<<strtoint_(numstr)<<"\n";
-    int num=897;
-    cout<<"convert number to string: "<<inttostr_(num)<<"\n";
-
-    cout<<"self-defined string\n";
-    Sstring s1("abc");
-    Sstring s2;
-    s2=s1;
+    cout<<tree.print_helper(cout);
 
     return 0;
 }

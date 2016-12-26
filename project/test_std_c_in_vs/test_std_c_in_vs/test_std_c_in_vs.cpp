@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include "../../../algorithm/c_std_string.h"
 
-
 int _tmain(int argc, _TCHAR* argv[])
 {
 	char* prom="program running...";
@@ -21,6 +20,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	str="asdedfe";
 	str2="qooq";
 	printf("%d%s%d\n",is_palindrome_(str)," ",is_palindrome_(str2));
+
+
 
 	//wait for input 
 	getchar();

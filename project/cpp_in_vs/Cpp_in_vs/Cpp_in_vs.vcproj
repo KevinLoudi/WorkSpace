@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="test_std_c_in_vs"
-	ProjectGUID="{B67801A0-75A1-4085-B28F-0DD1FE44B6C7}"
-	RootNamespace="test_std_c_in_vs"
+	Name="Cpp_in_vs"
+	ProjectGUID="{BA4DDD35-57C0-402D-A403-BE085D62E0C1}"
+	RootNamespace="Cpp_in_vs"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
@@ -21,6 +21,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
+			UseOfMFC="2"
 			CharacterSet="1"
 			>
 			<Tool
@@ -92,6 +93,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
+			UseOfMFC="2"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
@@ -171,7 +173,11 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\dsa.c"
+				RelativePath=".\Cpp_in_vs.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Solver.cpp"
 				>
 			</File>
 			<File
@@ -195,7 +201,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\test_std_c_in_vs.cpp"
+				RelativePath=".\Test.cpp"
 				>
 			</File>
 		</Filter>
@@ -205,7 +211,15 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\..\..\algorithm\c_std_string.h"
+				RelativePath=".\Cpp_in_vs.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Resource.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Solver.h"
 				>
 			</File>
 			<File
@@ -216,12 +230,20 @@
 				RelativePath=".\targetver.h"
 				>
 			</File>
+			<File
+				RelativePath=".\Test.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="资源文件"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
+			<File
+				RelativePath=".\Cpp_in_vs.rc"
+				>
+			</File>
 		</Filter>
 		<File
 			RelativePath=".\ReadMe.txt"

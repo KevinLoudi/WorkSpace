@@ -77,24 +77,30 @@ namespace DataStructure
   }
 
   template<typename T>
-  bool BTree<T>::insert(const BTnode<T>* curnode, const T& val)
+  bool BTree<T>::insert(BTnode<T>* curnode, const T& val)
   {
-    if(size>max_size) return false; //memory used up
-    if(curnode==NULL)
-    {
-        curnode=new BTnode<T>(val);
-        ++size;
-    }
-    //recursive insertion
-    else if(curnode->data <= val)
-    {
-        insert(curnode->right_child, val);
-    }
-    else if(curnode->data > val)
-    {
-        insert(curnode->left_child,val);
-    }
-    return true;
+      if(size>=max_size) return false;
+      if(val<=curnode->data)
+      {
+          if(curnode->left_child!=NULL)
+            insert(curnode->left_child,val);
+          else
+            BTnode<T>* newnode=new BTnode<T>(val);
+            newnode->parent=curnode;
+            curnode->left_child=newnode;
+            ++size;
+      }
+      else
+      {
+           if(curnode->right_child!=NULL)
+            insert(curnode->right_child,val);
+          else
+            BTnode<T>* newnode=new BTnode<T>(val);
+            newnode->parent=curnode;
+            curnode->right_child=newnode;
+            ++size;
+      }
+      return true;
   }
 
   template<typename T>
@@ -106,12 +112,14 @@ namespace DataStructure
   template<typename T>
   std::ostream & BTree<T>::print(const BTnode<T>* curnode, std::ostream & ros) const
   {
-        if(curnode&&curnode->left_child)
-            ros<<print(curnode, ros);
-        if(curnode)
-            ros<<curnode->data<<"\n ";
-        if(curnode&&curnode->right_child)
-            ros<<print(curnode,ros);
-        return ros;
+    if(curnode != NULL)
+    {
+        if(curnode->left_child!=NULL)
+            ros<<print(curnode->left_child, ros);
+        ros<<curnode->data<<"\n";
+        if(curnode->right_child!=NULL)
+            ros<<print(curnode->right_child, ros);
+    }
+    return ros;
   }
 };

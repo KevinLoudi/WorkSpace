@@ -63,7 +63,7 @@ namespace DataStructure
      {
          if(!other.data) return *this;
          //will it cause problem when this and other share the same memory location
-         strcpy_(this->data,other.data);
+         //strcpy_(this->data,other.data);
          return *this;
      }
 
