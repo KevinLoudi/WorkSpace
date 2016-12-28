@@ -1,6 +1,6 @@
-//Microsoft Visual C++ 生成的资源脚本。
+// Microsoft Visual C++ 生成的资源脚本。
 //
-#include "resource.h"
+#include "resource1.h"
 
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
@@ -8,13 +8,16 @@
 // 从 TEXTINCLUDE 2 资源生成。
 //
 #include "afxres.h"
+
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
-#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+/////////////////////////////////////////////////////////////////////////////
+// 英语(美国)资源
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE 4, 2
 #pragma code_page(936)
-
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -22,18 +25,18 @@ LANGUAGE 4, 2
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE
+1 TEXTINCLUDE  
 BEGIN
-    "resource.h\0"
+    "resource1.h\0"
 END
 
-2 TEXTINCLUDE
+2 TEXTINCLUDE  
 BEGIN
     "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE
+3 TEXTINCLUDE  
 BEGIN
     "\r\n"
     "\0"
@@ -41,17 +44,7 @@ END
 
 #endif    // APSTUDIO_INVOKED
 
-/////////////////////////////////////////////////////////////////////////////
-//
-// 字符串表
-//
-
-STRINGTABLE
-BEGIN
-   IDS_APP_TITLE       "Cpp_in_vs"
-END
-
-#endif
+#endif    // 英语(美国)资源
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -61,9 +54,8 @@ END
 //
 // 从 TEXTINCLUDE 3 资源生成。
 //
-#ifndef _AFXDLL
-#include "l.CHS\\afxres.rc"
-#endif
+
 
 /////////////////////////////////////////////////////////////////////////////
 #endif    // 不是 APSTUDIO_INVOKED
+
