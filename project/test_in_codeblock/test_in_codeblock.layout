@@ -2,69 +2,14 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="..\..\algorithm\sstack.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="228" topLine="19" />
-		</Cursor>
-	</File>
 	<File name="..\..\algorithm\algorithm.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="50" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="..\..\algorithm\list.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1102" topLine="36" />
-		</Cursor>
-	</File>
-	<File name="..\..\algorithm\basic_data_structure.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3016" topLine="330" />
-		</Cursor>
-	</File>
-	<File name="..\..\algorithm\c_string_operations.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1496" topLine="55" />
-		</Cursor>
-	</File>
-	<File name="..\..\algorithm\basic_data_structure.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1626" topLine="42" />
-		</Cursor>
-	</File>
-	<File name="..\..\algorithm\ddlinklist.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="81" topLine="9" />
-		</Cursor>
-	</File>
-	<File name="..\..\algorithm\mmatrix.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4463" topLine="92" />
-		</Cursor>
-	</File>
-	<File name="..\..\algorithm\bbinary_tree.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2085" topLine="108" />
-		</Cursor>
-	</File>
-	<File name="..\..\algorithm\sstack.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1044" topLine="3" />
-		</Cursor>
-	</File>
-	<File name="..\..\algorithm\c_string_operations.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="661" topLine="18" />
-		</Cursor>
-	</File>
-	<File name="..\..\algorithm\bbinary_tree.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="207" topLine="15" />
-		</Cursor>
-	</File>
-	<File name="..\..\algorithm\mmatrix.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1731" topLine="56" />
+			<Cursor1 position="3569" topLine="173" />
 		</Cursor>
 	</File>
 	<File name="..\..\algorithm\ddlinklist.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -72,9 +17,79 @@
 			<Cursor1 position="3250" topLine="71" />
 		</Cursor>
 	</File>
+	<File name="..\..\algorithm\basic_data_structure.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1626" topLine="42" />
+		</Cursor>
+	</File>
+	<File name="..\..\algorithm\sstack.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1044" topLine="3" />
+		</Cursor>
+	</File>
+	<File name="..\..\algorithm\sstack.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="228" topLine="19" />
+		</Cursor>
+	</File>
+	<File name="..\..\algorithm\hash_map.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1896" topLine="63" />
+		</Cursor>
+	</File>
+	<File name="..\..\algorithm\c_string_operations.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1496" topLine="55" />
+		</Cursor>
+	</File>
+	<File name="..\..\algorithm\basic_data_structure.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3016" topLine="330" />
+		</Cursor>
+	</File>
+	<File name="..\..\algorithm\hash_map.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5850" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="..\..\algorithm\c_string_operations.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="661" topLine="18" />
+		</Cursor>
+	</File>
 	<File name="..\..\algorithm\algorithm.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="91" topLine="13" />
+		</Cursor>
+	</File>
+	<File name="..\..\algorithm\mmatrix.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1731" topLine="56" />
+		</Cursor>
+	</File>
+	<File name="..\..\algorithm\equal.c" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="39" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="..\..\algorithm\mmatrix.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4463" topLine="92" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1584" topLine="7" />
+		</Cursor>
+	</File>
+	<File name="..\..\algorithm\ddlinklist.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="81" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="..\..\algorithm\list.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="50" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

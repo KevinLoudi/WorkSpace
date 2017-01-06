@@ -4,23 +4,6 @@
 #ifndef C_STD_STRING_H_INCLUDED
 #define C_STD_STRING_H_INCLUDED
 
-/**specify the standard C compiler */
-#if defined(__STDC__)
-# define C89
-# if defined(__STDC_VERSION__)
-#  define C90
-#  if (__STDC_VERSION__ >= 199409L)
-#   define C94
-#  endif
-#  if (__STDC_VERSION__ >= 199901L)
-#   define C99
-#  endif
-# endif
-#endif
-
-#define DEBUG
-#define __STDC_VERSION__ >= 199901L
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -53,8 +36,8 @@ char* strrev_(char*);
 int strtoint_(const char*); //atoi(const char *str)
 char* inttostr_(const int); //iota
 /*allocate memory*/
-//void* is a special pointer with no type, and can not 
-//sizeof(), any pointer can assign value to void* without 
+//void* is a special pointer with no type, and can not
+//sizeof(), any pointer can assign value to void* without
 //cast
 void* memcre_(size_t);
 /*fill a region of memory with given value of c*/
@@ -80,7 +63,7 @@ void insert_sort_(char* str, const size_t n)
     UINT i=j-1; //search in the current unsorted region
     for(; i>0&&str[i]>key;--i)
     {
-      //move backward if the current element 
+      //move backward if the current element
       //is greater than the key
       str[i+1]=str[i];
     }

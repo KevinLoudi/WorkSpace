@@ -73,3 +73,17 @@
 	<assert.h>
 	<stdbool.h>
 
+1483683018 source:d:\code\workspace\practices\algorithm\hash_map.c
+	<stdlib.h>
+	"hash_map.h"
+
+1483683178 d:\code\workspace\practices\algorithm\hash_map.h
+	"list.h"
+
+1483683086 d:\code\workspace\practices\algorithm\list.h
+	<stdio.h>
+
+1483683056 source:d:\code\workspace\practices\algorithm\list.c
+	<stdlib.h>
+	"list.h"
+

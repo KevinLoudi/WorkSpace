@@ -37,12 +37,26 @@
 		<Unit filename="../../algorithm/algorithm.h" />
 		<Unit filename="../../algorithm/basic_data_structure.cpp" />
 		<Unit filename="../../algorithm/basic_data_structure.h" />
-		<Unit filename="../../algorithm/bbinary_tree.cpp" />
-		<Unit filename="../../algorithm/bbinary_tree.h" />
 		<Unit filename="../../algorithm/c_string_operations.cpp" />
 		<Unit filename="../../algorithm/c_string_operations.h" />
 		<Unit filename="../../algorithm/ddlinklist.cpp" />
 		<Unit filename="../../algorithm/ddlinklist.h" />
+		<Unit filename="../../algorithm/equal.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../algorithm/equal.h" />
+		<Unit filename="../../algorithm/hash_code.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../algorithm/hash_code.h" />
+		<Unit filename="../../algorithm/hash_map.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../algorithm/hash_map.h" />
+		<Unit filename="../../algorithm/list.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../algorithm/list.h" />
 		<Unit filename="../../algorithm/mmatrix.cpp" />
 		<Unit filename="../../algorithm/mmatrix.h" />
 		<Unit filename="../../algorithm/sstack.cpp" />
