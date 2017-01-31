@@ -1,7 +1,8 @@
-
-#include <iostream.h>
+#include <iostream>
 #include "mfc.h"
+using namespace std;
 
+//App
 class CMyWinApp : public CWinApp
 {
 public:
@@ -10,9 +11,10 @@ public:
                            }
   CMyWinApp::~CMyWinApp()  {
                               cout << "CMyWinApp Destructor \n";
-                           }
+                           }            
 };
 
+//Frame
 class CMyFrameWnd : public CFrameWnd
 {
 public:

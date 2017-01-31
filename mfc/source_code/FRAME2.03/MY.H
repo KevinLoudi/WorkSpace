@@ -1,6 +1,6 @@
-
-#include <iostream.h>
+#include <iostream>
 #include "mfc.h"
+using namespace std;
 
 class CMyWinApp : public CWinApp
 {

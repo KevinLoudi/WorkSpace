@@ -2,7 +2,8 @@
 #define TRUE 1
 #define FALSE 0
 
-#include <iostream.h>
+#include <iostream>
+using namespace std;
 
 class CObject
 {

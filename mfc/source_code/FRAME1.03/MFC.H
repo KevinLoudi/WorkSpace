@@ -1,5 +1,7 @@
-#include <iostream.h>
+#include <iostream>
+using namespace std;
 
+//mother of all mfc object
 class CObject
 {
 public:
@@ -46,6 +48,7 @@ public:
   CWinApp::~CWinApp() {
                          cout << "CWinApp Destructor \n";
                       }
+
 };
 
 

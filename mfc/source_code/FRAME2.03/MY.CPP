@@ -23,6 +23,7 @@ void main()
 
 CWinApp* pApp = AfxGetApp();
 
+//create an application
 pApp->InitApplication();
 pApp->InitInstance();
 pApp->Run();
