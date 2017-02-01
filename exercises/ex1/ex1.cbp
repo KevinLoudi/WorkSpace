@@ -33,6 +33,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="source_code/boxx.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
