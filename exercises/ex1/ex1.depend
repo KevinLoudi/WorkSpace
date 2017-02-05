@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1486082845 source:d:\code\workspace\practices\exercises\ex1\main.cpp
+	<iostream>
+	"source_code/boxx.h"
+	"source_code/string_calculator.h"
+
+1486082485 d:\code\workspace\practices\exercises\ex1\source_code\boxx.h
+
+1486083164 d:\code\workspace\practices\exercises\ex1\source_code\string_calculator.h
+
+1486083019 source:d:\code\workspace\practices\exercises\ex1\source_code\string_calculator.cpp
+	"string_calculator.h"
+

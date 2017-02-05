@@ -2,7 +2,7 @@
  Author: Kevin
  Date: 1st Feb, 2017
  Propose: exercise day1
- Environment:
+ Environment: gcc 4.2
 */
 
 #ifndef BOXX_H_INCLUDED

@@ -34,6 +34,8 @@
 		</Compiler>
 		<Unit filename="main.cpp" />
 		<Unit filename="source_code/boxx.h" />
+		<Unit filename="source_code/string_calculator.cpp" />
+		<Unit filename="source_code/string_calculator.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
