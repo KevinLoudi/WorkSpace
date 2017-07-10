@@ -37,6 +37,7 @@ public:
 
 // Implementation
 public:
+	UINT m_nWidth;
 	CBitmap bitMap;
 	virtual ~CTextView();
 #ifdef _DEBUG
@@ -50,8 +51,14 @@ protected:
 protected:
 	//{{AFX_MSG(CTextView)
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnChar(UINT nChar, UINT nRepCnt, UINT nFlags);
+	afx_msg void OnTimer(UINT nIDEvent);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
+private:
+	CPoint m_originPoint;
+	CString m_strLine;
 };
 
 #ifndef _DEBUG  // debug version in TextView.cpp
