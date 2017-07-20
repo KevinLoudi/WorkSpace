@@ -15,7 +15,43 @@ Package=<4>
 
 ###############################################################################
 
+Project: "MDISample"=.\MDISample\MDISample.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
 Project: "Meun"=.\Meun\Meun.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Sample"=.\Sample\Sample.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Ssam"=.\Ssam\Ssam.dsp - Package Owner=<4>
 
 Package=<5>
 {{{

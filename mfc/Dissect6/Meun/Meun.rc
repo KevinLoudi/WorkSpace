@@ -58,6 +58,13 @@ END
 
 #endif    // APSTUDIO_INVOKED
 
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP_MENU1        BITMAP  DISCARDABLE     "res\\bitmap1.bmp"
 #endif    // Chinese (P.R.C.) resources
 /////////////////////////////////////////////////////////////////////////////
 
@@ -142,7 +149,7 @@ BEGIN
     BEGIN
         MENUITEM "&About Meun...",              ID_APP_ABOUT
     END
-    MENUITEM "Test",                        65535
+    MENUITEM "Test",                        ID_TEST
 END
 
 

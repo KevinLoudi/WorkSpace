@@ -19,9 +19,8 @@ IMPLEMENT_DYNCREATE(CMainFrame, CFrameWnd)
 
 BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	//{{AFX_MSG_MAP(CMainFrame)
-		// NOTE - the ClassWizard will add and remove mapping macros here.
-		//    DO NOT EDIT what you see in these blocks of generated code !
 	ON_WM_CREATE()
+	ON_COMMAND(ID_TEST, OnTest)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -39,7 +38,7 @@ static UINT indicators[] =
 CMainFrame::CMainFrame()
 {
 	// TODO: add member initialization code here
-	
+	m_bAutoMenuEnable=FALSE;
 }
 
 CMainFrame::~CMainFrame()
@@ -73,6 +72,33 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	EnableDocking(CBRS_ALIGN_ANY);
 	DockControlBar(&m_wndToolBar);
 
+	//set menu item status
+	/*GetMenu()->GetSubMenu(0)->CheckMenuItem(ID_FILE_NEW,MF_BYCOMMAND|MF_CHECKED);
+	GetMenu()->GetSubMenu(0)->SetDefaultItem(ID_FILE_OPEN,FALSE);*/
+	
+	//set bitmap
+	//size of bitmap needed
+	/*CString str;
+	str.Format("x=%d, y=%d",GetSystemMetrics(SM_CXMENUCHECK),GetSystemMetrics(SM_CXMENUCHECK));
+	MessageBox(str); */
+
+	/*m_bitmap.LoadBitmap(IDB_BITMAP_MENU1);
+	GetMenu()->GetSubMenu(0)->SetMenuItemBitmaps(ID_FILE_OPEN,MF_BYCOMMAND,&m_bitmap,&m_bitmap);*/
+
+	//disable file-open 
+	GetMenu()->GetSubMenu(0)->EnableMenuItem(1,MF_BYPOSITION|MF_DISABLED|MF_GRAYED);
+
+	//set menu pointer
+	SetMenu(NULL);
+	
+	CMenu menu;
+	menu.LoadMenu(IDR_MAINFRAME);
+	SetMenu(&menu); 
+	menu.Detach();
+
+	/*m_menu.LoadMenu(IDR_MAINFRAME);
+	SetMenu(&m_menu);*/
+
 	return 0;
 }
 
@@ -105,3 +131,9 @@ void CMainFrame::Dump(CDumpContext& dc) const
 /////////////////////////////////////////////////////////////////////////////
 // CMainFrame message handlers
 
+
+void CMainFrame::OnTest() 
+{
+	// TODO: Add your command handler code here
+	
+}
