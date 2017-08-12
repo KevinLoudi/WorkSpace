@@ -2,7 +2,7 @@
 
 [General Info]
 Version=1
-LastClass=CAboutDlg
+LastClass=CComboToolBar
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "npp.h"
@@ -20,16 +20,17 @@ Class8=CNotepadDoc
 Class9=CNotepadView
 
 ResourceCount=4
-Resource1=IDD_GOTO
-Resource2=IDR_MAINFRAME
-Resource3=IDD_ABOUTBOX
-Resource4=IDD_FIND
+Resource1=IDD_FIND
+Resource2=IDD_ABOUTBOX
+Resource3=IDD_GOTO
+Resource4=IDR_MAINFRAME
 
 [CLS:CComboToolBar]
 Type=0
 BaseClass=CToolBar
 HeaderFile=combobar.h
 ImplementationFile=combobar.cpp
+LastObject=ID_VIEW_FIND_NEXT
 
 [CLS:CTBComboBox]
 Type=0
@@ -66,7 +67,7 @@ Type=0
 BaseClass=CDialog
 HeaderFile=np.cpp
 ImplementationFile=np.cpp
-LastObject=CAboutDlg
+LastObject=IDOK
 
 [CLS:CNotepadDoc]
 Type=0

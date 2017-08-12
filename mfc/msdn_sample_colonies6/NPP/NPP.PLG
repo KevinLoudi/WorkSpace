@@ -6,20 +6,39 @@
 --------------------Configuration: NPP - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSP9EF7.tmp" with contents
+Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSP20CA.tmp" with contents
 [
 /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR".\Debug/" /Fp".\Debug/NPP.pch" /Yu"Stdafx.h" /Fo".\Debug/" /Fd".\Debug/" /FD /c 
-"D:\Code\WorkSpace\mfc\msdn_sample_colonies6\NPP\Combobar.cpp"
+"D:\CODE\WORKSPACE\MFC\msdn_sample_colonies6\NPP\Npview.cpp"
 ]
-Creating command line "cl.exe @C:\Users\kevin\AppData\Local\Temp\RSP9EF7.tmp" 
+Creating command line "cl.exe @C:\Users\kevin\AppData\Local\Temp\RSP20CA.tmp" 
+Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSP20CB.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:".\Debug/NPP.pdb" /debug /machine:I386 /out:".\Debug/NPP.exe" 
+.\Debug\Combobar.obj
+.\Debug\Finddlg.obj
+.\Debug\Gotodlg.obj
+.\Debug\History.obj
+.\Debug\Mainfrm.obj
+.\Debug\Np.obj
+.\Debug\Npdoc.obj
+.\Debug\Npview.obj
+.\Debug\Stdafx.obj
+.\Debug\Npp.res
+]
+Creating command line "link.exe @C:\Users\kevin\AppData\Local\Temp\RSP20CB.tmp"
 <h3>Output Window</h3>
 Compiling...
-Combobar.cpp
+Npview.cpp
+Linking...
+Creating command line "bscmake.exe /nologo /o".\Debug/NPP.bsc"  .\Debug\Stdafx.sbr .\Debug\Combobar.sbr .\Debug\Finddlg.sbr .\Debug\Gotodlg.sbr .\Debug\History.sbr .\Debug\Mainfrm.sbr .\Debug\Np.sbr .\Debug\Npdoc.sbr .\Debug\Npview.sbr"
+Creating browse info file...
+<h3>Output Window</h3>
 
 
 
 <h3>Results</h3>
-Combobar.obj - 0 error(s), 0 warning(s)
+NPP.exe - 0 error(s), 0 warning(s)
 </pre>
 </body>
 </html>
